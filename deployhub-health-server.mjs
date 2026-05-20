@@ -4,7 +4,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 
 const root = path.resolve(process.argv[2] || "dist");
-const port = Number(process.argv[3] || process.env.PORT || 80);
+const port = Number(process.argv[3] || process.env.PORT || 3000);
 const startedAt = new Date().toISOString();
 
 const mime = { ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".ico": "image/x-icon", ".woff": "font/woff", ".woff2": "font/woff2" };
@@ -43,7 +43,7 @@ function healthPayload() {
 }
 
 function send(res, status, body, type) {
-  res.writeHead(status, { "Content-Type": type, "Cache-Control": "no-store", "X-DeployHub-Root": root });
+  res.writeHead(status, { "Content-Type": type, "Cache-Control": "no-store", "X-DeployHub-Root": root, "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS", "Access-Control-Allow-Headers": "content-type" });
   res.end(body);
 }
 
@@ -54,6 +54,7 @@ function resolveFile(urlPath) {
 }
 
 http.createServer((req, res) => {
+  if (req.method === "OPTIONS") return send(res, 204, "", "text/plain; charset=utf-8");
   const pathname = new URL(req.url || "/", "http://localhost").pathname;
   if (pathname === "/healthz/live") return send(res, 200, "ok\n", "text/plain; charset=utf-8");
   if (pathname === "/healthz" || pathname === "/healthz.json") return send(res, 200, JSON.stringify(healthPayload(), null, 2), "application/json; charset=utf-8");
