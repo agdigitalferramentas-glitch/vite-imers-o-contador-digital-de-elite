@@ -218,7 +218,7 @@ export default function Index() {
       {/* SEÇÃO 7 */}
       <section className="bg-[#00161F] px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Essa Imersão É <span className="gold-text">Para Você Se…</span></h2>
+          <h2 className="text-center text-2xl md:text-3xl lg:text-[2.35rem]">Essa Imersão É <span className="gold-text">Para Você Se…</span></h2>
           <ul className="mt-10 space-y-5">
             {[
               "Você perde clientes para escritórios que cobram R$ 99/mês e entregam metade do que você entrega.",
