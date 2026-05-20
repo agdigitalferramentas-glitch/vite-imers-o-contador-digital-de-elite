@@ -56,7 +56,7 @@ export default function IndexB() {
         Imersão online e ao vivo — 13 de junho
       </div>
 
-      {/* HERO — Teste B */}
+      {/* HERO */}
       <section
         className="hero-section relative overflow-hidden bg-[var(--background)] px-6 pt-10 md:pt-24"
         style={{
@@ -71,14 +71,14 @@ export default function IndexB() {
               Evento exclusivo para contadores
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
-              Descubra a Estratégia Que Faz Contadores Faturarem <span className="gold-text">10x Mais</span> — E Chegarem no Final do Mês Com Dinheiro de Verdade no Bolso.
+              Descubra o modelo que faz contadores faturarem <span className="gold-text">10x mais</span> com menos clientes e menos horas.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              Sem guru. Sem fórmula mágica. Um sistema prático que conecta faturamento, lucro e qualidade de vida. Ao vivo, no dia <strong className="text-white">13 de junho</strong>.
+              No dia 13 de junho, <strong className="text-white">de 09 às 15 horas</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
             </p>
 
             <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
-              Evento online e ao vivo | 13 de junho
+              Evento online e ao vivo | 13 de junho | 09 às 15h
             </p>
 
             <div className="mt-5 flex flex-col items-start gap-4">
@@ -86,7 +86,7 @@ export default function IndexB() {
               <div className="flex flex-row flex-wrap justify-start gap-x-4 gap-y-2 text-sm text-white/70 md:flex-col md:items-start md:gap-2 md:justify-start">
                 <span className="flex items-center gap-2"><User size={16} className="shrink-0 text-[var(--gold)]" /> Anderson Maisse — Fundador da AM Contabilidade Online</span>
                 <span className="flex items-center gap-2"><Users size={16} className="shrink-0 text-[var(--gold)]" /> 1200+ clientes</span>
-                <span className="flex items-center gap-2"><BookOpen size={16} className="shrink-0 text-[var(--gold)]" /> 4000+ alunos</span>
+                <span className="flex items-center gap-2"><BookOpen size={16} className="shrink-0 text-[var(--gold)]" /> +4000 alunos</span>
               </div>
             </div>
           </div>
