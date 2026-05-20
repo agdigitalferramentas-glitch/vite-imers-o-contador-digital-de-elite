@@ -74,7 +74,7 @@ export default function Index() {
               Descubra o modelo que faz contadores faturarem <span className="gold-text">10x mais</span> com menos clientes e menos horas.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              No dia 13 de junho, <strong className="text-white">Anderson Maisse</strong> vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
+              No dia 13 de junho, <strong className="text-white">de 09 às 15 horas</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
             </p>
 
             <div className="mt-8 flex flex-col items-start gap-4">
