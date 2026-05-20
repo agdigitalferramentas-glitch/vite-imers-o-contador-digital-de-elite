@@ -71,10 +71,10 @@ export default function IndexB() {
               Evento exclusivo para contadores
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
-              Descubra por que alguns contadores faturam <span className="gold-text">10x mais</span> que você com menos clientes e menos horas de trabalho.
+              Descubra a estratégia que faz contadores faturarem <span className="gold-text">10x mais</span> e chegarem no final do mês com dinheiro de verdade no bolso.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              No dia 13 de junho, <strong className="text-white">de 09 às 15 horas</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
+              Sem guru. Sem fórmula mágica. Um sistema prático que conecta faturamento, lucro e qualidade de vida. Ao vivo, no dia 13 de junho de 09 às 15 horas.
             </p>
 
             <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
