@@ -1,6 +1,6 @@
-# DEPLOYHUB_NGINX_SPA_V7
+# DEPLOYHUB_NGINX_SPA_V8
 # Dockerfile robusto para Dokploy: Vite/React SPA via Nginx + fallback SSR TanStack/Node, inclusive apps dentro de /client.
-FROM node:22-alpine AS build
+FROM node:20-alpine AS build
 WORKDIR /app
 COPY . .
 ARG VITE_SUPABASE_URL
@@ -15,10 +15,10 @@ RUN if [ -z "$VITE_SUPABASE_PUBLISHABLE_KEY" ]; then export VITE_SUPABASE_PUBLIS
 RUN set -eu;   ROOT=/app; [ -f /app/package.json ] || ROOT=/app/client;   cd "$ROOT";   if [ -d dist/server ] && [ ! -f dist/client/index.html ] && [ ! -f dist/index.html ]; then     echo "[deployhub:build] SSR build sem index.html — rodando vite build SPA de fallback em dist/client";     if [ -f node_modules/.bin/vite ]; then       ./node_modules/.bin/vite build --outDir dist/client --emptyOutDir=false ||       npx --yes vite build --outDir dist/client --emptyOutDir=false || true;     else       npx --yes vite build --outDir dist/client --emptyOutDir=false || true;     fi;   fi;   if [ ! -f dist/client/index.html ] && [ ! -f dist/index.html ]; then     if [ -f index.html ]; then       echo "[deployhub:build] último recurso: copiando index.html da raiz para dist/client";       mkdir -p dist/client; cp index.html dist/client/index.html;     elif [ -f client/index.html ]; then       echo "[deployhub:build] último recurso: copiando client/index.html para dist/client";       mkdir -p dist/client; cp client/index.html dist/client/index.html;     fi;   fi
 RUN mkdir -p /app/dist /app/client/dist /app/.output /app/build &&   echo "[deployhub:build] build output candidates:" &&   for path in /app/dist /app/dist/client /app/client/dist /app/client/dist/client /app/.output/public /app/build /app/build/client; do     if [ -d "$path" ]; then echo "--- $path"; ls -la "$path"; fi;   done
 
-FROM node:22-alpine AS runtime
+FROM node:20-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
-RUN apk add --no-cache nginx curl ca-certificates &&   mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html
+RUN apk add --no-cache nginx curl ca-certificates &&   mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html /etc/nginx/http.d /etc/nginx/conf.d
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/client/dist ./client/dist
 COPY --from=build /app/.output ./.output
@@ -78,6 +78,20 @@ if [ -f /app/dist/server/server.mjs ]; then
   exec node /app/dist/server/server.mjs
 fi
 
+if [ -f /app/build/server/index.mjs ]; then
+  export HOST=0.0.0.0
+  export PORT="${PORT:-3000}"
+  log "SSR detectado: rodando /app/build/server/index.mjs na porta $PORT"
+  exec node /app/build/server/index.mjs
+fi
+
+if [ -f /app/build/server/index.js ]; then
+  export HOST=0.0.0.0
+  export PORT="${PORT:-3000}"
+  log "SSR detectado: rodando /app/build/server/index.js na porta $PORT"
+  exec node /app/build/server/index.js
+fi
+
 STATIC_ROOT=""
 for candidate in /app/dist/client /app/dist /app/client/dist/client /app/client/dist /app/.output/public /app/build/client /app/build; do
   if [ -f "$candidate/index.html" ]; then
@@ -95,7 +109,8 @@ fi
 log "Limpando /usr/share/nginx/html/*"
 rm -rf /usr/share/nginx/html/*
 cp -R "$STATIC_ROOT"/. /usr/share/nginx/html/
-log "SPA estático detectado: servindo $STATIC_ROOT via Nginx na porta 80 (ROOT: /usr/share/nginx/html)"
+NGINX_PORT="${PORT:-3000}"
+log "SPA estático detectado: servindo $STATIC_ROOT via Nginx nas portas 80 e $NGINX_PORT (ROOT: /usr/share/nginx/html)"
 ls -la /usr/share/nginx/html/
 
 # Gera /usr/share/nginx/html/healthz.json com metadados do build atual.
@@ -137,13 +152,21 @@ cat > /usr/share/nginx/html/healthz.json <<JSON
 JSON
 log "healthz.json gerado: size=$INDEX_SIZE sha256=$INDEX_SHA assets=$ASSET_COUNT"
 
-cat > /etc/nginx/conf.d/default.conf <<NGINX
+mkdir -p /etc/nginx/http.d /etc/nginx/conf.d
+rm -f /etc/nginx/http.d/default.conf /etc/nginx/conf.d/default.conf
+NGINX_INCLUDE_DIR="/etc/nginx/http.d"
+if grep -q '/etc/nginx/conf.d/\*.conf' /etc/nginx/nginx.conf 2>/dev/null; then
+  NGINX_INCLUDE_DIR="/etc/nginx/conf.d"
+fi
+
+cat > /tmp/deployhub-nginx.conf <<NGINX
 log_format deployhub '$remote_addr - $remote_user [$time_local] "$request" '
                      '$status $body_bytes_sent "$http_referer" '
                      '"$http_user_agent" "$http_x_forwarded_for"';
 
 server {
   listen 80 default_server;
+  listen $NGINX_PORT;
   server_name _;
   root /usr/share/nginx/html;
   index index.html;
@@ -162,6 +185,7 @@ server {
   location = /healthz/live {
     access_log off;
     default_type text/plain;
+    add_header Access-Control-Allow-Origin "*" always;
     return 200 'ok\n';
   }
 
@@ -172,6 +196,9 @@ server {
     default_type application/json;
     add_header Cache-Control "no-store" always;
     add_header X-DeployHub-Root "/usr/share/nginx/html" always;
+    add_header Access-Control-Allow-Origin "*" always;
+    add_header Access-Control-Allow-Methods "GET,HEAD,OPTIONS" always;
+    add_header Access-Control-Allow-Headers "content-type" always;
     try_files /healthz.json =503;
   }
 
@@ -187,6 +214,10 @@ server {
   }
 }
 NGINX
+cp /tmp/deployhub-nginx.conf "$NGINX_INCLUDE_DIR/default.conf"
+if [ "$NGINX_INCLUDE_DIR" != "/etc/nginx/conf.d" ]; then
+  cp /tmp/deployhub-nginx.conf /etc/nginx/conf.d/default.conf.diagnostic
+fi
 
 nginx -t
 exec nginx -g 'daemon off;'
@@ -194,7 +225,7 @@ EOF
 RUN cat > /usr/local/bin/deployhub-healthcheck <<'EOF'
 #!/bin/sh
 if pgrep nginx >/dev/null 2>&1; then
-  curl -fsS http://127.0.0.1:80/healthz/live >/dev/null
+  curl -fsS "http://127.0.0.1:${PORT:-3000}/healthz/live" >/dev/null || curl -fsS http://127.0.0.1:80/healthz/live >/dev/null
 else
   curl -fsS "http://127.0.0.1:${PORT:-3000}/healthz/live" >/dev/null || curl -fsS "http://127.0.0.1:${PORT:-3000}/" >/dev/null
 fi
