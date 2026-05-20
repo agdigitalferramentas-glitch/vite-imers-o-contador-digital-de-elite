@@ -37,6 +37,7 @@ dump_tree() {
   done
 }
 
+
 if is_debug; then
   log "DEPLOYHUB_DEBUG ativo"
   env | sort | sed -E 's/(TOKEN|KEY|SECRET|PASSWORD)=.*/\1=***masked***/I'
@@ -160,9 +161,10 @@ if grep -q '/etc/nginx/conf.d/\*.conf' /etc/nginx/nginx.conf 2>/dev/null; then
 fi
 
 cat > /tmp/deployhub-nginx.conf <<NGINX
-log_format deployhub '$remote_addr - $remote_user [$time_local] "$request" '
-                     '$status $body_bytes_sent "$http_referer" '
-                     '"$http_user_agent" "$http_x_forwarded_for"';
+log_format deployhub '\$remote_addr - \$remote_user [\$time_local] "\$request" '
+                     '\$status \$body_bytes_sent "\$http_referer" '
+                     '"\$http_user_agent" "\$http_x_forwarded_for"';
+
 
 
 server {
