@@ -74,7 +74,7 @@ export default function IndexD() {
               O contador que fatura <span className="gold-text">10x mais</span> não trabalha mais horas. Ele opera com um modelo diferente.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              No dia 13 de junho, <strong className="text-white">das 09 À 15 horas</strong>, Anderson Maisse vai abrir ao vivo o sistema que levou a AM Contabilidade de 80 para 1.200 clientes — com até 40% de margem líquida. Por R$ 27, você vai ver como aplicar isso no seu escritório.
+              No dia 13 de junho, <strong className="text-white">das 09 às 15 horas</strong>, Anderson Maisse vai abrir ao vivo o sistema que levou a AM Contabilidade de 80 para 1.200 clientes — com até 40% de margem líquida. Por R$ 27, você vai ver como aplicar isso no seu escritório.
             </p>
 
             <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
