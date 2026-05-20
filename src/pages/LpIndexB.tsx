@@ -127,8 +127,8 @@ export default function IndexB() {
       {/* SEÇÃO 3 — Método ao vivo */}
       <section className="hero-bg px-6 py-10 md:py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="section-label mb-4">Imersão Contador Digital de Elite</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Existe Um Método Para Sair Dessa Conta Que Não Fecha. E Você Vai <span className="gold-text">Conhecer Ele Ao Vivo.</span></h2>
+          <p className="mt-4 text-lg font-bold uppercase tracking-[0.2em] text-[var(--gold)]">Imersão Contador Digital de Elite</p>
           <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-white/85">Uma tarde. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram.</p>
           <div className="mt-10 space-y-5 text-left text-lg leading-relaxed text-white/85">
             <p>No dia <strong className="text-white">13 de junho</strong>, Anderson Maisse vai abrir ao vivo o sistema que usou para transformar a AM Contabilidade de 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
