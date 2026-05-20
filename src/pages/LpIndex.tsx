@@ -338,7 +338,7 @@ export default function Index() {
           <h2 className="text-center text-2xl md:text-3xl lg:text-[2.35rem]">Perguntas <span className="gold-text">Frequentes</span></h2>
           <div className="mt-12 space-y-4">
             {[
-              { q: "Quando acontece a imersão?", a: "Dia 13 de junho, ao vivo e online. O horário será divulgado no grupo exclusivo de WhatsApp logo após a sua inscrição." },
+              { q: "Quando acontece a imersão?", a: "Dia 13 de junho, das 09 às 15h, ao vivo e online. O horário será divulgado no grupo exclusivo de WhatsApp logo após a sua inscrição." },
               { q: "Como vou receber o acesso?", a: "Após o pagamento, você será direcionado para o grupo exclusivo de WhatsApp. É nesse grupo que o link da transmissão ao vivo será compartilhado." },
               { q: "Vai ter gravação disponível?", a: "A proposta da imersão é experiência ao vivo. Porém se você quiser ter acesso a gravação, ela será disponibilizada no ato da compra do ingresso por R$ 97,00." },
               { q: "Eu sou recém-formado / ainda não tenho escritório. Serve para mim?", a: "Se você pretende ter um escritório lucrativo e bem posicionado, esse conteúdo vai te dar uma vantagem que a maioria dos contadores leva anos para construir. Então, sim." },
