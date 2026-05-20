@@ -1,4 +1,4 @@
-# DEPLOYHUB_NGINX_SPA_V10
+# DEPLOYHUB_NGINX_SPA_V11
 # Dockerfile robusto para Dokploy: Vite/React SPA via Nginx + fallback SSR TanStack/Node, inclusive apps dentro de /client.
 FROM node:20-alpine AS build
 WORKDIR /app
@@ -127,6 +127,11 @@ fi
 ASSET_COUNT=$(find /usr/share/nginx/html -maxdepth 4 -type f 2>/dev/null | wc -l | tr -d ' ')
 JS_COUNT=$(find /usr/share/nginx/html -maxdepth 4 -type f -name '*.js' 2>/dev/null | wc -l | tr -d ' ')
 CSS_COUNT=$(find /usr/share/nginx/html -maxdepth 4 -type f -name '*.css' 2>/dev/null | wc -l | tr -d ' ')
+if [ "$JS_COUNT" = "0" ]; then
+  log "ERRO: index.html existe, mas nenhum bundle JavaScript foi encontrado em /usr/share/nginx/html. Build incompleto; abortando para não publicar página quebrada."
+  dump_tree
+  exit 1
+fi
 cat > /usr/share/nginx/html/healthz.json <<JSON
 {
   "status": "ok",
