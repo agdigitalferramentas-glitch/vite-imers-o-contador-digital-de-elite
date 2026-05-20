@@ -170,7 +170,7 @@ export default function Index() {
           <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-white/85">Uma única tarde. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram — <em className="gold-text">aplicável a partir do dia seguinte</em>.</p>
           <div className="mt-10 space-y-5 text-left text-lg leading-relaxed text-white/85">
             <p>Essa é a <strong className="gold-text">Imersão Contador Digital de Elite.</strong></p>
-            <p>No dia <strong className="text-white">13 de junho</strong>, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
+            <p>No dia <strong className="text-white">13 de junho</strong>, de <strong className="text-white">09 às 15h</strong>, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
             <p>Mas o que vai mudar seu jogo não são os números dele.</p>
             <p className="text-xl">É o que você vai <em className="gold-text">aplicar na sua operação</em> a partir do dia seguinte.</p>
           </div>
