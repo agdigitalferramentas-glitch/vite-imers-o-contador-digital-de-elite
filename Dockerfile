@@ -110,8 +110,7 @@ fi
 log "Limpando /usr/share/nginx/html/*"
 rm -rf /usr/share/nginx/html/*
 cp -R "$STATIC_ROOT"/. /usr/share/nginx/html/
-NGINX_PORT="${PORT:-3000}"
-log "SPA estático detectado: servindo $STATIC_ROOT via Nginx nas portas 80 e $NGINX_PORT (ROOT: /usr/share/nginx/html)"
+log "SPA estático detectado: servindo $STATIC_ROOT via Nginx na porta 80 (ROOT: /usr/share/nginx/html)"
 ls -la /usr/share/nginx/html/
 
 # Gera /usr/share/nginx/html/healthz.json com metadados do build atual.
@@ -169,7 +168,6 @@ log_format deployhub '\$remote_addr - \$remote_user [\$time_local] "\$request" '
 
 server {
   listen 80 default_server;
-  listen ${PORT:-3000};
   server_name _;
   root /usr/share/nginx/html;
   index index.html;
