@@ -17,7 +17,7 @@ function CtaButton({ label = CTA_LABEL, href = "#inscricao" }: { label?: string;
   );
 }
 
-export default function IndexB() {
+export default function IndexE() {
   const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -71,10 +71,10 @@ export default function IndexB() {
               Evento exclusivo para contadores
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
-              Descubra por que alguns contadores faturam <span className="gold-text">10x mais</span> que você com menos clientes e menos horas de trabalho.
+              Enquanto você trabalha 14 horas por dia, outros contadores faturam <span className="gold-text">10x mais</span> com menos clientes e menos funcionários.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              No dia 13 de junho, <strong className="text-white">de 09 às 15 horas</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
+              Dia 13 de junho das 09 às 15 horas. 5 horas de evento. R$ 27. O método completo que separa contadores que faturam de contadores que lucram.
             </p>
 
             <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
