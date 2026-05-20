@@ -164,9 +164,10 @@ log_format deployhub '$remote_addr - $remote_user [$time_local] "$request" '
                      '$status $body_bytes_sent "$http_referer" '
                      '"$http_user_agent" "$http_x_forwarded_for"';
 
+
 server {
   listen 80 default_server;
-  listen $NGINX_PORT;
+  listen ${PORT:-3000};
   server_name _;
   root /usr/share/nginx/html;
   index index.html;
@@ -186,11 +187,11 @@ server {
     access_log off;
     default_type text/plain;
     add_header Access-Control-Allow-Origin "*" always;
-    return 200 'ok\n';
+    return 200 'ok
+';
   }
 
   # /healthz -> JSON com metadados reais do dist servido (sha256, size, mtime, commit)
-  # Servido como arquivo estático do próprio root -> prova que o nginx está lendo o dist.
   location = /healthz {
     access_log off;
     default_type application/json;
@@ -202,7 +203,7 @@ server {
     try_files /healthz.json =503;
   }
 
-  location ~* \.(?:js|css|png|jpg|jpeg|gif|ico|svg|webp|avif|woff|woff2|ttf|eot|map)$ {
+  location ~* .(?:js|css|png|jpg|jpeg|gif|ico|svg|webp|avif|woff|woff2|ttf|eot|map)$ {
     try_files $uri =404;
     expires 1y;
     add_header Cache-Control "public, immutable";
@@ -210,10 +211,12 @@ server {
 
   location / {
     try_files $uri $uri/ /index.html;
+
     add_header Cache-Control "no-cache";
   }
 }
 NGINX
+
 cp /tmp/deployhub-nginx.conf "$NGINX_INCLUDE_DIR/default.conf"
 if [ "$NGINX_INCLUDE_DIR" != "/etc/nginx/conf.d" ]; then
   cp /tmp/deployhub-nginx.conf /etc/nginx/conf.d/default.conf.diagnostic
