@@ -1,4 +1,4 @@
-# DEPLOYHUB_NGINX_SPA_V11
+# DEPLOYHUB_NGINX_SPA_V12
 # Dockerfile robusto para Dokploy: Vite/React SPA via Nginx + fallback SSR TanStack/Node, inclusive apps dentro de /client.
 FROM node:20-alpine AS build
 WORKDIR /app
@@ -158,11 +158,28 @@ JSON
 log "healthz.json gerado: size=$INDEX_SIZE sha256=$INDEX_SHA assets=$ASSET_COUNT"
 
 mkdir -p /etc/nginx/http.d /etc/nginx/conf.d
-rm -f /etc/nginx/http.d/default.conf /etc/nginx/conf.d/default.conf
-NGINX_INCLUDE_DIR="/etc/nginx/http.d"
-if grep -q '/etc/nginx/conf.d/\*.conf' /etc/nginx/nginx.conf 2>/dev/null; then
-  NGINX_INCLUDE_DIR="/etc/nginx/conf.d"
-fi
+rm -f /etc/nginx/http.d/default.conf /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.diagnostic
+
+# Alpine nginx installed inside node:alpine may include /etc/nginx/conf.d/*.conf
+# outside the http{} block in some images. Writing a server{} there makes nginx
+# crash with: "server directive is not allowed here". Own the top-level config
+# and keep the vhost strictly under http.d.
+cat > /etc/nginx/nginx.conf <<'NGINX_MAIN'
+worker_processes auto;
+error_log /dev/stderr notice;
+pid /run/nginx/nginx.pid;
+
+events { worker_connections 1024; }
+
+http {
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+  sendfile on;
+  tcp_nopush on;
+  keepalive_timeout 65;
+  include /etc/nginx/http.d/*.conf;
+}
+NGINX_MAIN
 
 cat > /tmp/deployhub-nginx.conf <<NGINX
 server {
@@ -215,10 +232,7 @@ server {
 }
 NGINX
 
-cp /tmp/deployhub-nginx.conf "$NGINX_INCLUDE_DIR/default.conf"
-if [ "$NGINX_INCLUDE_DIR" != "/etc/nginx/conf.d" ]; then
-  cp /tmp/deployhub-nginx.conf /etc/nginx/conf.d/default.conf.diagnostic
-fi
+cp /tmp/deployhub-nginx.conf /etc/nginx/http.d/default.conf
 
 nginx -t
 exec nginx -g 'daemon off;'
