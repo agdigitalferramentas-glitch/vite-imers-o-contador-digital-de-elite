@@ -71,7 +71,7 @@ export default function Index() {
               Evento exclusivo para contadores
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
-              Descubra o modelo que faz contadores faturarem <span className="gold-text">10x mais</span> com menos clientes e menos horas.
+              Descubra por que alguns contadores faturam <span className="gold-text">10x mais</span> que você com menos clientes e menos horas de trabalho.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
               No dia 13 de junho, <strong className="text-white">de 09 às 15 horas</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
