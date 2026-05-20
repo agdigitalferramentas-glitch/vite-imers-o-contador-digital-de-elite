@@ -131,7 +131,7 @@ export default function IndexB() {
           <p className="mt-4 text-lg font-bold uppercase tracking-[0.2em] text-[var(--gold)]">Imersão Contador Digital de Elite</p>
           <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-white/85">Uma tarde. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram.</p>
           <div className="mt-10 space-y-5 text-left text-lg leading-relaxed text-white/85">
-            <p>No dia <strong className="text-white">13 de junho</strong>, Anderson Maisse vai abrir ao vivo o sistema que usou para transformar a AM Contabilidade de 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
+            <p>No dia <strong className="text-white">13 de junho</strong>, de 09 às 15h, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
             <p>Mas o que vai mudar seu jogo não são os números dele.</p>
             <p className="text-xl">É o que você vai <em className="gold-text">aplicar na sua operação</em> a partir do dia seguinte.</p>
           </div>
