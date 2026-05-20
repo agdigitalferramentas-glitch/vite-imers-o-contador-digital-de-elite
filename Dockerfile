@@ -1,4 +1,4 @@
-# DEPLOYHUB_NGINX_SPA_V9
+# DEPLOYHUB_NGINX_SPA_V10
 # Dockerfile robusto para Dokploy: Vite/React SPA via Nginx + fallback SSR TanStack/Node, inclusive apps dentro de /client.
 FROM node:20-alpine AS build
 WORKDIR /app
@@ -160,19 +160,13 @@ if grep -q '/etc/nginx/conf.d/\*.conf' /etc/nginx/nginx.conf 2>/dev/null; then
 fi
 
 cat > /tmp/deployhub-nginx.conf <<NGINX
-log_format deployhub '\$remote_addr - \$remote_user [\$time_local] "\$request" '
-                     '\$status \$body_bytes_sent "\$http_referer" '
-                     '"\$http_user_agent" "\$http_x_forwarded_for"';
-
-
-
 server {
   listen 80 default_server;
   server_name _;
   root /usr/share/nginx/html;
   index index.html;
 
-  access_log /dev/stdout deployhub;
+  access_log /dev/stdout;
   error_log /dev/stderr ${NGINX_LOG_LEVEL:-notice};
   autoindex off;
   server_tokens off;
