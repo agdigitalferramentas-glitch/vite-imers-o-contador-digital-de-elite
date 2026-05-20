@@ -1,4 +1,4 @@
-# DEPLOYHUB_NGINX_SPA_V8
+# DEPLOYHUB_NGINX_SPA_V9
 # Dockerfile robusto para Dokploy: Vite/React SPA via Nginx + fallback SSR TanStack/Node, inclusive apps dentro de /client.
 FROM node:20-alpine AS build
 WORKDIR /app
@@ -187,8 +187,7 @@ server {
     access_log off;
     default_type text/plain;
     add_header Access-Control-Allow-Origin "*" always;
-    return 200 'ok
-';
+    return 200 'ok\n';
   }
 
   # /healthz -> JSON com metadados reais do dist servido (sha256, size, mtime, commit)
@@ -203,14 +202,14 @@ server {
     try_files /healthz.json =503;
   }
 
-  location ~* .(?:js|css|png|jpg|jpeg|gif|ico|svg|webp|avif|woff|woff2|ttf|eot|map)$ {
-    try_files $uri =404;
+  location ~* \.(?:js|css|png|jpg|jpeg|gif|ico|svg|webp|avif|woff|woff2|ttf|eot|map)$ {
+    try_files \$uri =404;
     expires 1y;
     add_header Cache-Control "public, immutable";
   }
 
   location / {
-    try_files $uri $uri/ /index.html;
+    try_files \$uri \$uri/ /index.html;
 
     add_header Cache-Control "no-cache";
   }
