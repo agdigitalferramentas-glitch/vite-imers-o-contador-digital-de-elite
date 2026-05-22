@@ -231,7 +231,7 @@ export default function IndexD() {
       </section>
 
       {/* SEÇÃO 7 — Pricing */}
-      <section id="inscricao" className="hero-bg px-6 py-10 md:py-24">
+      <section className="hero-bg px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-label mb-4">Investimento</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Uma Imersão Desse Nível, Por Um <span className="gold-text">Valor Que Não Faz Sentido Recusar</span></h2>
@@ -241,7 +241,7 @@ export default function IndexD() {
             <p>Você vai ter acesso a um evento ao vivo, com conteúdo prático, aplicável e direto ao ponto.</p>
           </div>
 
-          <div className="card-dark mx-auto mt-12 max-w-lg p-10 text-center">
+          <div id="inscricao" className="card-dark mx-auto mt-12 max-w-lg p-10 text-center scroll-mt-6">
             <p className="text-sm uppercase tracking-[0.2em] text-white/60">O investimento?</p>
             <p className="mt-4 text-xl text-white/60 line-through">De: R$ 197</p>
             <p className="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">por</p>
