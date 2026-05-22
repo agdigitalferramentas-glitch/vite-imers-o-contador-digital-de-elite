@@ -10,8 +10,24 @@ import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite.webp"
 const CTA_LABEL = "QUERO MINHA VAGA POR R$ 27";
 
 function CtaButton({ label = CTA_LABEL, href = "#inscricao" }: { label?: string; href?: string }) {
+  const handleClick = (e: import("react").MouseEvent<HTMLAnchorElement>) => {
+    if (!href.startsWith("#")) return;
+    const id = href.slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const scrollTo = () => {
+      const top = el.getBoundingClientRect().top + window.scrollY - 24;
+      window.scrollTo({ top, behavior: "smooth" });
+    };
+    scrollTo();
+    // Re-ajusta após imagens/layout assentarem (lazy-load pode deslocar a página)
+    window.setTimeout(scrollTo, 350);
+    window.setTimeout(scrollTo, 800);
+    if (history.replaceState) history.replaceState(null, "", href);
+  };
   return (
-    <a href={href} className="btn-gold">
+    <a href={href} onClick={handleClick} className="btn-gold">
       {label}
     </a>
   );
