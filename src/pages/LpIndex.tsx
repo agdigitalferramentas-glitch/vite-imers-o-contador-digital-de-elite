@@ -10,7 +10,7 @@ import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite.webp"
 const CTA_LABEL = "QUERO MINHA VAGA POR R$ 27";
 
 function CtaButton({ label = CTA_LABEL, href = "#inscricao" }: { label?: string; href?: string }) {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: import("react").MouseEvent<HTMLAnchorElement>) => {
     if (!href.startsWith("#")) return;
     const id = href.slice(1);
     const el = document.getElementById(id);
