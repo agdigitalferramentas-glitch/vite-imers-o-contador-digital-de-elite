@@ -1,6 +1,6 @@
-# DEPLOYHUB_NGINX_SPA_V12
+# DEPLOYHUB_NGINX_SPA_V14
 # Dockerfile robusto para Dokploy: Vite/React SPA via Nginx + fallback SSR TanStack/Node, inclusive apps dentro de /client.
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 COPY . .
 ARG VITE_SUPABASE_URL
@@ -15,7 +15,7 @@ RUN if [ -z "$VITE_SUPABASE_PUBLISHABLE_KEY" ]; then export VITE_SUPABASE_PUBLIS
 RUN set -eu;   ROOT=/app; [ -f /app/package.json ] || ROOT=/app/client;   cd "$ROOT";   if [ -d dist/server ] && [ ! -f dist/client/index.html ] && [ ! -f dist/index.html ]; then     echo "[deployhub:build] SSR build sem index.html — rodando vite build SPA de fallback em dist/client";     if [ -f node_modules/.bin/vite ]; then       ./node_modules/.bin/vite build --outDir dist/client --emptyOutDir=false ||       npx --yes vite build --outDir dist/client --emptyOutDir=false || true;     else       npx --yes vite build --outDir dist/client --emptyOutDir=false || true;     fi;   fi;   if [ ! -f dist/client/index.html ] && [ ! -f dist/index.html ]; then     if [ -f index.html ]; then       echo "[deployhub:build] último recurso: copiando index.html da raiz para dist/client";       mkdir -p dist/client; cp index.html dist/client/index.html;     elif [ -f client/index.html ]; then       echo "[deployhub:build] último recurso: copiando client/index.html para dist/client";       mkdir -p dist/client; cp client/index.html dist/client/index.html;     fi;   fi
 RUN mkdir -p /app/dist /app/client/dist /app/.output /app/build &&   echo "[deployhub:build] build output candidates:" &&   for path in /app/dist /app/dist/client /app/client/dist /app/client/dist/client /app/.output/public /app/build /app/build/client; do     if [ -d "$path" ]; then echo "--- $path"; ls -la "$path"; fi;   done
 
-FROM node:20-alpine AS runtime
+FROM node:22-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 RUN apk add --no-cache nginx curl ca-certificates &&   mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html /etc/nginx/http.d /etc/nginx/conf.d
@@ -184,6 +184,7 @@ NGINX_MAIN
 cat > /tmp/deployhub-nginx.conf <<NGINX
 server {
   listen 80 default_server;
+  listen 3000;
   server_name _;
   root /usr/share/nginx/html;
   index index.html;
