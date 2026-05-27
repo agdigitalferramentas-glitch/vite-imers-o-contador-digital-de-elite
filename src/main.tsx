@@ -19,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/c" element={<LpIndexC />} />
         <Route path="/d" element={<LpIndexD />} />
         <Route path="/e" element={<LpIndexE />} />
+        <Route path="/f" element={<LpIndexF />} />
         <Route path="/obrigado" element={<LpObrigado />} />
         <Route path="*" element={<LpIndex />} />
       </Routes>
