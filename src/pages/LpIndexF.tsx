@@ -94,7 +94,11 @@ export default function Index() {
             </p>
 
             <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
-              📅 13 de junho &nbsp; | &nbsp; 🕘 09h às 15h &nbsp; | &nbsp; 💬 Online e Ao Vivo
+              <span className="inline-flex items-center gap-2"><Calendar size={16} className="text-[var(--gold)]" /> 13 de junho</span>
+              <span className="text-white/30">|</span>
+              <span className="inline-flex items-center gap-2"><Clock size={16} className="text-[var(--gold)]" /> 09h às 15h</span>
+              <span className="text-white/30">|</span>
+              <span className="inline-flex items-center gap-2"><Laptop size={16} className="text-[var(--gold)]" /> Online e Ao Vivo</span>
             </p>
 
             <div className="mt-5 flex flex-col items-start gap-4">
