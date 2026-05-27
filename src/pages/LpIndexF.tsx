@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { BookOpen, CheckCircle2, TrendingUp, Users, Zap } from "lucide-react";
+import { BookOpen, Calendar, CheckCircle2, Clock, Laptop, TrendingUp, Users, Zap } from "lucide-react";
 import heroBg from "@/assets/hero-bg.webp";
 import heroBgMobile from "@/assets/hero-bg-mobile.webp";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
