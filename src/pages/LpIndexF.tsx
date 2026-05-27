@@ -93,13 +93,11 @@ export default function Index() {
               Existem 8 a 10 serviços que seus clientes precisam, estão prontos para pagar e ninguém nunca ofereceu. No dia 13 de junho, ao vivo, você vai saber quais são e como ativar essa receita ainda este mês.
             </p>
 
-            <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
               <span className="inline-flex items-center gap-2"><Calendar size={16} className="text-[var(--gold)]" /> 13 de junho</span>
-              <span className="text-white/30">|</span>
               <span className="inline-flex items-center gap-2"><Clock size={16} className="text-[var(--gold)]" /> 09h às 15h</span>
-              <span className="text-white/30">|</span>
               <span className="inline-flex items-center gap-2"><Laptop size={16} className="text-[var(--gold)]" /> Online e Ao Vivo</span>
-            </p>
+            </div>
 
             <div className="mt-5 flex flex-col items-start gap-4">
               <CtaButton />
