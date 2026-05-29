@@ -32,21 +32,37 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <!-- AGMetrics Pixel Completo -->
+
     <script src="https://wsqckbceejdshbmjingp.supabase.co/functions/v1/tracking-pixel?pid=ac4eeec0-6e2d-4729-baff-ed63041ac77f&track=all"></script>
+
     <script>
+
       // O pixel rastreia automaticamente:
+
       // ✓ Page views e navegação SPA
+
       // ✓ Cliques em botões e links
+
       // ✓ Profundidade de scroll (25%, 50%, 75%, 100%)
+
       // ✓ Movimentos do mouse (mapa de calor)
+
       //
+
       // Eventos customizados (use dentro de addEventListener):
+
       // document.getElementById("meuBotao").addEventListener("click", function() {
+
       //   window.AGMetrics?.track("button_click", { button: "comprar" });
+
       // });
+
       //
+
       // Ou via atributo onclick no HTML:
+
       // <button onclick="window.AGMetrics?.track('lead', { form: 'newsletter' })">Enviar</button>
+
     </script>
   </body>
 </html>
