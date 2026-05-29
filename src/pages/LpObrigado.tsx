@@ -8,6 +8,33 @@ const WHATSAPP_URL = "https://chat.whatsapp.com/HsiQwgvlJJN6rNz4fe6J9b";
 export default function Obrigado() {
   useEffect(() => {
     document.title = "Obrigado — Imersão Contador Digital de Elite";
+
+    // AGMetrics - Página de Obrigado
+    // Dispara o evento de conversão quando a página carregar
+    // (seguro mesmo se o pixel falhar ao carregar)
+    const fireThankYou = () => {
+      (window as any).AGMetrics?.track("thank_you_page", {
+        page: window.location.pathname,
+        referrer: document.referrer,
+      });
+    };
+
+    if ((window as any).AGMetrics) {
+      fireThankYou();
+    } else {
+      // Aguarda o pixel global carregar
+      const interval = setInterval(() => {
+        if ((window as any).AGMetrics) {
+          fireThankYou();
+          clearInterval(interval);
+        }
+      }, 200);
+      const timeout = setTimeout(() => clearInterval(interval), 10000);
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+      };
+    }
   }, []);
 
   return (
