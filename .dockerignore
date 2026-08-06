@@ -1,6 +1,9 @@
+# DEPLOYHUB_DOCKERIGNORE_V2
 node_modules
 dist
 .git
-.lovable
-*.log
+.env
+.env.*
+!.env.example
+npm-debug.log
 .DS_Store
