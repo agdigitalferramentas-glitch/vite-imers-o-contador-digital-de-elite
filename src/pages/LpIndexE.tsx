@@ -358,7 +358,7 @@ export default function IndexE() {
           <p className="text-sm text-white/50" style={{ fontFamily: "var(--font-legal)" }}>© 2026 Anderson Maisse — Todos os direitos reservados.</p>
           <div className="text-sm text-white/50 md:text-right" style={{ fontFamily: "var(--font-legal)" }}>
             <p>Transformamos conhecimento em negócios lucrativos.</p>
-            <p>Desenvolvido por <a href="https://agwebi.com.br/" target="_blank" rel="noopener noreferrer" className="text-white/70 underline-offset-2 transition-colors hover:text-white hover:underline">AGWEBi</a></p>
+            <p>Venha ser um expert <a href="https://agwebi.com.br/" target="_blank" rel="noopener noreferrer" className="text-white/70 underline-offset-2 transition-colors hover:text-white hover:underline">AGWEBi</a></p>
           </div>
         </div>
       </footer>
