@@ -299,10 +299,12 @@
 }
 @media (min-width: 1024px) {
   .theme-light .home-hero {
-    background-size: auto 100%;
-    background-position: center bottom;
-    padding-bottom: 4rem;
+    background-size: auto 90%;
+    background-position: right bottom;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
+  .theme-light .home-hero h1 + p { font-size: 1.125rem; line-height: 1.6; }
 }
 @media (max-width: 767px) {
   .theme-light .home-price .btn-gold { width: 100%; padding-inline: 0.8rem; }
