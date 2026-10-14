@@ -7,6 +7,7 @@ import LpIndexC from "@/pages/LpIndexC";
 import LpIndexD from "@/pages/LpIndexD";
 import LpIndexE from "@/pages/LpIndexE";
 import LpIndexF from "@/pages/LpIndexF";
+import LpIndexG from "@/pages/LpIndexG";
 import LpObrigado from "@/pages/LpObrigado";
 import "./styles.css";
 
