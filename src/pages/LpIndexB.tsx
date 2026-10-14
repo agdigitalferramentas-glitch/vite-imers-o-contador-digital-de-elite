@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
 import { BookOpen, CheckCircle2, User, Users, Zap } from "lucide-react";
 import heroBg from "@/assets/hero-bg.webp";
 import heroBgMobile from "@/assets/hero-bg-mobile.webp";
@@ -10,8 +11,12 @@ import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite.webp"
 const CTA_LABEL = "QUERO MINHA VAGA POR R$ 27";
 
 function CtaButton({ label = CTA_LABEL, href = "#inscricao" }: { label?: string; href?: string }) {
+  const resolvedHref = href === CHECKOUT_URL ? getCheckoutUrl(window.location.search) : href;
   const handleClick = (e: import("react").MouseEvent<HTMLAnchorElement>) => {
-    if (!href.startsWith("#")) return;
+    if (!href.startsWith("#")) {
+      if (href === CHECKOUT_URL) e.currentTarget.href = getCheckoutUrl(window.location.search);
+      return;
+    }
     const id = href.slice(1);
     const el = document.getElementById(id);
     if (!el) return;
@@ -27,7 +32,7 @@ function CtaButton({ label = CTA_LABEL, href = "#inscricao" }: { label?: string;
     if (history.replaceState) history.replaceState(null, "", href);
   };
   return (
-    <a href={href} onClick={handleClick} className="btn-gold">
+    <a href={resolvedHref} onClick={handleClick} className="btn-gold">
       {label}
     </a>
   );
@@ -37,7 +42,7 @@ export default function IndexB() {
   const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    document.title = "Imersão Contador Digital de Elite — Anderson Maisse | 13 de junho";
+    document.title = "Imersão Contador Digital de Elite — Anderson Maisse | 11 de novembro";
     const root = rootRef.current;
     if (!root) return;
     if (typeof IntersectionObserver === "undefined") return;
@@ -69,7 +74,7 @@ export default function IndexB() {
   return (
     <main ref={rootRef} className="min-h-screen">
       <div className="gold-pulse w-full bg-[var(--gold)] py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary-foreground)]">
-        Imersão online e ao vivo — 13 de junho
+        Imersão online e ao vivo — 11 de novembro
       </div>
 
       {/* HERO */}
@@ -90,11 +95,11 @@ export default function IndexB() {
               Descubra por que alguns contadores faturam <span className="gold-text">10x mais</span> que você com menos clientes e menos horas de trabalho.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              No dia 13 de junho, <strong className="text-white">de 09 às 15 horas</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
+              No dia 11 de novembro, <strong className="text-white">às 19h51</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
             </p>
 
             <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
-              Evento online e ao vivo | 13 de junho | 09 às 15h
+              Evento online e ao vivo | 11 de novembro | 19h51
             </p>
 
             <div className="mt-5 flex flex-col items-start gap-4">
@@ -145,9 +150,9 @@ export default function IndexB() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Existe Um Método Para Sair Dessa Conta Que Não Fecha. E Você Vai <span className="gold-text">Conhecer Ele Ao Vivo.</span></h2>
           <p className="mt-4 text-lg font-bold uppercase tracking-[0.2em] text-[var(--gold)]">Imersão Contador Digital de Elite</p>
-          <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-white/85">Uma tarde. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram.</p>
+          <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-white/85">Uma noite. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram.</p>
           <div className="mt-10 space-y-5 text-left text-lg leading-relaxed text-white/85">
-            <p>No dia <strong className="text-white">13 de junho</strong>, de 09 às 15h, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
+            <p>No dia <strong className="text-white">11 de novembro</strong>, às 19h51, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
             <p>Mas o que vai mudar seu jogo não são os números dele.</p>
             <p className="text-xl">É o que você vai <em className="gold-text">aplicar na sua operação</em> a partir do dia seguinte.</p>
           </div>
@@ -264,7 +269,7 @@ export default function IndexB() {
             <p className="mt-1 text-7xl font-extrabold text-[var(--gold)] md:text-8xl">R$ 27</p>
             <p className="mt-3 text-sm text-white/70">Uma única vez. Sem mensalidade. Sem taxa escondida.</p>
             <div className="mt-8">
-              <CtaButton label="GARANTIR MINHA VAGA POR R$ 27" href="https://pay.kiwify.com.br/B3gAnG7" />
+              <CtaButton label="GARANTIR MINHA VAGA POR R$ 27" href={CHECKOUT_URL} />
             </div>
           </div>
 
@@ -280,7 +285,7 @@ export default function IndexB() {
             <h2 className="text-2xl md:text-4xl">O valor promocional de <span className="gold-text">R$ 27</span> tem limite. São <span className="gold-text">500 vagas</span> disponibilizadas.</h2>
             <ul className="mt-8 space-y-3 text-left text-sm text-white/85">
               {[
-                "Evento online e ao vivo — 13 de junho",
+                "Evento online e ao vivo — 11 de novembro",
                 "Acesso ao grupo exclusivo de WhatsApp",
                 "Conteúdo prático e implementável",
                 "Pagamento 100% seguro via Kiwify",
@@ -309,7 +314,7 @@ export default function IndexB() {
           <h2 className="text-center text-2xl md:text-3xl lg:text-[2.35rem]">Perguntas <span className="gold-text">Frequentes</span></h2>
           <div className="mt-12 space-y-4">
             {[
-              { q: "Quando acontece a imersão?", a: "Dia 13 de junho, das 09 às 15h, ao vivo e online. O horário será divulgado no grupo exclusivo de WhatsApp logo após a sua inscrição." },
+              { q: "Quando acontece a imersão?", a: "Dia 11 de novembro, às 19h51, ao vivo e online. O horário será divulgado no grupo exclusivo de WhatsApp logo após a sua inscrição." },
               { q: "Como vou receber o acesso?", a: "Após o pagamento, você será direcionado para o grupo exclusivo de WhatsApp. É nesse grupo que o link da transmissão ao vivo será compartilhado." },
               { q: "Vai ter gravação disponível?", a: "A proposta da imersão é experiência ao vivo. Porém se você quiser ter acesso a gravação, ela será disponibilizada no ato da compra do ingresso por R$ 97,00." },
               { q: "Eu sou recém-formado / ainda não tenho escritório. Serve para mim?", a: "Se você pretende ter um escritório lucrativo e bem posicionado, esse conteúdo vai te dar uma vantagem que a maioria dos contadores leva anos para construir. Então, sim." },
@@ -339,7 +344,7 @@ export default function IndexB() {
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Duas Opções. <span className="gold-text">Uma Decisão</span></h2>
           <div className="mt-10 space-y-6 text-left text-lg leading-relaxed text-white/85">
             <p>Você pode fechar essa página e voltar para as mesmas 14 horas, o mesmo faturamento travado, os mesmos clientes que pedem desconto.</p>
-            <p>Ou pode investir <strong className="gold-text">R$ 27</strong> e dedicar uma tarde para ver, com clareza, o caminho que os contadores mais lucrativos do Brasil já percorrem.</p>
+            <p>Ou pode investir <strong className="gold-text">R$ 27</strong> e dedicar uma noite para ver, com clareza, o caminho que os contadores mais lucrativos do Brasil já percorrem.</p>
             <p className="text-2xl text-white"><strong>A escolha é sua. E é agora.</strong></p>
           </div>
           <div className="mt-10">
