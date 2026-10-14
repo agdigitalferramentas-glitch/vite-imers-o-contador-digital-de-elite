@@ -7,6 +7,7 @@ import LpIndexC from "@/pages/LpIndexC";
 import LpIndexD from "@/pages/LpIndexD";
 import LpIndexE from "@/pages/LpIndexE";
 import LpIndexF from "@/pages/LpIndexF";
+import LpIndexG from "@/pages/LpIndexG";
 import LpObrigado from "@/pages/LpObrigado";
 import "./styles.css";
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/d" element={<LpIndexD />} />
         <Route path="/e" element={<LpIndexE />} />
         <Route path="/f" element={<LpIndexF />} />
+        <Route path="/g" element={<LpIndexG />} />
         <Route path="/obrigado" element={<LpObrigado />} />
         <Route path="*" element={<LpIndex />} />
       </Routes>
