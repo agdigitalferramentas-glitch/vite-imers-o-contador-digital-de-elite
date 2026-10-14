@@ -3,7 +3,7 @@ import heroBg from "@/assets/hero-bg.webp";
 import heroBgMobile from "@/assets/hero-bg-mobile.webp";
 import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite.webp";
 
-const WHATSAPP_URL = "https://chat.whatsapp.com/HsiQwgvlJJN6rNz4fe6J9b";
+const WHATSAPP_URL = "https://site.agsell.com.br/r/icde-1026-grupos";
 
 export default function Obrigado() {
   useEffect(() => {
