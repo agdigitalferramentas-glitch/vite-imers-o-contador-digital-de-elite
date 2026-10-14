@@ -40,7 +40,7 @@ export default function Obrigado() {
   return (
     <main className="min-h-screen">
       <div className="gold-pulse w-full bg-[var(--gold)] py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary-foreground)]">
-        Imersão online e ao vivo — 13 de junho
+        Imersão online e ao vivo — 11 de novembro
       </div>
 
       <section
