@@ -1,7 +1,9 @@
-# DEPLOYHUB_NGINX_SPA_V31
+# DEPLOYHUB_NGINX_SPA_V33
 # Dockerfile robusto para Dokploy: Vite/React SPA via servidor Node estável + fallback SSR/Worker TanStack/Node, inclusive apps dentro de /client.
 FROM node:22-alpine AS build
 WORKDIR /app
+# Instala bash e utilitários essenciais para scripts de build (prebuild/postbuild)
+RUN apk add --no-cache bash curl ca-certificates
 COPY . .
 ARG VITE_SUPABASE_URL
 ARG VITE_SUPABASE_ANON_KEY
@@ -40,7 +42,7 @@ RUN mkdir -p /app/dist /app/client/dist /app/.output /app/build &&   mkdir -p /a
 FROM node:22-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
-RUN apk add --no-cache nginx curl ca-certificates &&   mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html /etc/nginx/http.d /etc/nginx/conf.d
+RUN apk add --no-cache nginx curl ca-certificates bash &&   mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html /etc/nginx/http.d /etc/nginx/conf.d
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/client/dist ./client/dist
 COPY --from=build /app/.output ./.output
@@ -434,5 +436,6 @@ fi
 EOF
 RUN chmod +x /usr/local/bin/deployhub-start /usr/local/bin/deployhub-healthcheck
 EXPOSE 80 3000
-HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 CMD /usr/local/bin/deployhub-healthcheck
+# Infra Shield: Aumentado retries e start-period para evitar falso Bad Gateway durante boot do SPA/Nginx
+HEALTHCHECK --interval=15s --timeout=5s --start-period=45s --retries=10 CMD /usr/local/bin/deployhub-healthcheck
 CMD ["/usr/local/bin/deployhub-start"]
