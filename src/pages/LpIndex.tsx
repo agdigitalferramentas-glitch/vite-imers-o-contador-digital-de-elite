@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
 import { BookOpen, CheckCircle2, User, Users, Zap } from "lucide-react";
-import heroBg from "@/assets/hero-bg.webp";
-import heroBgMobile from "@/assets/hero-bg-mobile.webp";
+import heroLight from "@/assets/hero-light.jpg";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
 import perdendoTempo from "@/assets/perdendo-tempo.webp";
 import quantoValeSeuTempo from "@/assets/quanto-vale-seu-tempo.webp";
@@ -72,42 +71,42 @@ export default function Index() {
   }, []);
 
   return (
-    <main ref={rootRef} className="min-h-screen">
-      <div className="gold-pulse w-full bg-[var(--gold)] py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary-foreground)]">
+    <main ref={rootRef} className="theme-light min-h-screen bg-background text-foreground">
+      <div className="gold-pulse w-full bg-primary py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-primary-foreground">
         Imersão online e ao vivo — 11 de novembro
       </div>
 
       {/* HERO */}
       <section
-        className="hero-section relative overflow-hidden bg-[var(--background)] px-6 pt-10 md:pt-24"
+        className="hero-section home-hero relative overflow-hidden bg-background px-6 pt-10 md:pt-14"
         style={{
-          "--hero-bg-mobile": `url(${heroBgMobile})`,
-          "--hero-bg-desktop": `url(${heroBg})`,
+          "--hero-bg-mobile": `url(${heroLight})`,
+          "--hero-bg-desktop": `url(${heroLight})`,
         } as Record<string, string>}
       >
         <div className="mx-auto w-full max-w-6xl">
           <div className="lg:w-1/2">
             <img src={logoContadorDigitalElite} alt="Imersão Contador Digital de Elite" className="mb-6 h-auto w-48 md:w-60" loading="eager" />
-            <span className="mb-4 inline-block rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+            <span className="mb-4 inline-block rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-accent-ink">
               Evento exclusivo para contadores
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
               Descubra por que alguns contadores faturam <span className="gold-text">10x mais</span> que você com menos clientes e menos horas de trabalho.
             </h1>
-            <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-white/80 md:text-xl">
-              No dia 11 de novembro, <strong className="text-white">às 19h51</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
+            <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground md:text-xl">
+              No dia 11 de novembro, <strong className="text-foreground">às 19h51</strong>, Anderson Maisse vai te mostrar ao vivo o que esses profissionais fazem de diferente: como criam novos serviços dentro da própria carteira, estruturam processos que funcionam sem eles e aumentam o lucro do escritório — sem aumentar a equipe.
             </p>
 
-            <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-[var(--gold)]">
+            <p className="mt-8 text-sm font-bold uppercase tracking-[0.15em] text-accent-ink">
               Evento online e ao vivo | 11 de novembro | 19h51
             </p>
 
             <div className="mt-5 flex flex-col items-start gap-4">
               <CtaButton />
-              <div className="flex flex-row flex-wrap justify-start gap-x-4 gap-y-2 text-sm text-white/70 md:flex-col md:items-start md:gap-2 md:justify-start">
-                <span className="flex items-center gap-2"><User size={16} className="shrink-0 text-[var(--gold)]" /> Anderson Maisse — Fundador da AM Contabilidade Online</span>
-                <span className="flex items-center gap-2"><Users size={16} className="shrink-0 text-[var(--gold)]" /> 1200+ clientes</span>
-                <span className="flex items-center gap-2"><BookOpen size={16} className="shrink-0 text-[var(--gold)]" /> +4000 alunos</span>
+              <div className="flex flex-row flex-wrap justify-start gap-x-4 gap-y-2 text-sm text-muted-foreground md:flex-col md:items-start md:gap-2 md:justify-start">
+                <span className="flex items-center gap-2"><User size={16} className="shrink-0 text-accent-ink" /> Anderson Maisse — Fundador da AM Contabilidade Online</span>
+                <span className="flex items-center gap-2"><Users size={16} className="shrink-0 text-accent-ink" /> 1200+ clientes</span>
+                <span className="flex items-center gap-2"><BookOpen size={16} className="shrink-0 text-accent-ink" /> +4000 alunos</span>
               </div>
             </div>
           </div>
@@ -118,26 +117,26 @@ export default function Index() {
       <section className="px-6 py-10 md:py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
           <div className="order-last md:order-first md:sticky md:top-24 md:self-start">
-            <img src={perdendoTempo} alt="Contador exausto trabalhando à noite cercado de papelada" className="w-full rounded-xl object-cover shadow-2xl" loading="lazy" />
+            <img src={perdendoTempo} alt="Contador exausto trabalhando à noite cercado de papelada" className="w-full rounded-lg object-cover home-image" loading="lazy" />
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Você Trabalha 14 Horas Por Dia e Ainda Sente Que Está <span className="gold-text">Ficando Para Trás?</span></h2>
-            <div className="mt-10 space-y-6 text-lg leading-relaxed text-white/85">
+            <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
               <p>Você fez faculdade. Passou no CRC. Abriu seu escritório. Conquistou clientes.</p>
-              <p className="italic text-white/70">Mas a conta não fecha do jeito que deveria.</p>
-              <p>Seu <strong className="text-white">faturamento cresce</strong>, mas o <strong className="text-white">lucro não acompanha</strong>. Cada cliente novo traz mais trabalho, mais demanda, mais dor de cabeça…</p>
+              <p className="italic text-muted-foreground">Mas a conta não fecha do jeito que deveria.</p>
+              <p>Seu <strong className="text-foreground">faturamento cresce</strong>, mas o <strong className="text-foreground">lucro não acompanha</strong>. Cada cliente novo traz mais trabalho, mais demanda, mais dor de cabeça…</p>
               <p>…e no fim do mês, quando você olha o extrato, fica a pergunta: <em className="gold-text">"pra onde foi o dinheiro?"</em></p>
               <p>Enquanto isso, sua rotina se repete:</p>
-              <ul className="space-y-3 border-l-2 border-[var(--gold)]/40 pl-6">
+              <ul className="space-y-3 border-l-2 border-primary/40 pl-6">
                 {[
                   "Clientes que ligam só para reclamar de imposto ou pedir desconto.",
                   'Propostas que você manda com medo de "assustar" o cliente.',
                   "Uma equipe que depende de você para cada decisão.",
                   "Zero tempo para pensar em estratégia, crescimento ou inovação.",
-                ].map((t) => (<li key={t} className="text-white/85">→ {t}</li>))}
+                ].map((t) => (<li key={t} className="text-muted-foreground">→ {t}</li>))}
               </ul>
-              <p>Você se formou para ser um profissional valorizado. <strong className="text-white">Mas virou refém do operacional.</strong></p>
-              <p>E o pior: <strong className="text-white">você sabe que precisa mudar</strong>, mas não sabe por onde começar.</p>
+              <p>Você se formou para ser um profissional valorizado. <strong className="text-foreground">Mas virou refém do operacional.</strong></p>
+              <p>E o pior: <strong className="text-foreground">você sabe que precisa mudar</strong>, mas não sabe por onde começar.</p>
             </div>
           </div>
         </div>
@@ -145,9 +144,9 @@ export default function Index() {
 
       {/* SEÇÃO 3 */}
       <section className="px-6 py-10 md:py-24">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-[#FDF8ED] p-8 md:p-14 shadow-2xl">
-          <h2 className="text-2xl md:text-3xl lg:text-[2.35rem] text-[var(--background)]">O Problema Não É Falta de Cliente. O Problema É o <span className="gold-text">Modelo.</span></h2>
-          <div className="mt-10 space-y-6 text-lg leading-relaxed text-[var(--background)]/85">
+        <div className="mx-auto max-w-3xl home-editorial">
+          <h2 className="text-2xl md:text-3xl lg:text-[2.35rem] text-foreground">O Problema Não É Falta de Cliente. O Problema É o <span className="gold-text">Modelo.</span></h2>
+          <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>Vamos ser diretos.</p>
             <p>Se você precisa de <em>mais clientes</em> toda vez que quer ganhar <em>mais dinheiro</em>, algo está quebrado.</p>
             <p>Porque o modelo que você aprendeu na faculdade e que a maioria dos contadores segue foi construído para gerar volume, não lucro.</p>
@@ -166,19 +165,19 @@ export default function Index() {
       {/* SEÇÃO 4 */}
       <section className="px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <img src={quantoValeSeuTempo} alt="Mãos segurando um relógio antigo com moedas de ouro" className="mb-8 w-full rounded-2xl object-cover border border-[#f0cb6d]" loading="lazy" />
+          <img src={quantoValeSeuTempo} alt="Mãos segurando um relógio antigo com moedas de ouro" className="mb-8 w-full rounded-lg object-cover border border-primary/30" loading="lazy" />
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Quanto Vale a Sua <span className="gold-text">Hora Hoje?</span></h2>
-          <div className="mt-10 space-y-6 text-lg leading-relaxed text-white/85">
+          <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>Faça essa conta rápida.</p>
             <div className="card-dark p-8">
-              <p className="text-white/90">Pegue seu lucro líquido do mês. Divida pelas horas que você trabalhou. Esse número é o que você realmente ganha por hora de vida dedicada ao seu escritório.</p>
+              <p className="text-muted-foreground">Pegue seu lucro líquido do mês. Divida pelas horas que você trabalhou. Esse número é o que você realmente ganha por hora de vida dedicada ao seu escritório.</p>
             </div>
             <p>Se o resultado ficou abaixo de <strong className="gold-text">R$ 50 por hora</strong>, pense nisso: você ganha menos do que um motorista de aplicativo em cidade grande. Com mais responsabilidade, mais estudo e mais risco. Você carrega CNPJ de dezenas de empresas nas costas, responde ao Fisco, gerencia equipe, atende cliente no fim de semana — e o retorno por hora é esse.</p>
             <p>Essa conta dói. Mas ela revela com precisão onde o problema mora.</p>
             <p>Porque o contador que fatura 10x mais não trabalha mais horas. Ele trabalha com mais inteligência. Cria serviços que o cliente enxerga valor. Monta propostas que vendem por ele. Estrutura processos que fazem a operação funcionar sem depender dele a cada passo.</p>
             <p>Ele não precisa de 200 clientes pagando pouco. Ele precisa de uma operação inteligente que gere mais lucro com a base que já tem.</p>
             <p>E ele sabe exatamente como montar isso.</p>
-            <p className="text-xl text-white">A boa notícia? <span className="gold-text">Você não precisa descobrir sozinho.</span></p>
+            <p className="text-xl text-foreground">A boa notícia? <span className="gold-text">Você não precisa descobrir sozinho.</span></p>
           </div>
         </div>
       </section>
@@ -188,10 +187,10 @@ export default function Index() {
         <div className="mx-auto max-w-4xl text-center">
           <p className="section-label mb-4">Imersão online e ao vivo</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Existe Um Método Para Sair Dessa Conta Que Não Fecha. E Você Vai <span className="gold-text">Conhecer Ele Ao Vivo.</span></h2>
-          <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-white/85">Uma única noite. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram — <em className="gold-text">aplicável a partir do dia seguinte</em>.</p>
-          <div className="mt-10 space-y-5 text-left text-lg leading-relaxed text-white/85">
+          <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground">Uma única noite. Um sistema testado. Tudo que separa contadores que sobrevivem de contadores que lucram — <em className="gold-text">aplicável a partir do dia seguinte</em>.</p>
+          <div className="mt-10 space-y-5 text-left text-lg leading-relaxed text-muted-foreground">
             <p>Essa é a <strong className="gold-text">Imersão Contador Digital de Elite.</strong></p>
-            <p>No dia <strong className="text-white">11 de novembro</strong>, às <strong className="text-white">19h51</strong>, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
+            <p>No dia <strong className="text-foreground">11 de novembro</strong>, às <strong className="text-foreground">19h51</strong>, Anderson Maisse vai abrir ao vivo o método que usou para transformar a AM Contabilidade de um escritório com 80 clientes em uma operação com mais de 1.200 clientes, faturamento próximo a R$ 5 milhões anuais e margem líquida de 40%.</p>
             <p>Mas o que vai mudar seu jogo não são os números dele.</p>
             <p className="text-xl">É o que você vai <em className="gold-text">aplicar na sua operação</em> a partir do dia seguinte.</p>
           </div>
@@ -217,27 +216,27 @@ export default function Index() {
               <article key={p.step} className="card-dark p-8 md:p-10">
                 <div className="flex flex-col gap-6 md:flex-row md:items-start">
                   <div className="shrink-0">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-4 py-2">
-                      <Zap size={14} className="text-[var(--gold)]" />
-                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">{p.step}</span>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
+                      <Zap size={14} className="text-accent-ink" />
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-ink">{p.step}</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-2xl md:text-3xl">{p.title}</h3>
-                    <p className="mt-2 italic text-white/60">{p.sub}</p>
-                    <p className="mt-4 leading-relaxed text-white/85">{p.body}</p>
+                    <p className="mt-2 italic text-muted-foreground">{p.sub}</p>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">{p.body}</p>
                   </div>
                 </div>
               </article>
             ))}
           </div>
 
-          <p className="mt-12 text-center text-lg text-white/75">Agora, será que esse conteúdo faz sentido para o seu momento? Confere aqui:</p>
+          <p className="mt-12 text-center text-lg text-muted-foreground">Agora, será que esse conteúdo faz sentido para o seu momento? Confere aqui:</p>
         </div>
       </section>
 
       {/* SEÇÃO 7 */}
-      <section className="bg-[#00161F] px-6 py-10 md:py-24">
+      <section className="bg-accent px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center text-2xl md:text-3xl lg:text-[2.35rem]">Essa Imersão É <span className="gold-text">Para Você Se…</span></h2>
           <ul className="mt-10 space-y-5">
@@ -249,14 +248,14 @@ export default function Index() {
               'Você olha para contadores mais estruturados, que cobram R$ 3.000, R$ 5.000 por cliente, e pensa: "o que eles fazem de diferente?"',
               "Você sabe que está sentado em cima de receita que não captura — mas não sabe por onde começar a mudar.",
             ].map((t) => (
-              <li key={t} className="card-dark flex gap-4 p-5 text-white/90">
-                <CheckCircle2 className="mt-1 shrink-0 text-[var(--gold)]" size={20} />
+              <li key={t} className="card-dark flex gap-4 p-5 text-muted-foreground">
+                <CheckCircle2 className="mt-1 shrink-0 text-accent-ink" size={20} />
                 <span>{t}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-10 text-lg text-white/85">Se você se viu em pelo menos uma dessas frases, essa imersão foi feita para você.</p>
-          <p className="mt-4 text-lg text-white/75">E quem vai te guiar por essa transformação não é um consultor de teoria. É um contador que vive isso todos os dias.</p>
+          <p className="mt-10 text-lg text-muted-foreground">Se você se viu em pelo menos uma dessas frases, essa imersão foi feita para você.</p>
+          <p className="mt-4 text-lg text-muted-foreground">E quem vai te guiar por essa transformação não é um consultor de teoria. É um contador que vive isso todos os dias.</p>
         </div>
       </section>
 
@@ -264,33 +263,33 @@ export default function Index() {
       <section className="px-6 py-10 md:py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
           <div className="md:w-full">
-            <img src={andersonMaisse} alt="Anderson Maisse no palco durante palestra" className="w-full rounded-2xl object-cover" loading="lazy" />
+            <img src={andersonMaisse} alt="Anderson Maisse no palco durante palestra" className="w-full rounded-lg object-cover" loading="lazy" />
           </div>
           <div>
             <p className="section-label mb-4">Mentor</p>
             <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Quem Vai <span className="gold-text">Conduzir Essa Imersão</span></h2>
-            <div className="mt-10 card-dark p-8 md:p-10">
-              <div className="space-y-6 text-lg leading-relaxed text-white/85">
-                <p><strong className="text-white">Anderson Maisse</strong> começou com 80 clientes em 2018. Hoje, a AM Contabilidade Online atende mais de 1.200 empresas e está entre os 2% maiores escritórios contábeis do Brasil — com faturamento anual próximo a R$ 5 milhões e margem líquida de 40%.</p>
+            <div className="mt-10 border-l-2 border-primary/40 pl-6 md:pl-8">
+              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+                <p><strong className="text-foreground">Anderson Maisse</strong> começou com 80 clientes em 2018. Hoje, a AM Contabilidade Online atende mais de 1.200 empresas e está entre os 2% maiores escritórios contábeis do Brasil — com faturamento anual próximo a R$ 5 milhões e margem líquida de 40%.</p>
                 <p>Criador da metodologia Contabilidade Digital, já impactou mais de 2.500 alunos, 300 contadores mentorados e 2.000 profissionais em palestras pelo país.</p>
                 <p>Anderson não ensina teoria. Ele mostra o que faz, como faz e por que funciona — com números, processos e estrutura.</p>
               </div>
-              <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 text-center">
+              <div className="mt-10 grid grid-cols-3 gap-3 border-t border-border pt-8 text-center">
                 {[
                   { n: "1.200+", l: "Clientes" },
                   { n: "40%", l: "Margem líquida" },
                   { n: "2.500+", l: "Alunos" },
                 ].map((s) => (
                   <div key={s.l}>
-                    <div className="text-2xl font-extrabold text-[var(--gold)] md:text-3xl">{s.n}</div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.2em] text-white/60">{s.l}</div>
+                    <div className="text-2xl font-extrabold text-accent-ink md:text-3xl">{s.n}</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.l}</div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-        <p className="mx-auto mt-8 max-w-4xl text-center text-lg text-white/75">Agora que você conhece o método, o conteúdo e quem vai conduzir, vamos falar sobre o acesso.</p>
+        <p className="mx-auto mt-8 max-w-4xl text-center text-lg text-muted-foreground">Agora que você conhece o método, o conteúdo e quem vai conduzir, vamos falar sobre o acesso.</p>
       </section>
 
       {/* SEÇÃO 9 — Pricing */}
@@ -298,22 +297,22 @@ export default function Index() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-label mb-4">Investimento</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Uma Imersão Desse Nível, Por Um <span className="gold-text">Valor Que Não Faz Sentido Recusar</span></h2>
-          <div className="mt-10 space-y-6 text-left text-lg leading-relaxed text-white/85">
+          <div className="mt-10 space-y-6 text-left text-lg leading-relaxed text-muted-foreground">
             <p>Contadores pagam R$ 3.000 a R$ 10.000 em consultorias para aprender <em>uma fração</em> do que será apresentado nesta imersão.</p>
             <p>Outros investem meses tentando descobrir sozinhos o que funciona — errando, perdendo dinheiro e perdendo clientes no caminho.</p>
             <p>Você vai ter acesso a um evento ao vivo, com conteúdo prático, aplicável e direto ao ponto.</p>
           </div>
 
-          <div id="inscricao" className="card-dark mx-auto mt-12 max-w-lg p-10 text-center scroll-mt-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-white/60">O investimento?</p>
-            <p className="mt-4 text-xl text-white/60 line-through">De: R$ 197</p>
-            <p className="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">por</p>
-            <p className="mt-1 text-7xl font-extrabold text-[var(--gold)] md:text-8xl">R$ 27</p>
-            <p className="mt-3 text-sm text-white/70">Uma única vez. Sem mensalidade. Sem taxa escondida.</p>
+          <div id="inscricao" className="card-dark home-price mx-auto mt-12 max-w-lg p-6 md:p-10 text-center scroll-mt-6">
+            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">O investimento?</p>
+            <p className="mt-4 text-xl text-muted-foreground line-through">De: R$ 197</p>
+            <p className="mt-2 text-sm uppercase tracking-[0.2em] text-muted-foreground">por</p>
+            <p className="mt-1 text-7xl font-extrabold text-accent-ink md:text-8xl">R$ 27</p>
+            <p className="mt-3 text-sm text-muted-foreground">Uma única vez. Sem mensalidade. Sem taxa escondida.</p>
             <div className="mt-8">
               <CtaButton label="GARANTIR MINHA VAGA POR R$ 27" href={CHECKOUT_URL} />
             </div>
-            <ul className="mt-8 space-y-3 text-left text-sm text-white/85">
+            <ul className="mt-8 space-y-3 text-left text-sm text-muted-foreground">
               {[
                 "Evento online e ao vivo — 11 de novembro",
                 "Acesso ao grupo exclusivo de WhatsApp",
@@ -321,25 +320,25 @@ export default function Index() {
                 "Pagamento 100% seguro via Kiwify",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[var(--gold)]" />
+                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-accent-ink" />
                   <span>{t}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <p className="mt-10 text-white/80">Por menos do que você cobra por uma hora de serviço, você vai ter acesso ao método que pode transformar o seu faturamento, a sua margem e a sua operação.</p>
-          <p className="mt-4 text-white/60">Mas tem um detalhe que você precisa saber antes de decidir "depois":</p>
+          <p className="mt-10 text-muted-foreground">Por menos do que você cobra por uma hora de serviço, você vai ter acesso ao método que pode transformar o seu faturamento, a sua margem e a sua operação.</p>
+          <p className="mt-4 text-muted-foreground">Mas tem um detalhe que você precisa saber antes de decidir "depois":</p>
         </div>
       </section>
 
       {/* SEÇÃO 10 — Escassez */}
       <section className="px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="card-dark border-[var(--gold)]/40 p-10">
+          <div className="home-limited border-primary/40 py-8">
             <p className="section-label mb-4">Vagas limitadas</p>
             <h2 className="text-2xl md:text-4xl">O valor promocional de <span className="gold-text">R$ 27</span> tem limite. São <span className="gold-text">500 vagas</span> disponibilizadas.</h2>
-            <div className="mt-8 space-y-5 text-left text-lg leading-relaxed text-white/85">
+            <div className="mt-8 space-y-5 text-left text-lg leading-relaxed text-muted-foreground">
               <p>A imersão será em uma sala exclusiva no Zoom. Quando atingirmos a capacidade máxima, as inscrições serão encerradas. Sem lista de espera. Sem exceção.</p>
               <p>Quem estiver dentro, receberá o link da transmissão ao vivo no dia 11 de novembro. Quem ficou de fora, ficou de fora.</p>
               <p>Se você está lendo isso e o botão abaixo ainda está ativo, sua vaga está disponível.</p>
@@ -348,12 +347,12 @@ export default function Index() {
               <CtaButton label="QUERO MINHA VAGA AGORA POR R$ 27" />
             </div>
           </div>
-          <p className="mt-10 text-white/70">Ainda tem alguma dúvida? Antes de sair dessa página, leia as respostas abaixo. Provavelmente a sua pergunta já está aqui.</p>
+          <p className="mt-10 text-muted-foreground">Ainda tem alguma dúvida? Antes de sair dessa página, leia as respostas abaixo. Provavelmente a sua pergunta já está aqui.</p>
         </div>
       </section>
 
       {/* SEÇÃO 11 — FAQ */}
-      <section className="bg-[#00161F] px-6 py-10 md:py-24">
+      <section className="bg-accent px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl">
           <p className="section-label mb-4 text-center">FAQ</p>
           <h2 className="text-center text-2xl md:text-3xl lg:text-[2.35rem]">Perguntas <span className="gold-text">Frequentes</span></h2>
@@ -370,15 +369,15 @@ export default function Index() {
               { q: "R$ 27 mesmo? Qual é a pegadinha?", a: "Nenhuma. O valor é acessível de propósito. O objetivo é colocar o máximo de contadores sérios dentro dessa imersão. Se o conteúdo for bom — e vai ser — a relação se constrói a partir dali." },
             ].map((f) => (
               <details key={f.q} className="card-dark group p-6 [&[open]>summary>span:last-child]:rotate-45">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-lg font-bold text-white">
+                <summary className="flex cursor-pointer items-center justify-between gap-4 text-lg font-bold text-foreground">
                   <span>{f.q}</span>
-                  <span className="text-2xl text-[var(--gold)] transition-transform">+</span>
+                  <span className="text-2xl text-accent-ink transition-transform">+</span>
                 </summary>
-                <p className="mt-4 leading-relaxed text-white/80">{f.a}</p>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{f.a}</p>
               </details>
             ))}
           </div>
-          <p className="mt-12 text-center text-white/75">Perguntas respondidas. Dúvidas resolvidas. Agora, a decisão é só sua.</p>
+          <p className="mt-12 text-center text-muted-foreground">Perguntas respondidas. Dúvidas resolvidas. Agora, a decisão é só sua.</p>
         </div>
       </section>
 
@@ -387,13 +386,13 @@ export default function Index() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-label mb-4">A decisão</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Duas Opções. <span className="gold-text">Uma Decisão</span></h2>
-          <div className="mt-10 space-y-6 text-left text-lg leading-relaxed text-white/85">
+          <div className="mt-10 space-y-6 text-left text-lg leading-relaxed text-muted-foreground">
             <p>Você pode fechar essa página e voltar para a mesma rotina. As mesmas 14 horas. O mesmo faturamento travado. Os mesmos clientes que pedem desconto. A mesma sensação de que deveria estar mais à frente.</p>
             <p>Ou você pode investir <strong className="gold-text">R$ 27</strong> e dedicar uma noite do dia 11 de novembro para ver, com clareza, o caminho que contadores mais lucrativos já percorrem.</p>
             <p>Na imersão, você vai enxergar o mapa completo: os serviços que geram receita imediata, o marketing que traz clientes certos, a proposta que fecha sem desconto, os processos que tiram você do operacional e a estrutura que gera margem de verdade.</p>
             <p>E quando você quiser percorrer esse caminho com suporte, ferramentas e uma comunidade de mais de 2.000 contadores ao lado, a CCD estará ali — pronto para te acompanhar na implementação.</p>
             <p>Mas o primeiro passo é esse. Uma imersão. Uma noite. R$ 27.</p>
-            <p className="text-2xl text-white"><strong>A escolha é sua. E é agora.</strong></p>
+            <p className="text-2xl text-foreground"><strong>A escolha é sua. E é agora.</strong></p>
           </div>
           <div className="mt-10">
             <CtaButton label="QUERO ENTRAR NA IMERSÃO CONTADOR DIGITAL DE ELITE" />
@@ -401,12 +400,12 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-6 py-10">
+      <footer className="border-t border-border px-6 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-          <p className="text-sm text-white/50" style={{ fontFamily: "var(--font-legal)" }}>© 2026 Anderson Maisse — Todos os direitos reservados.</p>
-          <div className="text-sm text-white/50 md:text-right" style={{ fontFamily: "var(--font-legal)" }}>
+          <p className="text-sm text-muted-foreground" style={{ fontFamily: "var(--font-legal)" }}>© 2026 Anderson Maisse — Todos os direitos reservados.</p>
+          <div className="text-sm text-muted-foreground md:text-right" style={{ fontFamily: "var(--font-legal)" }}>
             <p>Transformamos conhecimento em negócios lucrativos.</p>
-            <p>Venha ser um expert <a href="https://agwebi.com.br/" target="_blank" rel="noopener noreferrer" className="text-white/70 underline-offset-2 transition-colors hover:text-white hover:underline">AGWEBi</a></p>
+            <p>Venha ser um expert <a href="https://agwebi.com.br/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline">AGWEBi</a></p>
           </div>
         </div>
       </footer>
