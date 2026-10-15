@@ -294,7 +294,14 @@
 .theme-light .home-image { box-shadow: var(--shadow-card); }
 .theme-light .home-price { border-top: 4px solid var(--primary); }
 .theme-light .home-price .gold-text { color: var(--accent-ink); }
-.theme-light footer { background: var(--accent); }
+/* rodapé: mais escuro que o azul-marinho dos blocos */
+.theme-light footer {
+  --foreground: hsl(0 0% 100%);
+  --muted-foreground: hsl(214 25% 72%);
+  --border: hsl(0 0% 100% / 10%);
+  background: hsl(216 72% 5%);
+  color: var(--foreground);
+}
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .theme-light .home-hero {
