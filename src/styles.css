@@ -287,11 +287,9 @@
   background: var(--primary);
 }
 .theme-light .home-editorial { padding-block: 1rem; }
-.theme-light section:has(> .home-editorial) { background: var(--accent); }
 .theme-light .home-image { box-shadow: var(--shadow-card); }
 .theme-light .home-price { border-top: 4px solid var(--primary); }
 .theme-light .home-price .gold-text { color: var(--accent-ink); }
-.theme-light .home-limited { border-block: 1px solid var(--border); }
 .theme-light footer { background: var(--accent); }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -307,7 +305,89 @@
   .theme-light .home-hero h1 + p { font-size: 1.125rem; line-height: 1.6; }
 }
 @media (max-width: 767px) {
-  .theme-light .home-price .btn-gold { width: 100%; padding-inline: 0.8rem; }
+  .theme-light .home-price .btn-cta { width: 100%; padding-inline: 0.8rem; }
+}
+
+/* Quebra de padrão: blocos e cards azul-marinho em página clara (apenas home) */
+.theme-light .navy-section,
+.theme-light .navy-card {
+  --foreground: hsl(0 0% 100%);
+  --card: hsl(216 52% 17%);
+  --card-foreground: hsl(0 0% 100%);
+  --muted-foreground: hsl(214 32% 82%);
+  --accent-ink: hsl(38 78% 68%);
+  --primary: hsl(38 78% 68%);
+  --border: hsl(0 0% 100% / 14%);
+  --shadow-card: 0 18px 40px -18px hsl(216 65% 8% / 60%);
+  color: var(--foreground);
+}
+.theme-light .navy-section {
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 80% at 85% 0%, hsl(38 78% 68% / 14%), transparent 60%),
+    linear-gradient(135deg, hsl(216 65% 10%) 0%, hsl(216 52% 18%) 100%);
+}
+.theme-light .navy-card {
+  background: linear-gradient(145deg, hsl(216 60% 13%) 0%, hsl(216 52% 19%) 100%);
+  border: 1px solid hsl(0 0% 100% / 10%);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+}
+.theme-light .navy-card:hover { border-color: hsl(38 78% 68% / 60%); }
+.theme-light .navy-card.card-dark { background-color: transparent; }
+.theme-light .navy-section .card-dark { background: hsl(216 52% 17%); }
+.theme-light .navy-card .section-label,
+.theme-light .navy-section .section-label { color: hsl(38 78% 68%); }
+.theme-light .home-price.navy-card { border-top: 4px solid hsl(38 78% 68%); }
+.theme-light .home-price .gold-text { color: var(--accent-ink); }
+
+/* CTAs: verde vivo para destacar o clique em qualquer fundo */
+.theme-light .btn-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 1.1rem 1.9rem;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #3ee37f 0%, #17b957 100%);
+  color: hsl(216 65% 9%);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 10px 26px -8px hsl(145 80% 38% / 65%), inset 0 1px 0 hsl(0 0% 100% / 45%);
+  animation: ctaPulse 2.4s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+}
+.theme-light .btn-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, hsl(0 0% 100% / 55%) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: ctaShine 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.theme-light .btn-cta:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.06); }
+.theme-light .btn-cta:active { transform: translateY(0) scale(0.99); }
+.theme-light .btn-cta:focus-visible { outline: 3px solid hsl(216 65% 11%); outline-offset: 4px; }
+.theme-light .navy-section .btn-cta:focus-visible,
+.theme-light .navy-card .btn-cta:focus-visible { outline-color: #fff; }
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 10px 26px -8px hsl(145 80% 38% / 65%), inset 0 1px 0 hsl(0 0% 100% / 45%), 0 0 0 0 hsl(145 75% 45% / 45%); }
+  50% { box-shadow: 0 10px 26px -8px hsl(145 80% 38% / 65%), inset 0 1px 0 hsl(0 0% 100% / 45%), 0 0 0 12px hsl(145 75% 45% / 0%); }
+}
+@keyframes ctaShine {
+  0%, 55% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
 }
 
 /* Faixa superior em marquee (apenas home) */
