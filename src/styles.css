@@ -323,6 +323,12 @@
     padding-bottom: 2.5rem;
   }
   .theme-light .home-hero h1 + p { font-size: 1.125rem; line-height: 1.6; }
+  /* /obrigado: conteúdo mais alto que o hero da home; a foto fica no topo, na proporção original */
+  .theme-light .thanks-hero {
+    display: block;
+    background-size: auto max(40rem, 40.47vw);
+    background-position: 10% top;
+  }
 }
 @media (max-width: 767px) {
   /* mobile: foto própria (819x893), contida e alinhada na base; o espaço reservado acompanha a altura exibida */
