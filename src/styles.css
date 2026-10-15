@@ -310,6 +310,22 @@
   .theme-light .home-price .btn-gold { width: 100%; padding-inline: 0.8rem; }
 }
 
+/* Faixa superior em marquee (apenas home) */
+.theme-light .home-marquee { overflow: hidden; white-space: nowrap; }
+.theme-light .home-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: homeMarquee 40s linear infinite;
+  will-change: transform;
+}
+.theme-light .home-marquee-group { display: flex; flex-shrink: 0; }
+.theme-light .home-marquee-item { display: inline-flex; align-items: center; gap: 1.25rem; padding-right: 1.25rem; }
+.theme-light .home-marquee-star { flex-shrink: 0; }
+@keyframes homeMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
