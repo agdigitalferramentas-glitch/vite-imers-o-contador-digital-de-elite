@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
-import { BookOpen, CheckCircle2, User, Users, Zap } from "lucide-react";
+import { CheckCircle2, Zap } from "lucide-react";
 import heroAnderson from "@/assets/hero-anderson.webp";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
 import perdendoTempo from "@/assets/perdendo-tempo.webp";
@@ -121,11 +121,6 @@ export default function Index() {
 
             <div className="mt-8 flex flex-col items-start gap-4">
               <CtaButton />
-              <div className="flex flex-row flex-wrap justify-start gap-x-4 gap-y-2 text-sm text-muted-foreground md:flex-col md:items-start md:gap-2 md:justify-start">
-                <span className="flex items-center gap-2"><User size={16} className="shrink-0 text-accent-ink" /> Anderson Maisse, fundador da AM Contabilidade Online</span>
-                <span className="flex items-center gap-2"><Users size={16} className="shrink-0 text-accent-ink" /> 1.200+ clientes</span>
-                <span className="flex items-center gap-2"><BookOpen size={16} className="shrink-0 text-accent-ink" /> 4.000+ alunos</span>
-              </div>
             </div>
           </div>
         </div>
