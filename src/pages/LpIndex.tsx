@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
 import { BookOpen, CheckCircle2, User, Users, Zap } from "lucide-react";
-import heroLight from "@/assets/hero-light.jpg";
+import heroAnderson from "@/assets/hero-anderson.webp";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
 import perdendoTempo from "@/assets/perdendo-tempo.webp";
 import quantoValeSeuTempo from "@/assets/quanto-vale-seu-tempo.webp";
@@ -102,12 +102,12 @@ export default function Index() {
       <section
         className="hero-section home-hero relative overflow-hidden bg-background px-6 pt-10 md:pt-14"
         style={{
-          "--hero-bg-mobile": `url(${heroLight})`,
-          "--hero-bg-desktop": `url(${heroLight})`,
+          "--hero-bg-mobile": `url(${heroAnderson})`,
+          "--hero-bg-desktop": `url(${heroAnderson})`,
         } as Record<string, string>}
       >
         <div className="mx-auto w-full max-w-6xl">
-          <div className="lg:w-1/2">
+          <div className="min-[1200px]:w-1/2">
             <img src={logoContadorDigitalElite} alt="Imersão Contador Digital de Elite" className="mb-6 h-auto w-48 md:w-60" loading="eager" />
             <span className="mb-4 inline-block rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-accent-ink">
               EVENTO EXCLUSIVO PARA CONTADORES

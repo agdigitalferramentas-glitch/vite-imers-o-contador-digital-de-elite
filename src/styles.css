@@ -273,9 +273,14 @@
   box-shadow: var(--shadow-card);
 }
 .theme-light .home-hero {
-  background-size: auto 390px;
-  background-position: right bottom;
-  padding-bottom: 405px;
+  background-color: #f9fcf8;
+  /* degradê no topo da foto para esconder o corte do brilho dourado quando empilhada */
+  background-image:
+    linear-gradient(#f9fcf8, rgb(249 252 248 / 0%)),
+    var(--hero-bg-mobile);
+  background-size: 100% 90px, auto 380px;
+  background-position: 0 calc(100% - 290px), 72% bottom;
+  padding-bottom: 395px;
 }
 .theme-light .home-hero h1 { max-width: 560px; }
 .theme-light .home-hero h1::after {
@@ -292,13 +297,19 @@
 .theme-light .home-price .gold-text { color: var(--accent-ink); }
 .theme-light footer { background: var(--accent); }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .theme-light .home-hero { background-size: auto 480px; padding-bottom: 490px; }
-}
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .theme-light .home-hero {
-    background-size: auto 90%;
-    background-position: right bottom;
+    background-size: 100% 90px, auto 480px;
+    background-position: 0 calc(100% - 390px), 80% bottom;
+    padding-bottom: 490px;
+  }
+}
+@media (min-width: 1200px) {
+  .theme-light .home-hero {
+    min-height: 40rem;
+    background-image: var(--hero-bg-desktop);
+    background-size: cover;
+    background-position: 45% 20%;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
