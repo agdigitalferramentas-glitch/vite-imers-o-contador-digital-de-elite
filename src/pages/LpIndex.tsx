@@ -183,7 +183,7 @@ export default function Index() {
       </section>
 
       {/* SEÇÃO 5 — APRESENTAÇÃO DA IMERSÃO */}
-      <section className="hero-bg px-6 py-10 md:py-24">
+      <section className="navy-section px-6 py-14 md:py-28">
         <div className="mx-auto max-w-4xl text-center">
           <p className="section-label mb-4">IMERSÃO ONLINE E AO VIVO</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Existe um método para sair dessa conta. E você vai <span className="gold-text">conhecê-lo ao vivo.</span></h2>
