@@ -74,7 +74,11 @@ export default function Obrigado() {
               Para concluir sua confirmação, você precisa entrar no grupo exclusivo de participantes no WhatsApp.
             </p>
 
-            <div className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
+            <div className="mt-6 flex flex-col items-start gap-4">
+              <a href={WHATSAPP_URL} className="btn-cta">Entrar no grupo</a>
+            </div>
+
+            <div className="mt-8 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
               <p>É por lá que você vai receber:</p>
               <ul className="mt-4 space-y-2">
                 {[
@@ -89,10 +93,6 @@ export default function Obrigado() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="mt-8 flex flex-col items-start gap-4">
-              <a href={WHATSAPP_URL} className="btn-cta">Entrar no grupo</a>
             </div>
 
             <div className="navy-card mt-8 p-6 md:p-8">
