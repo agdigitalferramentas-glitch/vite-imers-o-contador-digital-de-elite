@@ -5,7 +5,7 @@ import heroLight from "@/assets/hero-light.jpg";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
 import perdendoTempo from "@/assets/perdendo-tempo.webp";
 import quantoValeSeuTempo from "@/assets/quanto-vale-seu-tempo.webp";
-import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite.webp";
+import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite-azul.webp";
 
 const CTA_LABEL = "QUERO MINHA VAGA POR R$ 27";
 
