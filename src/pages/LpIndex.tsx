@@ -31,7 +31,7 @@ function CtaButton({ label = CTA_LABEL, href = "#inscricao" }: { label?: string;
     if (history.replaceState) history.replaceState(null, "", href);
   };
   return (
-    <a href={resolvedHref} onClick={handleClick} className="btn-gold">
+    <a href={resolvedHref} onClick={handleClick} className="btn-cta">
       {label}
     </a>
   );
@@ -142,7 +142,7 @@ export default function Index() {
             <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
               <p>Faculdade, CRC, escritório aberto, clientes conquistados. E a conta ainda não fecha.</p>
               <p>O <strong className="text-foreground">faturamento cresce, o lucro não</strong>. Cada cliente novo traz mais trabalho, e no fim do mês fica a pergunta: <em className="gold-text">"pra onde foi o dinheiro?"</em></p>
-              <ul className="space-y-3 border-l-2 border-primary/40 pl-6">
+              <ul className="navy-card space-y-3 border-l-4 p-6 md:p-8">
                 {[
                   "Clientes que só ligam para reclamar de imposto ou pedir desconto.",
                   'Propostas enviadas com medo de "assustar".',
@@ -157,7 +157,7 @@ export default function Index() {
       </section>
 
       {/* SEÇÃO 3 — O PROBLEMA É O MODELO */}
-      <section className="px-6 py-10 md:py-24">
+      <section className="navy-section px-6 py-14 md:py-28">
         <div className="mx-auto max-w-3xl home-editorial">
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem] text-foreground">Você não precisa de mais clientes. O problema é o <span className="gold-text">modelo.</span></h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
@@ -177,7 +177,7 @@ export default function Index() {
           <img src={quantoValeSeuTempo} alt="Mãos segurando um relógio antigo com moedas de ouro" className="mb-8 w-full rounded-lg object-cover border border-primary/30" loading="lazy" />
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Quanto vale a sua <span className="gold-text">hora hoje?</span></h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <div className="card-dark p-8">
+            <div className="navy-card card-dark p-8">
               <p className="text-muted-foreground"><strong className="text-foreground">Lucro líquido do mês ÷ horas trabalhadas</strong> = quanto você realmente ganha por hora.</p>
             </div>
             <p>Deu menos de <strong className="gold-text">R$ 50</strong>? Você ganha menos que um motorista de aplicativo, carregando o CNPJ de dezenas de empresas, o Fisco, a equipe e cliente no fim de semana.</p>
@@ -216,7 +216,7 @@ export default function Index() {
               { step: "PASSO 4", title: "Processos que crescem sem virar incêndio", body: "O fluxo completo de entrada de cliente (automação, contrato, IA e onboarding) para tirar você do operacional." },
               { step: "PASSO 5", title: "O segredo dos 40% de margem", body: "Como separar clientes por perfil e equipe por nível: nada de profissional caro em cliente pequeno, nem júnior em cliente estratégico." },
             ].map((p) => (
-              <article key={p.step} className="card-dark p-8 md:p-10">
+              <article key={p.step} className="navy-card card-dark p-8 md:p-10">
                 <div className="flex flex-col gap-6 md:flex-row md:items-start">
                   <div className="shrink-0">
                     <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
@@ -261,7 +261,7 @@ export default function Index() {
       </section>
 
       {/* SEÇÃO 8 — MENTOR */}
-      <section className="px-6 py-10 md:py-24">
+      <section className="navy-section px-6 py-14 md:py-28">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
           <div className="md:w-full">
             <img src={andersonMaisse} alt="Anderson Maisse no palco durante palestra" className="w-full rounded-lg object-cover" loading="lazy" />
@@ -301,7 +301,7 @@ export default function Index() {
             <p>Aqui é um evento ao vivo, prático e direto ao ponto.</p>
           </div>
 
-          <div id="inscricao" className="card-dark home-price mx-auto mt-12 max-w-lg p-6 md:p-10 text-center scroll-mt-6">
+          <div id="inscricao" className="navy-card card-dark home-price mx-auto mt-12 max-w-lg p-6 md:p-10 text-center scroll-mt-6">
             <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">O INVESTIMENTO:</p>
             <p className="mt-4 text-xl text-muted-foreground line-through">De R$ 197</p>
             <p className="mt-2 text-sm uppercase tracking-[0.2em] text-muted-foreground">por</p>
@@ -331,7 +331,7 @@ export default function Index() {
       {/* SEÇÃO 10 — VAGAS LIMITADAS */}
       <section className="px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="home-limited border-primary/40 py-8">
+          <div className="home-limited navy-card px-6 py-10 md:px-12">
             <p className="section-label mb-4">VAGAS LIMITADAS</p>
             <h2 className="text-2xl md:text-4xl">R$ 27 só para as primeiras <span className="gold-text">500 vagas</span>.</h2>
             <div className="mt-8 space-y-5 text-left text-lg leading-relaxed text-muted-foreground">
@@ -376,7 +376,7 @@ export default function Index() {
       </section>
 
       {/* SEÇÃO 12 — A DECISÃO */}
-      <section className="hero-bg px-6 py-10 md:py-24">
+      <section className="navy-section px-6 py-14 md:py-28">
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-label mb-4">A DECISÃO</p>
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Duas opções. <span className="gold-text">Uma decisão.</span></h2>
