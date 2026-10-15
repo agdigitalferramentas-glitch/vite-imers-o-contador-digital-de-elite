@@ -277,7 +277,7 @@
   /* degradê no topo da foto para esconder o corte do brilho dourado quando empilhada */
   background-image:
     linear-gradient(#f9fcf8, rgb(249 252 248 / 0%)),
-    var(--hero-bg-mobile);
+    var(--hero-bg-desktop);
   background-size: 100% 90px, auto 380px;
   background-position: 0 calc(100% - 290px), 72% bottom;
   padding-bottom: 395px;
@@ -325,6 +325,13 @@
   .theme-light .home-hero h1 + p { font-size: 1.125rem; line-height: 1.6; }
 }
 @media (max-width: 767px) {
+  /* mobile: foto própria (819x893), contida e alinhada na base; o espaço reservado acompanha a altura exibida */
+  .theme-light .home-hero {
+    background-image: var(--hero-bg-mobile);
+    background-size: contain;
+    background-position: center bottom;
+    padding-bottom: calc(100vw * 893 / 819);
+  }
   .theme-light .home-price .btn-cta { width: 100%; padding-inline: 0.8rem; }
 }
 
