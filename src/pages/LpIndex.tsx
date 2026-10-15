@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
 import { CheckCircle2, Zap } from "lucide-react";
 import heroAnderson from "@/assets/hero-anderson.webp";
+import heroAndersonMobile from "@/assets/hero-anderson-mobile.webp";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
 import perdendoTempo from "@/assets/perdendo-tempo.webp";
 import quantoValeSeuTempo from "@/assets/quanto-vale-seu-tempo.webp";
@@ -102,7 +103,7 @@ export default function Index() {
       <section
         className="hero-section home-hero relative overflow-hidden bg-background px-6 pt-10 md:pt-14"
         style={{
-          "--hero-bg-mobile": `url(${heroAnderson})`,
+          "--hero-bg-mobile": `url(${heroAndersonMobile})`,
           "--hero-bg-desktop": `url(${heroAnderson})`,
         } as Record<string, string>}
       >
