@@ -300,16 +300,19 @@
 @media (min-width: 768px) and (max-width: 1199px) {
   .theme-light .home-hero {
     background-size: 100% 90px, auto 480px;
-    background-position: 0 calc(100% - 390px), 80% bottom;
+    background-position: 0 calc(100% - 390px), 90% bottom;
     padding-bottom: 490px;
   }
 }
 @media (min-width: 1200px) {
   .theme-light .home-hero {
-    min-height: 40rem;
+    /* altura acompanha a proporção da foto (1920x777) para ela aparecer inteira, sem corte em cima/embaixo */
+    display: flex;
+    align-items: center;
+    min-height: max(40rem, 40.47vw);
     background-image: var(--hero-bg-desktop);
-    background-size: cover;
-    background-position: 45% 20%;
+    background-size: auto 100%;
+    background-position: 10% center;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
