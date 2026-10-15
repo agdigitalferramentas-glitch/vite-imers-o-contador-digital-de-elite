@@ -430,6 +430,219 @@
   100% { transform: translateX(120%); }
 }
 
+/* ============================================================
+   Acabamento premium (home e /obrigado, sempre sob .theme-light)
+   ============================================================ */
+.theme-light {
+  --gold-ink-1: hsl(33 66% 29%);
+  --gold-ink-2: hsl(37 72% 42%);
+  --hairline: hsl(36 45% 78%);
+  --shadow-soft: 0 1px 2px hsl(216 40% 12% / 5%), 0 14px 34px -18px hsl(216 50% 14% / 22%);
+  --shadow-lift: 0 2px 4px hsl(216 40% 12% / 6%), 0 26px 50px -22px hsl(216 55% 14% / 34%);
+}
+.theme-light ::selection { background: hsl(38 78% 68% / 45%); color: hsl(216 65% 11%); }
+.theme-light .navy-section,
+.theme-light .navy-card {
+  --gold-ink-1: hsl(38 80% 66%);
+  --gold-ink-2: hsl(45 92% 82%);
+}
+
+/* destaques dourados com brilho metálico sutil */
+.theme-light .gold-text { color: var(--accent-ink); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .theme-light .gold-text {
+    background: linear-gradient(100deg, var(--gold-ink-1) 0%, var(--gold-ink-2) 50%, var(--gold-ink-1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+
+/* tipografia e ritmo */
+.theme-light h2 {
+  font-size: clamp(1.75rem, 1.15rem + 2.1vw, 2.65rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.theme-light h3 { letter-spacing: -0.015em; }
+.theme-light main > section:not(.home-hero) {
+  position: relative;
+  padding-block: clamp(4rem, 3rem + 5vw, 7.5rem);
+}
+
+/* rótulos de seção com filetes dourados */
+.theme-light .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+}
+.theme-light .section-label::before,
+.theme-light .section-label::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  opacity: 0.7;
+}
+.theme-light .section-label::after { background: linear-gradient(270deg, transparent, currentColor); }
+.theme-light .section-label.text-center { display: flex; justify-content: center; }
+.theme-light .text-left > .section-label::before,
+.theme-light .section-label.is-left::before { display: none; }
+
+/* divisor fino dourado no topo das seções claras */
+.theme-light main > section:not(.home-hero):not(.navy-section)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(560px, 70%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, hsl(36 59% 59% / 70%), transparent);
+  pointer-events: none;
+}
+
+/* seções claras com textura e profundidade */
+.theme-light section.bg-accent {
+  background-color: hsl(210 40% 98%);
+  background-image:
+    radial-gradient(circle at 1px 1px, hsl(216 30% 70% / 28%) 1px, transparent 0),
+    radial-gradient(ellipse 70% 50% at 50% 0%, hsl(38 78% 68% / 10%), transparent 70%);
+  background-size: 24px 24px, 100% 100%;
+}
+.theme-light section.hero-bg {
+  background-image:
+    radial-gradient(ellipse 60% 60% at 50% 0%, hsl(38 78% 68% / 12%), transparent 70%),
+    linear-gradient(180deg, hsl(210 40% 98%), hsl(0 0% 100%));
+}
+
+/* blocos azul-marinho: textura de pontos e filetes dourados */
+.theme-light .navy-section > * { position: relative; z-index: 1; }
+.theme-light .navy-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 1px 1px, hsl(0 0% 100% / 7%) 1px, transparent 0) 0 0 / 28px 28px;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent);
+  pointer-events: none;
+}
+.theme-light .navy-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(38 78% 68% / 55%), transparent);
+  z-index: 1;
+}
+
+/* cards */
+.theme-light .card-dark {
+  border: 1px solid hsl(214 32% 90%);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.theme-light .card-dark:hover {
+  transform: translateY(-3px);
+  border-color: hsl(36 59% 59% / 70%);
+  box-shadow: var(--shadow-lift);
+}
+.theme-light .navy-card {
+  border-radius: 16px;
+  box-shadow: var(--shadow-lift), inset 0 1px 0 hsl(0 0% 100% / 7%);
+}
+.theme-light .navy-card.card-dark:hover { border-color: hsl(38 78% 68% / 65%); }
+
+/* passos: numeral fantasma e filete lateral dourado */
+.theme-light .step-card::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem auto 1.5rem 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, hsl(38 80% 72%), hsl(33 66% 45%));
+}
+.theme-light .home-steps { counter-reset: step; }
+.theme-light .step-card::after {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero) / "";
+  position: absolute;
+  right: 1.75rem;
+  top: 0.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 9vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: hsl(0 0% 100% / 5%);
+  pointer-events: none;
+}
+
+/* imagens com moldura refinada */
+.theme-light .home-image {
+  border-radius: 18px;
+  box-shadow: var(--shadow-lift), 0 0 0 1px hsl(216 30% 20% / 8%);
+}
+
+/* card de preço: moldura dourada e brilho */
+.theme-light .home-price.navy-card {
+  border: 1px solid transparent;
+  border-top: 1px solid transparent;
+  background:
+    linear-gradient(150deg, hsl(216 62% 12%), hsl(216 52% 20%)) padding-box,
+    linear-gradient(135deg, hsl(45 90% 80%), hsl(33 66% 45%) 45%, hsl(42 88% 74%)) border-box;
+  box-shadow: 0 40px 90px -36px hsl(38 80% 55% / 50%), var(--shadow-lift);
+  border-radius: 20px;
+}
+
+/* FAQ: ícone em círculo e destaque quando aberto */
+.theme-light details.card-dark > summary > span:last-child {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: hsl(36 59% 59% / 14%);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.theme-light details.card-dark[open] {
+  border-color: hsl(36 59% 59% / 70%);
+  box-shadow: var(--shadow-lift);
+}
+
+/* números do mentor */
+.theme-light .navy-section .text-accent-ink.font-extrabold {
+  background: linear-gradient(100deg, var(--gold-ink-1), var(--gold-ink-2) 50%, var(--gold-ink-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* botão: acabamento mais refinado */
+.theme-light .btn-cta {
+  border-radius: 10px;
+  padding: 1.15rem 2.1rem;
+  letter-spacing: 0.04em;
+}
+
+/* faixa superior com filete inferior */
+.theme-light .home-marquee { border-bottom: 1px solid hsl(33 66% 38% / 35%); }
+
+@media (max-width: 767px) {
+  .theme-light .step-card::after { right: 1rem; top: 0.25rem; }
+  .theme-light .section-label::before,
+  .theme-light .section-label::after { width: 1.25rem; }
+  .theme-light .home-price .btn-cta { font-size: 0.86rem; letter-spacing: 0.01em; }
+}
+
 /* Faixa superior em marquee (apenas home) */
 .theme-light .home-marquee { overflow: hidden; white-space: nowrap; }
 .theme-light .home-marquee-track {

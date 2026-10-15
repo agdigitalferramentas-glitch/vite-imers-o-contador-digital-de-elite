@@ -147,7 +147,7 @@ export default function Index() {
       {/* SEÇÃO 4 — QUANTO VALE A SUA HORA HOJE? */}
       <section className="px-6 py-10 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <img src={quantoValeSeuTempo} alt="Mãos segurando um relógio antigo com moedas de ouro" className="mb-8 w-full rounded-lg object-cover border border-primary/30" loading="lazy" />
+          <img src={quantoValeSeuTempo} alt="Mãos segurando um relógio antigo com moedas de ouro" className="home-image mb-10 w-full object-cover" loading="lazy" />
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">Quanto vale a sua <span className="gold-text">hora hoje?</span></h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <div className="navy-card card-dark p-8">
@@ -181,7 +181,7 @@ export default function Index() {
             <h2 className="text-2xl md:text-3xl lg:text-[2.35rem]">O que você vai sair dessa imersão <span className="gold-text">sabendo fazer</span></h2>
           </div>
 
-          <div className="mt-16 space-y-6">
+          <div className="home-steps mt-16 space-y-6">
             {[
               { step: "PASSO 1", title: "Novos serviços que geram caixa na carteira que você já tem.", body: "Dentro da sua carteira atual existem entre 8 e 10 serviços que seus clientes precisam, estão dispostos a pagar, e que ninguém nunca ofereceu para eles. Anderson vai te mostrar quais são esses serviços e como ativar essas receitas sem captar um único cliente novo. Resultado: dinheiro novo no caixa antes do mês acabar." },
               { step: "PASSO 2", title: "Marketing com dinheiro que você já tem", body: "Com o caixa do Passo 1, você monta um motor de aquisição constante sem apertar a operação." },
@@ -189,7 +189,7 @@ export default function Index() {
               { step: "PASSO 4", title: "Processos que crescem sem virar incêndio", body: "O fluxo completo de entrada de cliente (automação, contrato, IA e onboarding) para tirar você do operacional." },
               { step: "PASSO 5", title: "O segredo dos 40% de margem", body: "Como separar clientes por perfil e equipe por nível: nada de profissional caro em cliente pequeno, nem júnior em cliente estratégico." },
             ].map((p) => (
-              <article key={p.step} className="navy-card card-dark p-8 md:p-10">
+              <article key={p.step} className="step-card navy-card card-dark relative overflow-hidden p-8 md:p-10">
                 <div className="flex flex-col gap-6 md:flex-row md:items-start">
                   <div className="shrink-0">
                     <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
@@ -237,7 +237,7 @@ export default function Index() {
       <section className="navy-section px-6 py-14 md:py-28">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
           <div className="md:w-full">
-            <img src={andersonMaisse} alt="Anderson Maisse no palco durante palestra" className="w-full rounded-lg object-cover" loading="lazy" />
+            <img src={andersonMaisse} alt="Anderson Maisse no palco durante palestra" className="home-image w-full object-cover" loading="lazy" />
           </div>
           <div>
             <p className="section-label mb-4">MENTOR</p>
