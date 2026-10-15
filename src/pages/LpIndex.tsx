@@ -153,7 +153,7 @@ export default function Index() {
 
       {/* SEÇÃO 3 — O PROBLEMA É O MODELO */}
       <section className="navy-section px-6 py-14 md:py-28">
-        <div className="mx-auto max-w-3xl home-editorial">
+        <div className="home-editorial navy-card mx-auto max-w-4xl px-6 py-10 md:px-14 md:py-14">
           <h2 className="text-2xl md:text-3xl lg:text-[2.35rem] text-foreground">Você não precisa de mais clientes. O problema é o <span className="gold-text">modelo.</span></h2>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>Se você precisa de <em>mais clientes</em> toda vez que quer ganhar <em>mais dinheiro</em>, algo está quebrado.</p>

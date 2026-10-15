@@ -291,7 +291,6 @@
   margin-top: 24px;
   background: var(--primary);
 }
-.theme-light .home-editorial { padding-block: 1rem; }
 .theme-light .home-image { box-shadow: var(--shadow-card); }
 .theme-light .home-price { border-top: 4px solid var(--primary); }
 .theme-light .home-price .gold-text { color: var(--accent-ink); }
@@ -352,6 +351,13 @@
 .theme-light .navy-section .card-dark { background: hsl(216 52% 17%); }
 .theme-light .navy-card .section-label,
 .theme-light .navy-section .section-label { color: hsl(38 78% 68%); }
+/* box de conteúdo dentro de bloco azul-marinho: mais claro que o fundo, com borda dourada no topo */
+.theme-light .navy-section .navy-card {
+  background: linear-gradient(145deg, hsl(216 52% 20%) 0%, hsl(216 48% 25%) 100%);
+  border: 1px solid hsl(0 0% 100% / 16%);
+  border-top: 4px solid hsl(38 78% 68%);
+  box-shadow: 0 28px 60px -24px hsl(216 70% 4% / 70%);
+}
 .theme-light .home-price.navy-card { border-top: 4px solid hsl(38 78% 68%); }
 .theme-light .home-price .gold-text { color: var(--accent-ink); }
 
