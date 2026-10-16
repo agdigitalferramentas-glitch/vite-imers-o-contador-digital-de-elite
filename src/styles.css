@@ -1,8 +1,26 @@
 @import "tailwindcss";
+/* CSS crítico (primeira dobra + tokens do tema): também é inserido inline no <head> (ver vite.config.ts) */
+@import "./critical.css";
+
+/* Fontes secundárias (abaixo da dobra): auto-hospedadas, com font-display: swap */
+@font-face {
+  font-family: "Epilogue";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/epilogue-latin-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/roboto-latin-400.woff2") format("woff2");
+}
 
 @theme inline {
-  --font-display: "Raleway", system-ui, sans-serif;
-  --font-body: "Raleway", system-ui, sans-serif;
+  --font-display: "Raleway", "Raleway Fallback", system-ui, sans-serif;
+  --font-body: "Raleway", "Raleway Fallback", system-ui, sans-serif;
   --font-label: "Epilogue", system-ui, sans-serif;
   --font-legal: "Roboto", system-ui, sans-serif;
 
@@ -210,36 +228,6 @@
   }
 }
 
-.theme-light {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(216 65% 11%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(216 65% 11%);
-  --muted: hsl(210 40% 96%);
-  --muted-foreground: hsl(215 25% 35%);
-  --primary: hsl(36 59% 59%);
-  --primary-foreground: hsl(216 65% 11%);
-  --accent: hsl(210 40% 98%);
-  --accent-foreground: hsl(216 65% 11%);
-  --accent-ink: hsl(35 59% 36%);
-  --border: hsl(214 32% 91%);
-  --ring: hsl(36 59% 59%);
-  --gold: hsl(36 59% 59%);
-  --gold-soft: hsl(38 70% 76%);
-  --gradient-gold: linear-gradient(110deg, hsl(36 59% 59%), hsl(38 70% 76%));
-  --gradient-hero: linear-gradient(180deg, var(--accent), var(--muted));
-  --shadow-gold: 0 6px 18px -8px hsl(35 59% 36% / 30%);
-  --shadow-card: 0 8px 24px -14px hsl(216 65% 11% / 14%);
-  color: var(--foreground);
-  background: var(--background);
-}
-
-.theme-light h1,
-.theme-light h2,
-.theme-light h3,
-.theme-light h4 { letter-spacing: 0; }
-
-.theme-light .gold-text,
 .theme-light .section-label {
   color: var(--accent-ink);
   text-shadow: none;
@@ -272,24 +260,8 @@
   border-color: var(--primary);
   box-shadow: var(--shadow-card);
 }
-.theme-light .home-hero {
-  background-color: #f9fcf8;
-  /* degradê no topo da foto para esconder o corte do brilho dourado quando empilhada */
-  background-image:
-    linear-gradient(#f9fcf8, rgb(249 252 248 / 0%)),
-    var(--hero-bg-desktop);
-  background-size: 100% 90px, auto 380px;
-  background-position: 0 calc(100% - 290px), 72% bottom;
-  padding-bottom: 395px;
-}
-.theme-light .home-hero h1 { max-width: 560px; }
-.theme-light .home-hero h1::after {
-  content: "";
-  display: block;
-  width: 54px;
-  height: 3px;
-  margin-top: 24px;
-  background: var(--primary);
+@media (max-width: 767px) {
+  .theme-light .home-price .btn-cta { width: 100%; padding-inline: 0.8rem; }
 }
 .theme-light .home-image { box-shadow: var(--shadow-card); }
 .theme-light .home-price { border-top: 4px solid var(--primary); }
@@ -301,44 +273,6 @@
   --border: hsl(0 0% 100% / 10%);
   background: hsl(216 72% 5%);
   color: var(--foreground);
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .theme-light .home-hero {
-    background-size: 100% 90px, auto 480px;
-    background-position: 0 calc(100% - 390px), 90% bottom;
-    padding-bottom: 490px;
-  }
-}
-@media (min-width: 1200px) {
-  .theme-light .home-hero {
-    /* altura acompanha a proporção da foto (1920x777) para ela aparecer inteira, sem corte em cima/embaixo */
-    display: flex;
-    align-items: center;
-    min-height: max(40rem, 40.47vw);
-    background-image: var(--hero-bg-desktop);
-    background-size: auto 100%;
-    background-position: 10% center;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-  .theme-light .home-hero h1 + p { font-size: 1.125rem; line-height: 1.6; }
-  /* /obrigado: conteúdo mais alto que o hero da home; a foto fica no topo, na proporção original */
-  .theme-light .thanks-hero {
-    display: block;
-    background-size: auto max(40rem, 40.47vw);
-    background-position: 10% top;
-  }
-}
-@media (max-width: 767px) {
-  /* mobile: foto própria (819x893), contida e alinhada na base; o espaço reservado acompanha a altura exibida */
-  .theme-light .home-hero {
-    background-image: var(--hero-bg-mobile);
-    background-size: contain;
-    background-position: center bottom;
-    padding-bottom: calc(100vw * 893 / 819);
-  }
-  .theme-light .home-price .btn-cta { width: 100%; padding-inline: 0.8rem; }
 }
 
 /* Quebra de padrão: blocos e cards azul-marinho em página clara (apenas home) */
@@ -382,83 +316,16 @@
 .theme-light .home-price .gold-text { color: var(--accent-ink); }
 
 /* CTAs: verde vivo para destacar o clique em qualquer fundo */
-.theme-light .btn-cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  padding: 1.1rem 1.9rem;
-  border: 0;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #3ee37f 0%, #17b957 100%);
-  color: hsl(216 65% 9%);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 800;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  text-align: center;
-  text-transform: uppercase;
-  cursor: pointer;
-  overflow: hidden;
-  isolation: isolate;
-  box-shadow: 0 10px 26px -8px hsl(145 80% 38% / 65%), inset 0 1px 0 hsl(0 0% 100% / 45%);
-  animation: ctaPulse 2.4s ease-in-out infinite;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
-}
-.theme-light .btn-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 30%, hsl(0 0% 100% / 55%) 50%, transparent 70%);
-  transform: translateX(-120%);
-  animation: ctaShine 3.6s ease-in-out infinite;
-  pointer-events: none;
-}
-.theme-light .btn-cta:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.06); }
-.theme-light .btn-cta:active { transform: translateY(0) scale(0.99); }
-.theme-light .btn-cta:focus-visible { outline: 3px solid hsl(216 65% 11%); outline-offset: 4px; }
 .theme-light .navy-section .btn-cta:focus-visible,
 .theme-light .navy-card .btn-cta:focus-visible { outline-color: #fff; }
-@keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 10px 26px -8px hsl(145 80% 38% / 65%), inset 0 1px 0 hsl(0 0% 100% / 45%), 0 0 0 0 hsl(145 75% 45% / 45%); }
-  50% { box-shadow: 0 10px 26px -8px hsl(145 80% 38% / 65%), inset 0 1px 0 hsl(0 0% 100% / 45%), 0 0 0 12px hsl(145 75% 45% / 0%); }
-}
-@keyframes ctaShine {
-  0%, 55% { transform: translateX(-120%); }
-  100% { transform: translateX(120%); }
-}
-
 /* ============================================================
    Acabamento premium (home e /obrigado, sempre sob .theme-light)
    ============================================================ */
-.theme-light {
-  --gold-ink-1: hsl(33 66% 29%);
-  --gold-ink-2: hsl(37 72% 42%);
-  --hairline: hsl(36 45% 78%);
-  --shadow-soft: 0 1px 2px hsl(216 40% 12% / 5%), 0 14px 34px -18px hsl(216 50% 14% / 22%);
-  --shadow-lift: 0 2px 4px hsl(216 40% 12% / 6%), 0 26px 50px -22px hsl(216 55% 14% / 34%);
-}
 .theme-light ::selection { background: hsl(38 78% 68% / 45%); color: hsl(216 65% 11%); }
 .theme-light .navy-section,
 .theme-light .navy-card {
   --gold-ink-1: hsl(38 80% 66%);
   --gold-ink-2: hsl(45 92% 82%);
-}
-
-/* destaques dourados com brilho metálico sutil */
-.theme-light .gold-text { color: var(--accent-ink); }
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .theme-light .gold-text {
-    background: linear-gradient(100deg, var(--gold-ink-1) 0%, var(--gold-ink-2) 50%, var(--gold-ink-1) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
 }
 
 /* tipografia e ritmo */
@@ -468,7 +335,7 @@
   letter-spacing: -0.02em;
 }
 .theme-light h3 { letter-spacing: -0.015em; }
-.theme-light main > section:not(.home-hero) {
+.theme-light main section:not(.home-hero) {
   position: relative;
   padding-block: clamp(4rem, 3rem + 5vw, 7.5rem);
 }
@@ -495,7 +362,7 @@
 .theme-light .section-label.is-left::before { display: none; }
 
 /* divisor fino dourado no topo das seções claras */
-.theme-light main > section:not(.home-hero):not(.navy-section)::before {
+.theme-light main section:not(.home-hero):not(.navy-section)::before {
   content: "";
   position: absolute;
   top: 0;
@@ -627,15 +494,6 @@
 }
 
 /* botão: acabamento mais refinado */
-.theme-light .btn-cta {
-  border-radius: 10px;
-  padding: 1.15rem 2.1rem;
-  letter-spacing: 0.04em;
-}
-
-/* faixa superior com filete inferior */
-.theme-light .home-marquee { border-bottom: 1px solid hsl(33 66% 38% / 35%); }
-
 @media (max-width: 767px) {
   .theme-light .step-card::after { right: 1rem; top: 0.25rem; }
   .theme-light .section-label::before,
@@ -688,30 +546,19 @@
 }
 .theme-light .video-play:focus-visible { outline: 3px solid hsl(38 78% 68%); outline-offset: -3px; }
 
-/* Faixa superior em marquee (apenas home) */
-.theme-light .home-marquee { overflow: hidden; white-space: nowrap; }
-.theme-light .home-marquee-track {
-  display: flex;
-  width: max-content;
-  animation: homeMarquee 40s linear infinite;
-  will-change: transform;
-}
-.theme-light .home-marquee-group { display: flex; flex-shrink: 0; }
-.theme-light .home-marquee-item { display: inline-flex; align-items: center; gap: 1.25rem; padding-right: 1.25rem; }
-.theme-light .home-marquee-star { flex-shrink: 0; }
-@keyframes homeMarquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+/* Mobile (< 768px): sem animações decorativas, para manter a main thread livre */
+@media (max-width: 767px) {
+  .gold-pulse,
+  .card-dark,
+  details.card-dark > p {
+    animation: none !important;
   }
-  .reveal { opacity: 1 !important; transform: none !important; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  img {
+    transition: none;
+  }
 }
