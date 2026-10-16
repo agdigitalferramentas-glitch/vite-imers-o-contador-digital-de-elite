@@ -57,7 +57,7 @@ function VideoCard({
       ) : (
         <button type="button" onClick={onPlay} aria-label={`Reproduzir depoimento de ${item.name}`} className="video-play group absolute inset-0 h-full w-full overflow-hidden text-left">
           {thumb ? (
-            <img src={thumb} alt={`Depoimento de ${item.name}, aluno do CCD`} loading="lazy" onError={() => setThumbFailed(true)} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "center 30%" }} />
+            <img src={thumb} alt={`Depoimento de ${item.name}`} loading="lazy" onError={() => setThumbFailed(true)} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "center 30%" }} />
           ) : (
             <span className="absolute inset-0 grid place-items-center bg-[linear-gradient(145deg,hsl(216_62%_12%),hsl(216_52%_22%))] text-6xl font-extrabold tracking-tight text-white/10" aria-hidden="true">
               {initials(item.name)}
@@ -77,10 +77,6 @@ function VideoCard({
             </span>
           </span>
           <span className="absolute inset-x-0 bottom-0 block p-4 md:p-5">
-            <span className="mb-1.5 flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary))]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary md:text-xs">Aluno CCD</span>
-            </span>
             <span className={`block font-extrabold leading-tight text-white drop-shadow-lg ${featured ? "text-xl md:text-2xl" : "text-lg"}`}>{item.name}</span>
           </span>
         </button>
