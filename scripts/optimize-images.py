@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """Gera variantes WebP responsivas em src/assets/responsive/<nome>-<largura>.webp.
 
-Uso: python3 scripts/optimize-images.py   (requer Pillow)
+Uso: python3 scripts/optimize-images.py   (requer Pillow e numpy)
 
 As imagens originais ficam em src/assets; as variantes são as usadas no
 srcset da página inicial. Nunca amplia: só gera larguras menores ou iguais à original.
 """
 from pathlib import Path
+import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src" / "assets"
 OUT = SRC / "responsive"
 
-# nome-de-saída: (arquivo de origem, larguras, qualidade)
+# nome-de-saída: (arquivo de origem, larguras, qualidade 0-100 ou "lossless")
 JOBS = {
     "hero-desktop": ("hero-anderson.webp", [1280, 1920], 74),
     "hero-mobile": ("hero-anderson-mobile.webp", [480, 640, 819], 72),
@@ -22,6 +23,8 @@ JOBS = {
     "quanto-vale-seu-tempo": ("quanto-vale-seu-tempo.webp", [400, 640, 800], 76),
     "anderson-maisse": ("anderson-maisse.webp", [480, 768, 1148], 72),
 }
+# selo com transparência e traços finos: lossless mantém as bordas nítidas (ver scripts/recolor-seal.py)
+JOBS["garantia-selo"] = ("selo-garantia.webp", [224, 336, 448], "lossless")
 for slug in ("jobson", "bruno", "gilberto", "alessandro", "andre"):
     JOBS[f"depoimento-{slug}"] = (f"testimonials/{slug}.webp", [480, 800, 1280], 76)
 
@@ -39,7 +42,16 @@ def main() -> None:
             th = round(h * tw / w)
             r = im if (tw, th) == (w, h) else im.resize((tw, th), Image.LANCZOS)
             dest = OUT / f"{name}-{tw}.webp"
-            r.save(dest, "WEBP", quality=quality, method=6)
+            if quality == "lossless":
+                # alfa em 32 níveis: bordas ainda suaves e o arquivo fica ~30% menor
+                if r.mode == "RGBA":
+                    arr = np.asarray(r).copy()
+                    step = 255 / 31
+                    arr[..., 3] = (np.round(arr[..., 3] / step) * step).astype(np.uint8)
+                    r = Image.fromarray(arr, "RGBA")
+                r.save(dest, "WEBP", lossless=True, method=6)
+            else:
+                r.save(dest, "WEBP", quality=quality, method=6)
             print(f"{dest.name:42s} {tw}x{th:<5d} {dest.stat().st_size / 1024:7.1f} KB")
             total_out += dest.stat().st_size
         total_in += (SRC / src).stat().st_size

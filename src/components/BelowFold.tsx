@@ -17,6 +17,7 @@ const SECTIONS: SectionDef[] = [
   def("depoimentos", () => import("@/components/TestimonialsSection"), "10vh"),
   def("mentor", () => import("@/components/home/MentorSection"), "90vh"),
   def("oferta", () => import("@/components/home/OfferBlock"), "150vh"),
+  def("garantia", () => import("@/components/home/GuaranteeSection"), "70vh"),
   def("faq", () => import("@/components/home/FaqSection"), "80vh"),
   def("decisao", () => import("@/components/home/DecisionFooter"), "90vh"),
 ];
