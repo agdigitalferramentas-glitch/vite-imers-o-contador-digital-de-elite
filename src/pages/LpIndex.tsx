@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
 import HomeMarquee from "@/components/HomeMarquee";
-import { CheckCircle2, Zap } from "lucide-react";
+import { CheckCircle2, TriangleAlert, Zap } from "lucide-react";
 import heroAnderson from "@/assets/hero-anderson.webp";
 import heroAndersonMobile from "@/assets/hero-anderson-mobile.webp";
 import andersonMaisse from "@/assets/anderson-maisse.webp";
@@ -121,7 +121,12 @@ export default function Index() {
                   'Propostas enviadas com medo de "assustar".',
                   "Uma equipe que depende de você para tudo.",
                   "Zero tempo para estratégia.",
-                ].map((t) => (<li key={t} className="text-muted-foreground">→ {t}</li>))}
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-muted-foreground">
+                    <TriangleAlert size={20} strokeWidth={2.25} className="mt-0.5 shrink-0 text-accent-ink" aria-hidden="true" />
+                    <span>{t}</span>
+                  </li>
+                ))}
               </ul>
               <p>Você virou <strong className="text-foreground">refém do operacional</strong>. Sabe que precisa mudar, só não sabe por onde começar.</p>
             </div>
