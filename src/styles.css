@@ -643,6 +643,35 @@
   .theme-light .home-price .btn-cta { font-size: 0.86rem; letter-spacing: 0.01em; }
 }
 
+/* "dor pontiaguda": valor por hora em destaque, em vermelho */
+.theme-light .pain-callout {
+  padding: 1.1rem 1.5rem 1.2rem;
+  border-left: 4px solid hsl(0 72% 46%);
+  border-radius: 0 16px 16px 0;
+  background: linear-gradient(90deg, hsl(0 85% 97%), hsl(0 85% 98% / 0%));
+  color: var(--foreground);
+  font-size: clamp(1.35rem, 1rem + 1.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.theme-light .pain-number {
+  display: inline-block;
+  margin-inline: 0.06em 0.02em;
+  font-size: clamp(3.5rem, 2.2rem + 6vw, 5.75rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: hsl(0 72% 42%);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .theme-light .pain-number {
+    background: linear-gradient(180deg, hsl(0 80% 54%), hsl(0 72% 36%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 /* Faixa superior em marquee (apenas home) */
 .theme-light .home-marquee { overflow: hidden; white-space: nowrap; }
 .theme-light .home-marquee-track {
