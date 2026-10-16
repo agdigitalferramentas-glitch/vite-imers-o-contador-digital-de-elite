@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
 import { getVideoSource, getYouTubeThumbnail } from "@/lib/video";
+import { fallbackSrc, hasResponsive, srcSet } from "@/lib/responsive";
 
-const THUMBS = import.meta.glob<string>("../assets/testimonials/*.{jpg,jpeg,png,webp}", {
-  eager: true,
-  query: "?url",
-  import: "default",
-});
-
-function thumbFor(slug: string): string | undefined {
-  const hit = Object.entries(THUMBS).find(([path]) => path.split("/").pop()?.replace(/\.[^.]+$/, "") === slug);
-  return hit?.[1];
+/** Miniatura local (variantes responsivas "depoimento-<slug>"); sem ela, usa a miniatura do YouTube. */
+function localThumb(slug: string) {
+  const name = `depoimento-${slug}`;
+  return hasResponsive(name) ? { src: fallbackSrc(name), srcSet: srcSet(name) } : null;
 }
 
 function initials(name: string) {
@@ -36,7 +32,9 @@ function VideoCard({
 }) {
   const source = getVideoSource(item.video);
   const [thumbFailed, setThumbFailed] = useState(false);
-  const thumb = thumbFor(item.slug) ?? (thumbFailed ? undefined : getYouTubeThumbnail(item.video) ?? undefined);
+  const local = localThumb(item.slug);
+  const remote = thumbFailed ? undefined : (getYouTubeThumbnail(item.video) ?? undefined);
+  const thumb = local?.src ?? remote;
   if (!source) return null;
 
   return (
@@ -57,7 +55,7 @@ function VideoCard({
       ) : (
         <button type="button" onClick={onPlay} aria-label={`Reproduzir depoimento de ${item.name}`} className="video-play group absolute inset-0 h-full w-full overflow-hidden text-left">
           {thumb ? (
-            <img src={thumb} alt={`Depoimento de ${item.name}`} loading="lazy" onError={() => setThumbFailed(true)} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "center 30%" }} />
+            <img src={thumb} srcSet={local?.srcSet} sizes={featured ? "(min-width: 816px) 768px, calc(100vw - 48px)" : "(min-width: 1200px) 276px, (min-width: 640px) 50vw, calc(100vw - 48px)"} width={1280} height={720} alt={`Depoimento de ${item.name}`} loading="lazy" decoding="async" onError={() => setThumbFailed(true)} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "center 30%" }} />
           ) : (
             <span className="absolute inset-0 grid place-items-center bg-[linear-gradient(145deg,hsl(216_62%_12%),hsl(216_52%_22%))] text-6xl font-extrabold tracking-tight text-white/10" aria-hidden="true">
               {initials(item.name)}

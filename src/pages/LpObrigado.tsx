@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import HomeMarquee from "@/components/HomeMarquee";
-import heroAnderson from "@/assets/hero-anderson.webp";
-import heroAndersonMobile from "@/assets/hero-anderson-mobile.webp";
-import logoContadorDigitalElite from "@/assets/logo-contador-digital-elite-azul.webp";
+import HeroMedia from "@/components/HeroMedia";
+import ResponsiveImg from "@/components/ResponsiveImg";
 
 const WHATSAPP_URL = "https://site.agsell.com.br/r/icde-1026-grupos";
 
@@ -42,16 +41,11 @@ export default function Obrigado() {
     <main className="theme-light min-h-screen bg-background text-foreground">
       <HomeMarquee />
 
-      <section
-        className="hero-section home-hero thanks-hero relative overflow-hidden bg-background px-6 pt-10 md:pt-14"
-        style={{
-          "--hero-bg-mobile": `url(${heroAndersonMobile})`,
-          "--hero-bg-desktop": `url(${heroAnderson})`,
-        } as Record<string, string>}
-      >
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="min-[1200px]:w-1/2">
-            <img src={logoContadorDigitalElite} alt="Imersão Contador Digital de Elite" className="mb-6 h-auto w-48 md:w-60" loading="eager" />
+      <section className="hz hz-top">
+        <HeroMedia />
+        <div className="hz-wrap">
+          <div className="hz-col">
+            <ResponsiveImg name="logo" alt="Imersão Contador Digital de Elite" width={1231} height={404} sizes="(min-width: 768px) 240px, 192px" className="hz-logo" eager />
 
             <div className="mb-8 max-w-lg">
               <div className="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.2em] text-accent-ink">
