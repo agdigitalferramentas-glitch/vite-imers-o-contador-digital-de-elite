@@ -97,7 +97,7 @@ export default function Index() {
               Dia 11/11, <strong className="text-foreground">às 19h51</strong>, Anderson Maisse mostra ao vivo como criar novos serviços na própria carteira, montar processos que rodam sem você e aumentar o lucro sem contratar.
             </p>
 
-            <div className="mt-8 flex flex-col items-start gap-4">
+            <div className="mt-8 flex flex-col items-center gap-4 md:items-start">
               <CtaButton />
             </div>
           </div>
