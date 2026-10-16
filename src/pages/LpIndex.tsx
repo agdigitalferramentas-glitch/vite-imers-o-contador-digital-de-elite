@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
 import HomeMarquee from "@/components/HomeMarquee";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import { CheckCircle2, TriangleAlert, Zap } from "lucide-react";
 import heroAnderson from "@/assets/hero-anderson.webp";
 import heroAndersonMobile from "@/assets/hero-anderson-mobile.webp";
@@ -238,6 +239,9 @@ export default function Index() {
           <p className="mt-10 text-lg text-muted-foreground">Se você se viu em uma dessas frases, essa imersão é para você. E quem conduz não é consultor de teoria: é um contador que vive isso todo dia.</p>
         </div>
       </section>
+
+      {/* PROVA SOCIAL — depoimentos em vídeo (aparece quando há vídeos em src/data/testimonials.ts) */}
+      <TestimonialsSection />
 
       {/* SEÇÃO 8 — MENTOR */}
       <section className="navy-section px-6 py-14 md:py-28">
