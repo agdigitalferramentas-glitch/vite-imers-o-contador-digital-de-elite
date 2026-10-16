@@ -87,7 +87,7 @@ export default function Index() {
         <div className="mx-auto w-full max-w-6xl">
           <div className="min-[1200px]:w-1/2">
             <img src={logoContadorDigitalElite} alt="Imersão Contador Digital de Elite" className="mb-6 h-auto w-48 md:w-60" loading="eager" />
-            <span className="mb-4 inline-block rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-accent-ink">
+            <span className="mb-4 inline-block rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-[10px] font-bold md:text-xs uppercase tracking-[0.2em] text-accent-ink">
               EVENTO EXCLUSIVO PARA CONTADORES
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
