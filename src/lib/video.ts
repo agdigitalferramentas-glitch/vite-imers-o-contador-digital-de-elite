@@ -4,6 +4,28 @@ export type VideoSource =
 
 const FILE_EXT = /\.(mp4|webm|mov|m4v|ogg)(\?.*)?$/i;
 
+/** Identificador do vídeo do YouTube (watch, youtu.be, embed, shorts ou live), ou null. */
+export function getYouTubeId(link: string): string | null {
+  let url: URL;
+  try {
+    url = new URL(link.trim());
+  } catch {
+    return null;
+  }
+  const host = url.hostname.replace(/^www\./, "");
+  if (host === "youtu.be") return url.pathname.slice(1).split("/")[0] || null;
+  if (!(host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com"))) return null;
+  if (url.pathname === "/watch") return url.searchParams.get("v") || null;
+  const m = url.pathname.match(/^\/(?:embed|shorts|live|v)\/([^/?#]+)/);
+  return m ? m[1] : null;
+}
+
+/** Miniatura gerada pelo próprio YouTube, usada quando não há imagem local. */
+export function getYouTubeThumbnail(link: string): string | null {
+  const id = getYouTubeId(link);
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null;
+}
+
 /** Converte o link de um depoimento na fonte usada pelo player (autoplay após o clique). */
 export function getVideoSource(link: string): VideoSource | null {
   const raw = link.trim();

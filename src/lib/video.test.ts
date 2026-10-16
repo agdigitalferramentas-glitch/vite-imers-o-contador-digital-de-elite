@@ -1,6 +1,6 @@
 import { describe, test } from "node:test";
 import { strict as assert } from "node:assert";
-import { getVideoSource } from "./video";
+import { getVideoSource, getYouTubeId, getYouTubeThumbnail } from "./video";
 
 describe("getVideoSource", () => {
   test("ignora links vazios ou inválidos", () => {
@@ -44,5 +44,23 @@ describe("getVideoSource", () => {
 
   test("usa outras plataformas como link de incorporação", () => {
     assert.deepEqual(getVideoSource("https://player.exemplo.com/embed/xyz"), { kind: "iframe", url: "https://player.exemplo.com/embed/xyz" });
+  });
+});
+
+describe("getYouTubeId e getYouTubeThumbnail", () => {
+  test("extrai o id dos formatos de link usados nos depoimentos", () => {
+    assert.equal(getYouTubeId("https://youtu.be/7J-DIUGUpfQ"), "7J-DIUGUpfQ");
+    assert.equal(getYouTubeId("https://www.youtube.com/shorts/qiuZcIJwIXA?feature=share"), "qiuZcIJwIXA");
+    assert.equal(getYouTubeId("https://www.youtube.com/watch?v=iAezB6xcdm8"), "iAezB6xcdm8");
+  });
+
+  test("devolve null para links que não são do YouTube", () => {
+    assert.equal(getYouTubeId("https://vimeo.com/123456789"), null);
+    assert.equal(getYouTubeId("não é um link"), null);
+    assert.equal(getYouTubeThumbnail("https://vimeo.com/123456789"), null);
+  });
+
+  test("monta a miniatura do YouTube", () => {
+    assert.equal(getYouTubeThumbnail("https://youtu.be/q75kB_M_ci0"), "https://i.ytimg.com/vi/q75kB_M_ci0/hqdefault.jpg");
   });
 });

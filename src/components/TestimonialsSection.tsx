@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
-import { getVideoSource } from "@/lib/video";
+import { getVideoSource, getYouTubeThumbnail } from "@/lib/video";
 
 const THUMBS = import.meta.glob<string>("../assets/testimonials/*.{jpg,jpeg,png,webp}", {
   eager: true,
@@ -35,7 +35,8 @@ function VideoCard({
   onPlay: () => void;
 }) {
   const source = getVideoSource(item.video);
-  const thumb = thumbFor(item.slug);
+  const [thumbFailed, setThumbFailed] = useState(false);
+  const thumb = thumbFor(item.slug) ?? (thumbFailed ? undefined : getYouTubeThumbnail(item.video) ?? undefined);
   if (!source) return null;
 
   return (
@@ -56,7 +57,7 @@ function VideoCard({
       ) : (
         <button type="button" onClick={onPlay} aria-label={`Reproduzir depoimento de ${item.name}`} className="video-play group absolute inset-0 h-full w-full overflow-hidden text-left">
           {thumb ? (
-            <img src={thumb} alt={`Depoimento de ${item.name}, aluno do CCD`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "center 30%" }} />
+            <img src={thumb} alt={`Depoimento de ${item.name}, aluno do CCD`} loading="lazy" onError={() => setThumbFailed(true)} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "center 30%" }} />
           ) : (
             <span className="absolute inset-0 grid place-items-center bg-[linear-gradient(145deg,hsl(216_62%_12%),hsl(216_52%_22%))] text-6xl font-extrabold tracking-tight text-white/10" aria-hidden="true">
               {initials(item.name)}
@@ -99,12 +100,12 @@ export default function TestimonialsSection() {
     <section id="depoimentos" aria-labelledby="depoimentos-titulo" className="hero-bg px-6 py-10 md:py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="section-label mb-4">PROVA SOCIAL</p>
+          <p className="section-label mb-4">Transformação</p>
           <h2 id="depoimentos-titulo" className="text-2xl md:text-3xl lg:text-[2.35rem]">
-            O que dizem os <span className="gold-text">alunos do CCD</span>
+            O que dizem os <span className="gold-text">meus alunos</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            O CCD foi desenhado para <strong className="text-foreground">acelerar seus resultados e multiplicar seu faturamento.</strong> Quem seguiu a metodologia teve os resultados transformados.
+            Quem seguiu a metodologia, teve seus resultados transformados.
           </p>
         </div>
 
