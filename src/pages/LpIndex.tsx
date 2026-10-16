@@ -91,7 +91,7 @@ export default function Index() {
               EVENTO EXCLUSIVO PARA CONTADORES
             </span>
             <h1 className="text-balance text-2xl leading-[1.12] md:text-3xl lg:text-[2.35rem]">
-              Por que alguns contadores faturam <span className="gold-text">10x mais</span> que você com menos clientes e menos horas?
+              Por que alguns contadores <span className="gold-text">faturam 10x mais</span> que você com menos clientes e <span className="gold-text">menos horas</span>?
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground md:text-xl">
               Dia 11/11, <strong className="text-foreground">às 19h51</strong>, Anderson Maisse mostra ao vivo como criar novos serviços na própria carteira, montar processos que rodam sem você e aumentar o lucro sem contratar.
