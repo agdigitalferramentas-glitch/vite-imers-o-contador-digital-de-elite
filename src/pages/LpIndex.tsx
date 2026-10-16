@@ -158,7 +158,8 @@ export default function Index() {
             <div className="navy-card card-dark p-8">
               <p className="text-muted-foreground"><strong className="text-foreground">Lucro líquido do mês ÷ horas trabalhadas</strong> = quanto você realmente ganha por hora.</p>
             </div>
-            <p>Deu menos de <strong className="gold-text">R$ 50</strong>? Você ganha menos que um motorista de aplicativo, carregando o CNPJ de dezenas de empresas, o Fisco, a equipe e cliente no fim de semana.</p>
+            <p className="pain-callout">Deu menos de <strong className="pain-number">R$ 50</strong>?</p>
+            <p>Você ganha menos que um motorista de aplicativo, carregando o CNPJ de dezenas de empresas, o Fisco, a equipe e cliente no fim de semana.</p>
             <p>O contador que fatura 10x mais não trabalha mais horas. Ele cria serviços que o cliente valoriza, usa propostas que vendem sozinhas e processos que não dependem dele. Não precisa de 200 clientes pagando pouco, e sim de mais lucro com a base que já tem.</p>
             <p className="text-xl text-foreground">A boa notícia? <span className="gold-text">Você não precisa descobrir isso sozinho.</span></p>
           </div>
