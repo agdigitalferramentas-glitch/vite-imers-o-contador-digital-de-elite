@@ -219,7 +219,7 @@ const included = [
 
 export function Ticket_() {
   return (
-    <section id="ingresso" className="bg-hero border-t px-5 py-20">
+    <section className="bg-hero border-t px-5 py-20">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <Eyebrow>Vagas limitadas | Edição Black Friday</Eyebrow>
@@ -227,7 +227,7 @@ export function Ticket_() {
           <p className="mt-4 font-bold">11 de novembro, às 19h51 | Ao vivo pelo Zoom</p>
         </Reveal>
         <Reveal delay={100} className="mt-10">
-          <div className="rounded-3xl border-2 border-cta bg-card p-6 text-left shadow-cta sm:p-10">
+          <div id="ingresso" className="scroll-mt-4 rounded-3xl border-2 border-cta bg-card p-6 text-left shadow-cta sm:p-10">
             <p className="text-center text-sm font-extrabold uppercase tracking-widest text-muted-foreground">Seu ingresso</p>
             <p className="font-display mt-2 text-center text-7xl text-cta sm:text-8xl">R$ 27</p>
             <p className="text-center text-balance text-sm italic text-muted-foreground">Pagamento único. <span className="whitespace-nowrap">Sem mensalidade.</span></p>
@@ -302,8 +302,6 @@ export function FinalCall() {
         <p className="mt-4 text-muted-foreground">Não fique de fora da Imersão Contador Digital de Elite, Edição Black Friday.</p>
         <div className="mt-8"><CtaButton>Quero minha vaga por R$ 27</CtaButton></div>
       </Reveal>
-      <Marquee />
-      <div className="h-6" />
     </section>
   );
 }

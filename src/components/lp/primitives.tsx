@@ -38,6 +38,19 @@ export function CtaButton({ children, className, checkout = false }: { children:
   return (
     <a
       href={href}
+      onClick={checkout ? undefined : (e) => {
+        e.preventDefault();
+        const go = () => {
+          const el = document.getElementById("ingresso");
+          if (!el) return;
+          const top = el.getBoundingClientRect().top + window.scrollY - Math.max(16, (window.innerHeight - el.offsetHeight) / 2);
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        };
+        go();
+        setTimeout(go, 350);
+        setTimeout(go, 800);
+        history.replaceState(null, "", window.location.search + "#ingresso");
+      }}
       className={cn(
         "animate-pulse-cta inline-flex w-full items-center justify-center rounded-full bg-cta px-6 py-4 text-center text-sm font-extrabold uppercase tracking-wide text-cta-foreground shadow-cta transition hover:brightness-110 sm:w-auto sm:px-10 sm:text-base",
         className,
