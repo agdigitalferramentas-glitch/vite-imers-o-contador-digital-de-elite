@@ -4,28 +4,11 @@
    Não altera nenhuma outra rota.
    ============================================================ */
 
-.theme-bf {
-  --background: oklch(0.12 0 0);
-  --foreground: oklch(0.97 0 0);
-  --card: oklch(0.17 0 0);
-  --card-foreground: oklch(0.97 0 0);
-  --paper: oklch(1 0 0);
-  --primary: oklch(0.6 0.24 27);
-  --primary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.72 0 0);
-  --accent: oklch(0.6 0.24 27);
-  --accent-foreground: oklch(0.99 0 0);
-  --cta: oklch(0.83 0.22 142);
-  --cta-foreground: oklch(0.15 0.03 142);
-  --border: oklch(1 0 0 / 10%);
-  --ring: oklch(0.6 0.24 27);
-  --glow-red: 0 0 80px -10px color-mix(in oklab, var(--primary) 60%, transparent);
-  --glow-cta: 0 10px 40px -8px color-mix(in oklab, var(--cta) 70%, transparent);
+@import "./bf-critical.css";
 
-  /* Fontes da LP Black Friday (Anton para títulos, Manrope para texto) */
-  --font-display: "Anton", "Impact", sans-serif;
-  font-family: "Manrope", system-ui, sans-serif;
+/* Sem animação no mobile (< 768px): main thread livre */
+@media (max-width: 767px) {
+  .theme-bf .animate-pulse-cta { animation: none; }
 }
 
 /* h3 fora da regra: títulos dos cards e perguntas do FAQ devem ser Manrope;

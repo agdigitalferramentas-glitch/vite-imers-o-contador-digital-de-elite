@@ -29,7 +29,7 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
 
 import { CHECKOUT_URL as KIWIFY_URL, getCheckoutUrl } from "@/lib/checkout";
 
-export function CtaButton({ children, className, checkout = false }: { children: ReactNode; className?: string; checkout?: boolean }) {
+export function CtaButton({ children, className, checkout = false, unstyled = false }: { children: ReactNode; className?: string; checkout?: boolean; /** Só `className` (ex.: CTA da primeira dobra, estilizado em bf-critical.css). */ unstyled?: boolean }) {
   const [href, setHref] = useState(checkout ? KIWIFY_URL : CHECKOUT_URL);
   useEffect(() => {
     // Repassa UTMs, SRC e SCK da URL atual para o checkout (política compartilhada em src/lib/checkout.ts)
@@ -51,7 +51,7 @@ export function CtaButton({ children, className, checkout = false }: { children:
         setTimeout(go, 800);
         history.replaceState(null, "", window.location.search + "#ingresso");
       }}
-      className={cn(
+      className={unstyled ? className : cn(
         "animate-pulse-cta inline-flex w-full items-center justify-center rounded-full bg-cta px-6 py-4 text-center text-sm font-extrabold uppercase tracking-wide text-cta-foreground shadow-cta transition hover:brightness-110 sm:w-auto sm:px-10 sm:text-base",
         className,
       )}

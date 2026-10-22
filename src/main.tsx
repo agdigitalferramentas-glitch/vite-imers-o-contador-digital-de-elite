@@ -12,7 +12,8 @@ const LpIndexE = lazy(() => import("@/pages/LpIndexE"));
 const LpIndexF = lazy(() => import("@/pages/LpIndexF"));
 const LpIndexG = lazy(() => import("@/pages/LpIndexG"));
 const LpObrigado = lazy(() => import("@/pages/LpObrigado"));
-const LpBf1126 = lazy(() => import("@/pages/LpBf1126"));
+const loadBf = () => import("@/pages/LpBf1126");
+let LpBf1126: React.ComponentType = lazy(loadBf);
 
 declare global {
   interface Window {
@@ -32,6 +33,16 @@ async function start() {
   }
   // rede de segurança: se o onload não rodou, garante que o CSS principal seja aplicado
   if (preload && preload.rel === "preload") preload.rel = "stylesheet";
+
+  // /bf1126 tem primeira dobra estática no HTML: baixa a página antes de montar, para o React
+  // não trocar esse HTML por um fallback vazio do Suspense (evita piscar e CLS).
+  if (/^\/bf1126\/?$/.test(location.pathname)) {
+    try {
+      LpBf1126 = (await loadBf()).default;
+    } catch {
+      /* mantém o lazy como reserva */
+    }
+  }
 
   ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
