@@ -14,7 +14,7 @@ import path from "path";
 function homeShell(): Plugin {
   let root = process.cwd();
 
-  async function renderShell(server?: ViteDevServer): Promise<string> {
+  async function renderShell(server?: ViteDevServer, page: "home" | "bf" = "home"): Promise<string> {
     let temp: ViteDevServer | undefined;
     const srv =
       server ??
@@ -29,12 +29,40 @@ function homeShell(): Plugin {
         plugins: [react()],
       }));
     try {
+      if (page === "bf") {
+        const mod = await srv.ssrLoadModule("/src/shell/bfShell.tsx");
+        return mod.renderBfShell() as string;
+      }
       const mod = await srv.ssrLoadModule("/src/shell/homeShell.tsx");
       const html: string = mod.renderHomeShell();
       return html.replace(/^<main /, "<main data-shell ");
     } finally {
       await temp?.close();
     }
+  }
+
+  /**
+   * LP /bf1126: gera bf1126/index.html a partir do index.html da raiz (mesmos scripts de rastreamento),
+   * trocando metadados, fontes pré-carregadas, CSS crítico (src/bf-critical.css) e a primeira dobra estática.
+   */
+  async function renderBfPage(server?: ViteDevServer): Promise<string> {
+    const base = await readFile(path.resolve(root, "index.html"), "utf8");
+    const css = await readFile(path.resolve(root, "src/bf-critical.css"), "utf8");
+    const { code } = await transformWithEsbuild(css, "bf-critical.css", { loader: "css", minify: true });
+    const shell = await renderShell(server, "bf");
+    const title = "Imersão Contador Digital de Elite | Edição Black Friday";
+    const desc = "11 de novembro, às 19h51. Descubra por que alguns contadores faturam 10x mais com menos clientes. Ingresso: R$ 27.";
+    const fonts =
+      `<link rel="preload" href="/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin />` +
+      `<link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin />` +
+      `<link id="bf-favicon" rel="icon" type="image/png" href="/favicon-bf.png" />`;
+    return base
+      .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
+      .replace(/(<meta (?:name|property)="(?:og:|twitter:)?title" content=")[^"]*"/g, `$1${title}"`)
+      .replace(/(<meta (?:name|property)="(?:og:|twitter:)?description" content=")[^"]*"/g, `$1${desc}"`)
+      .replace(/<link rel="preload" href="\/fonts\/raleway[^>]*>/, fonts)
+      .replace("<!-- CRITICAL_CSS -->", () => `<style>${code.trim()}</style>`)
+      .replace("<!-- HOME_SHELL -->", () => shell);
   }
 
   return {
@@ -45,6 +73,7 @@ function homeShell(): Plugin {
     transformIndexHtml: {
       order: "pre",
       async handler(html, ctx) {
+        if (/^\/?bf1126\//.test(ctx.path)) return renderBfPage(ctx.server);
         const css = await readFile(path.resolve(root, "src/critical.css"), "utf8");
         const { code } = await transformWithEsbuild(css, "critical.css", { loader: "css", minify: true });
         const shell = await renderShell(ctx.server);
@@ -97,6 +126,11 @@ export default defineConfig({
     // sem o polyfill de modulepreload (navegadores-alvo já suportam)
     modulePreload: { polyfill: false },
     rollupOptions: {
+      // multi-página: a /bf1126 ganha um HTML próprio com a primeira dobra estática (servido por try_files $uri/)
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        bf1126: path.resolve(__dirname, "bf1126/index.html"),
+      },
       output: {
         // React em um chunk próprio, com cache longo: só muda quando a versão do React mudar
         manualChunks: { "react-vendor": ["react", "react-dom"] },
