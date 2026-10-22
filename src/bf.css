@@ -48,6 +48,13 @@
   font-family: "Manrope", system-ui, sans-serif;
 }
 
+/* Título da Garantia (h3.font-display em Anton): a regra global de headings
+   (styles.css) aplica font-weight 800 e gera negrito sintético no Anton
+   (que só tem peso 400). Volta ao peso padrão, igual aos demais títulos. */
+.theme-bf h3.font-display {
+  font-weight: 400;
+}
+
 /* A utilidade .font-display do Tailwind (@theme inline) compila a stack literal
    e ignora o override de --font-display do escopo .theme-bf. Garante Anton na
    marquee, no nome "Anderson Maisse" e no preço R$ 27 (elementos <span>/<p>). */
