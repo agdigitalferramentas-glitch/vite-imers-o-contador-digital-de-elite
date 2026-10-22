@@ -42,7 +42,7 @@
   --muted-foreground: oklch(0.72 0 0);
   --accent: oklch(0.6 0.24 27);
   --accent-foreground: oklch(0.99 0 0);
-  --cta: oklch(0.82 0.2 142);
+  --cta: oklch(0.83 0.22 142);
   --cta-foreground: oklch(0.15 0.03 142);
   --border: oklch(1 0 0 / 10%);
   --ring: oklch(0.6 0.24 27);

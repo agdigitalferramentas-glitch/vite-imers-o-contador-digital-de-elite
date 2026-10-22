@@ -1,49 +1,7 @@
-import { Calendar, Check, Play, ShieldCheck, Ticket } from "lucide-react";
-import anderson from "@/assets/bf/bf-anderson.jpg";
-import andersonHero from "@/assets/bf/bf-anderson-hero.jpg";
-import logo from "@/assets/bf/bf-logo-white.png";
-import depoimentoJobson from "@/assets/bf/bf-depoimento-jobson.jpg";
-import depoimentoBruno from "@/assets/bf/bf-depoimento-bruno.jpg";
-import depoimentoGilberto from "@/assets/bf/bf-depoimento-gilberto.jpg";
-import depoimentoAlesandro from "@/assets/bf/bf-depoimento-alesandro.jpg";
-import depoimentoAndre from "@/assets/bf/bf-depoimento-andre.jpg";
+import { Check, Play, ShieldCheck } from "lucide-react";
+import ResponsiveImg from "@/components/ResponsiveImg";
 import { CtaButton, Eyebrow, Reveal } from "./primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
-export function Hero() {
-  return (
-    <section className="bg-hero relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-20 pt-14 md:grid-cols-[1.15fr_1fr] md:items-center md:pt-20">
-        <Reveal>
-          <img src={logo} alt="Imersão Contador Digital de Elite" width={1400} height={421} className="w-[min(55.5vw,186px)] sm:w-[min(74vw,248px)]" />
-          <div className="mt-3"><Eyebrow>Edição especial Black Friday</Eyebrow></div>
-          <p className="mt-6 text-balance text-sm font-bold uppercase tracking-wider text-primary">EVENTO EXCLUSIVO PARA CONTADORES</p>
-          <h1 className="font-display mt-3 text-[1.8rem] uppercase leading-[1.15] sm:text-5xl lg:text-[3.2rem] lg:leading-[1.18]">
-            Contador, a melhor <span className="text-primary">Black Friday</span> da contabilidade está chegando!
-          </h1>
-          <p className="mt-5 text-base font-bold sm:text-lg">Descubra como um seleto número de contadores faturam 10x mais com menos clientes e menos horas de trabalho.</p>
-          <p className="mt-4 text-[14px] font-normal sm:text-base">
-            Garanta agora seu acesso à oferta exclusiva de Black Friday, que será revelada apenas durante o evento Imersão Contador Digital de Elite.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-nowrap lg:gap-2">
-            <span className="inline-flex items-center gap-2 rounded-lg border bg-card px-4 py-3 text-[0.79rem] font-bold lg:gap-1.5 lg:px-3 lg:py-2.5">
-              <Calendar className="h-4 w-4 shrink-0 text-primary" /> 11 de novembro, às 19h51 | Online e <span className="whitespace-nowrap">ao vivo</span>
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-lg border border-primary bg-card px-4 py-3 text-[0.79rem] font-extrabold lg:gap-1.5 lg:px-3 lg:py-2.5">
-              <Ticket className="h-4 w-4 shrink-0 text-primary" /> INGRESSO: APENAS R$ 27
-            </span>
-          </div>
-          <div className="mt-8"><CtaButton>Garantir minha vaga por R$ 27</CtaButton></div>
-        </Reveal>
-        <Reveal delay={150} className="relative mx-auto w-full max-w-sm md:max-w-none">
-          <div className="absolute -inset-4 -skew-y-6 rounded-3xl bg-primary/80 shadow-glow" />
-          <img src={andersonHero} alt="Anderson Maisse" width={1000} height={1285} className="relative rounded-2xl object-cover" />
-          <span className="font-display absolute -bottom-6 left-1/2 -translate-x-1/2 -rotate-6 whitespace-nowrap text-5xl uppercase italic text-stroke sm:text-6xl">Black Friday</span>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
 
 const steps = [
   ["01", "Novos serviços que geram caixa na carteira que você já tem", "Descubra oportunidades de novas receitas sem depender apenas de conquistar mais clientes."],
@@ -104,11 +62,11 @@ export function Opportunity() {
 }
 
 const testimonials = [
-  { name: "Jobson Medeiros", img: depoimentoJobson, url: "https://youtu.be/7J-DIUGUpfQ", featured: true },
-  { name: "Bruno Nascimento", img: depoimentoBruno, url: "https://youtu.be/iAezB6xcdm8" },
-  { name: "Gilberto Cunha", img: depoimentoGilberto, url: "https://www.youtube.com/shorts/qiuZcIJwIXA" },
-  { name: "Alesandro Damaceno", img: depoimentoAlesandro, url: "https://youtu.be/STJVUHrbxhk" },
-  { name: "André Ortelan", img: depoimentoAndre, url: "https://youtu.be/q75kB_M_ci0" },
+  { name: "Jobson Medeiros", img: "bf-depoimento-jobson", url: "https://youtu.be/7J-DIUGUpfQ", featured: true },
+  { name: "Bruno Nascimento", img: "bf-depoimento-bruno", url: "https://youtu.be/iAezB6xcdm8" },
+  { name: "Gilberto Cunha", img: "bf-depoimento-gilberto", url: "https://www.youtube.com/shorts/qiuZcIJwIXA" },
+  { name: "Alesandro Damaceno", img: "bf-depoimento-alesandro", url: "https://youtu.be/STJVUHrbxhk" },
+  { name: "André Ortelan", img: "bf-depoimento-andre", url: "https://youtu.be/q75kB_M_ci0" },
 ];
 
 function VideoCard({ name, img, url, featured = false }: { name: string; img: string; url: string; featured?: boolean }) {
@@ -120,12 +78,12 @@ function VideoCard({ name, img, url, featured = false }: { name: string; img: st
       aria-label={`Assistir depoimento de ${name}`}
       className="group relative block aspect-video overflow-hidden rounded-2xl border bg-card text-left shadow-glow"
     >
-      <img
-        src={img}
+      <ResponsiveImg
+        name={img}
         alt={`Depoimento de ${name}`}
         width={1280}
         height={720}
-        loading="lazy"
+        sizes={featured ? "(min-width: 768px) 768px, calc(100vw - 40px)" : "(min-width: 1024px) 270px, (min-width: 640px) 45vw, calc(100vw - 40px)"}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         style={{ objectPosition: "center 30%" }}
       />
@@ -190,7 +148,7 @@ export function Authority() {
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center">
         <Reveal className="relative order-2 mx-auto w-full max-w-sm md:order-1 md:max-w-none">
           <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl border-2 border-primary" />
-          <img src={anderson} alt="Anderson Maisse" width={1000} height={1286} loading="lazy" className="relative rounded-2xl object-cover" />
+          <ResponsiveImg name="bf-anderson" alt="Anderson Maisse" width={1000} height={1286} sizes="(min-width: 1152px) 552px, (min-width: 768px) 45vw, 384px" className="relative w-full rounded-2xl object-cover" />
         </Reveal>
         <Reveal className="order-1 md:order-2">
           <h2 className="font-display text-3xl uppercase sm:text-5xl">Quem vai conduzir essa imersão?</h2>
