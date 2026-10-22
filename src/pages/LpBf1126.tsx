@@ -1,29 +1,30 @@
-import { useEffect } from "react";
-import { Authority, Faq, FinalCall, Guarantee, Hero, Learn, Opportunity, Testimonials, Ticket_ } from "@/components/lp/sections";
-import { MarqueeBand } from "@/components/lp/primitives";
+import { lazy, Suspense, useEffect } from "react";
+import BfHero, { BF_CTA_LABEL } from "@/components/lp/BfHero";
+import { CtaButton } from "@/components/lp/primitives";
 import "@/bf.css";
 
-const FONT_ID = "bf-fonts";
+// Seções abaixo da dobra (marquees, depoimentos, FAQ com Radix…) fora do bundle inicial
+const BfBelowFold = lazy(() => import("@/components/lp/BfBelowFold"));
+
 const FAVICON_ID = "bf-favicon";
+
+/** Mesma marcação do HTML estático da primeira dobra (src/shell/bfShell.tsx). */
+export function BfShellLayout({ cta, below }: { cta: React.ReactNode; below: React.ReactNode }) {
+  return (
+    <div className="theme-bf">
+      <main className="overflow-x-hidden">
+        <BfHero cta={cta} />
+        {below}
+      </main>
+    </div>
+  );
+}
 
 export default function LpBf1126() {
   useEffect(() => {
     document.title = "Imersão Contador Digital de Elite | Edição Black Friday";
 
-    // Fontes Anton + Manrope carregadas apenas nesta página
-    if (!document.getElementById(FONT_ID)) {
-      const preconnect = document.createElement("link");
-      preconnect.rel = "preconnect";
-      preconnect.href = "https://fonts.googleapis.com";
-      preconnect.id = `${FONT_ID}-pre`;
-      const fonts = document.createElement("link");
-      fonts.id = FONT_ID;
-      fonts.rel = "stylesheet";
-      fonts.href = "https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;700;800&display=swap";
-      document.head.append(preconnect, fonts);
-    }
-
-    // Favicon exclusivo desta LP (não altera o favicon global do index.html)
+    // Favicon exclusivo desta LP (no HTML estático já vem no <head>; aqui cobre a navegação dentro da SPA)
     let favicon = document.getElementById(FAVICON_ID) as HTMLLinkElement | null;
     if (!favicon) {
       favicon = document.createElement("link");
@@ -47,30 +48,14 @@ export default function LpBf1126() {
   }, []);
 
   return (
-    <div className="theme-bf bg-background text-foreground min-h-screen">
-      <main className="overflow-x-hidden">
-        <Hero />
-        <MarqueeBand />
-        <Learn />
-        <Opportunity />
-        <Testimonials />
-        <Authority />
-        <MarqueeBand />
-        <Ticket_ />
-        <Guarantee />
-        <Faq />
-        <FinalCall />
-        <MarqueeBand />
-      </main>
-      <footer className="border-t border-border bg-black px-6 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-          <p className="text-sm text-muted-foreground">© 2026 Anderson Maisse — Todos os direitos reservados</p>
-          <div className="text-sm text-muted-foreground md:text-right">
-            <p>Transformamos conhecimento em negócios lucrativos.</p>
-            <p>Venha ser um expert <a href="https://agwebi.com.br/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline">AGWEBi</a></p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    <BfShellLayout
+      cta={<CtaButton unstyled className="bfh-cta">{BF_CTA_LABEL}</CtaButton>}
+      below={
+        // reserva altura enquanto o chunk chega: o rodapé não "sobe" para a primeira dobra
+        <Suspense fallback={<div style={{ minHeight: "100vh" }} aria-hidden="true" />}>
+          <BfBelowFold />
+        </Suspense>
+      }
+    />
   );
 }
