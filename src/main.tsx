@@ -46,6 +46,7 @@ async function start() {
             <Route path="/f" element={<LpIndexF />} />
             <Route path="/g" element={<LpIndexG />} />
             <Route path="/obrigado" element={<LpObrigado />} />
+            <Route path="/bf1126" element={<LpBf1126 />} />
             <Route path="*" element={<LpIndex />} />
           </Routes>
         </Suspense>
