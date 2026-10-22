@@ -12,6 +12,7 @@ const LpIndexE = lazy(() => import("@/pages/LpIndexE"));
 const LpIndexF = lazy(() => import("@/pages/LpIndexF"));
 const LpIndexG = lazy(() => import("@/pages/LpIndexG"));
 const LpObrigado = lazy(() => import("@/pages/LpObrigado"));
+const LpBf1126 = lazy(() => import("@/pages/LpBf1126"));
 
 declare global {
   interface Window {
