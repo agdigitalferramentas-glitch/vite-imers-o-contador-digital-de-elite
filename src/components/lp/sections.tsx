@@ -7,7 +7,7 @@ import depoimentoBruno from "@/assets/bf/bf-depoimento-bruno.jpg";
 import depoimentoGilberto from "@/assets/bf/bf-depoimento-gilberto.jpg";
 import depoimentoAlesandro from "@/assets/bf/bf-depoimento-alesandro.jpg";
 import depoimentoAndre from "@/assets/bf/bf-depoimento-andre.jpg";
-import { CtaButton, Eyebrow, Marquee, Reveal } from "./primitives";
+import { CtaButton, Eyebrow, Reveal } from "./primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export function Hero() {
