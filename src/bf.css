@@ -28,9 +28,10 @@
   font-family: "Manrope", system-ui, sans-serif;
 }
 
+/* h3 fora da regra: títulos dos cards e perguntas do FAQ devem ser Manrope;
+   o título da garantia usa a classe .font-display explicitamente. */
 .theme-bf h1,
 .theme-bf h2,
-.theme-bf h3,
 .theme-bf h4,
 .theme-bf h5,
 .theme-bf h6 {
@@ -38,6 +39,13 @@
   font-weight: 400;
   letter-spacing: 0.01em;
   text-wrap: balance;
+}
+
+/* A regra global de headings (styles.css) também resolve --font-display no
+   escopo .theme-bf; aqui h3 volta para Manrope: títulos dos cards e perguntas
+   do FAQ. O título da garantia segue Anton via classe .font-display. */
+.theme-bf h3 {
+  font-family: "Manrope", system-ui, sans-serif;
 }
 
 /* A utilidade .font-display do Tailwind (@theme inline) compila a stack literal
