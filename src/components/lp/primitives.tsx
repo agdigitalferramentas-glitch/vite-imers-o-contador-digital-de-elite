@@ -27,22 +27,13 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
   );
 }
 
-export const KIWIFY_URL = "https://pay.kiwify.com.br/3IfZBFB";
-const TRACKED = /^(utm_[a-z_]+|src|sck)$/i;
-
-/** Appends UTMs, src and sck from the current page URL to the checkout URL. */
-export function buildCheckoutUrl(base: string, search: string) {
-  const url = new URL(base);
-  new URLSearchParams(search).forEach((v, k) => {
-    if (TRACKED.test(k) && v) url.searchParams.set(k, v);
-  });
-  return url.toString();
-}
+import { CHECKOUT_URL as KIWIFY_URL, getCheckoutUrl } from "@/lib/checkout";
 
 export function CtaButton({ children, className, checkout = false }: { children: ReactNode; className?: string; checkout?: boolean }) {
   const [href, setHref] = useState(checkout ? KIWIFY_URL : CHECKOUT_URL);
   useEffect(() => {
-    if (checkout) setHref(buildCheckoutUrl(KIWIFY_URL, window.location.search));
+    // Repassa UTMs, SRC e SCK da URL atual para o checkout (política compartilhada em src/lib/checkout.ts)
+    if (checkout) setHref(getCheckoutUrl(window.location.search));
   }, [checkout]);
   return (
     <a
