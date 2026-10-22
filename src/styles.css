@@ -568,6 +568,44 @@
   }
 }
 
+/* ============================================================
+   Utilitários da LP Black Friday (/bf1126) — nomes exclusivos,
+   não colidem com o tema das demais páginas
+   ============================================================ */
+@utility shadow-glow {
+  box-shadow: var(--glow-red);
+}
+@utility shadow-cta {
+  box-shadow: var(--glow-cta);
+}
+@utility bg-hero {
+  background:
+    radial-gradient(60% 50% at 80% 20%, color-mix(in oklab, var(--primary) 35%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 0% 100%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%),
+    var(--background);
+}
+@utility text-stroke {
+  -webkit-text-stroke: 1.5px var(--primary);
+  color: transparent;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes pulse-cta {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+@utility animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+@utility animate-marquee-reverse {
+  animation: marquee 30s linear infinite reverse;
+}
+@utility animate-pulse-cta {
+  animation: pulse-cta 2.4s ease-in-out infinite;
+}
+
 /* Garantia de satisfação */
 .theme-light .guarantee-card {
   overflow: hidden;
