@@ -1,12 +1,12 @@
 import { Calendar, Check, Play, ShieldCheck, Ticket } from "lucide-react";
-import anderson from "@/assets/anderson.jpg";
-import andersonHero from "@/assets/anderson-hero.jpg";
-import logo from "@/assets/logo-white.png";
-import depoimentoJobson from "@/assets/depoimento-jobson.jpg";
-import depoimentoBruno from "@/assets/depoimento-bruno.jpg";
-import depoimentoGilberto from "@/assets/depoimento-gilberto.jpg";
-import depoimentoAlesandro from "@/assets/depoimento-alesandro.jpg";
-import depoimentoAndre from "@/assets/depoimento-andre.jpg";
+import anderson from "@/assets/bf/bf-anderson.jpg";
+import andersonHero from "@/assets/bf/bf-anderson-hero.jpg";
+import logo from "@/assets/bf/bf-logo-white.png";
+import depoimentoJobson from "@/assets/bf/bf-depoimento-jobson.jpg";
+import depoimentoBruno from "@/assets/bf/bf-depoimento-bruno.jpg";
+import depoimentoGilberto from "@/assets/bf/bf-depoimento-gilberto.jpg";
+import depoimentoAlesandro from "@/assets/bf/bf-depoimento-alesandro.jpg";
+import depoimentoAndre from "@/assets/bf/bf-depoimento-andre.jpg";
 import { CtaButton, Eyebrow, Marquee, Reveal } from "./primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
