@@ -28,6 +28,13 @@ JOBS["garantia-selo"] = ("selo-garantia.webp", [224, 336, 448], "lossless")
 for slug in ("jobson", "bruno", "gilberto", "alessandro", "andre"):
     JOBS[f"depoimento-{slug}"] = (f"testimonials/{slug}.webp", [480, 800, 1280], 76)
 
+# LP Black Friday (/bf1126)
+JOBS["bf-logo"] = ("bf/bf-logo-white.png", [186, 248, 372, 496], 85)
+JOBS["bf-hero"] = ("bf/bf-anderson-hero.jpg", [384, 576, 768, 1000], 74)
+JOBS["bf-anderson"] = ("bf/bf-anderson.jpg", [384, 576, 768, 1000], 74)
+for slug in ("jobson", "bruno", "gilberto", "alesandro", "andre"):
+    JOBS[f"bf-depoimento-{slug}"] = (f"bf/bf-depoimento-{slug}.jpg", [400, 640, 960], 74)
+
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
