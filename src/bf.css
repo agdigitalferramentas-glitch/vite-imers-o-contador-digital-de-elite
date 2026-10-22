@@ -28,9 +28,10 @@
   font-family: "Manrope", system-ui, sans-serif;
 }
 
+/* h3 fora da regra: títulos dos cards e perguntas do FAQ devem ser Manrope;
+   o título da garantia usa a classe .font-display explicitamente. */
 .theme-bf h1,
 .theme-bf h2,
-.theme-bf h3,
 .theme-bf h4,
 .theme-bf h5,
 .theme-bf h6 {
