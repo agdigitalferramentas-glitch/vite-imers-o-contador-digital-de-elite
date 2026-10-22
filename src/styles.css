@@ -40,6 +40,11 @@
   --color-gold-soft: var(--gold-soft);
   --color-accent-ink: var(--accent-ink, var(--gold));
 
+  /* Tokens extras usados só pela LP Black Friday (/bf1126); inertes nas demais rotas */
+  --color-paper: var(--paper);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 10px;
