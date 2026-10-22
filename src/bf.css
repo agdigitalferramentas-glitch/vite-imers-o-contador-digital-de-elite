@@ -41,6 +41,13 @@
   text-wrap: balance;
 }
 
+/* A regra global de headings (styles.css) também resolve --font-display no
+   escopo .theme-bf; aqui h3 volta para Manrope: títulos dos cards e perguntas
+   do FAQ. O título da garantia segue Anton via classe .font-display. */
+.theme-bf h3 {
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
 /* A utilidade .font-display do Tailwind (@theme inline) compila a stack literal
    e ignora o override de --font-display do escopo .theme-bf. Garante Anton na
    marquee, no nome "Anderson Maisse" e no preço R$ 27 (elementos <span>/<p>). */
