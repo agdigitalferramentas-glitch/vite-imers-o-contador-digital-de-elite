@@ -12,6 +12,7 @@ const LpIndexE = lazy(() => import("@/pages/LpIndexE"));
 const LpIndexF = lazy(() => import("@/pages/LpIndexF"));
 const LpIndexG = lazy(() => import("@/pages/LpIndexG"));
 const LpObrigado = lazy(() => import("@/pages/LpObrigado"));
+const LpBf1126 = lazy(() => import("@/pages/LpBf1126"));
 
 declare global {
   interface Window {
@@ -45,6 +46,7 @@ async function start() {
             <Route path="/f" element={<LpIndexF />} />
             <Route path="/g" element={<LpIndexG />} />
             <Route path="/obrigado" element={<LpObrigado />} />
+            <Route path="/bf1126" element={<LpBf1126 />} />
             <Route path="*" element={<LpIndex />} />
           </Routes>
         </Suspense>
