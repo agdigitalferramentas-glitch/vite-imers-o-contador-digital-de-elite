@@ -1,0 +1,205 @@
+/* ============================================================
+   CSS crítico da LP /bf1126: fontes, tokens do tema e primeira dobra.
+   Fonte única: inserido inline no <head> de bf1126/index.html (vite.config.ts)
+   e importado por src/bf.css para a navegação dentro da SPA.
+   ============================================================ */
+
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/anton-latin-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/manrope-latin-var.woff2") format("woff2");
+}
+/* fallbacks com métricas próximas: reduzem o salto quando a fonte final chega */
+@font-face {
+  font-family: "Anton Fallback";
+  src: local("Impact"), local("Arial Narrow Bold"), local("Arial Bold");
+  size-adjust: 104%;
+}
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans");
+  size-adjust: 103%;
+}
+
+.theme-bf {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.17 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --paper: oklch(1 0 0);
+  --primary: oklch(0.6 0.24 27);
+  --primary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.6 0.24 27);
+  --accent-foreground: oklch(0.99 0 0);
+  --cta: oklch(0.82 0.2 142);
+  --cta-foreground: oklch(0.15 0.03 142);
+  --border: oklch(1 0 0 / 10%);
+  --ring: oklch(0.6 0.24 27);
+  --glow-red: 0 0 80px -10px color-mix(in oklab, var(--primary) 60%, transparent);
+  --glow-cta: 0 10px 40px -8px color-mix(in oklab, var(--cta) 70%, transparent);
+
+  /* Fontes da LP Black Friday (Anton para títulos, Manrope para texto) */
+  --font-display: "Anton", "Anton Fallback", "Impact", sans-serif;
+  font-family: "Manrope", "Manrope Fallback", system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Primeira dobra ---------- */
+.bfh {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 80% 20%, color-mix(in oklab, var(--primary) 35%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 0% 100%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%),
+    var(--background);
+}
+.bfh *, .bfh *::before, .bfh *::after { box-sizing: border-box; margin: 0; }
+.bfh-grid {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 5rem;
+}
+.bfh img { display: block; max-width: 100%; height: auto; }
+.bfh-logo { width: min(55.5vw, 186px); }
+.bfh-eyebrow-wrap { margin-top: 0.75rem; }
+.bfh-eyebrow {
+  display: inline-block;
+  transform: skewX(-6deg);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-wrap: balance;
+}
+.bfh-kicker {
+  margin-top: 1.5rem;
+  color: var(--primary);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-wrap: balance;
+}
+.theme-bf .bfh-title {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.bfh-red { color: var(--primary); }
+.bfh-lead { margin-top: 1.25rem; font-size: 1rem; line-height: 1.5rem; font-weight: 700; text-wrap: pretty; }
+.bfh-sub { margin-top: 1rem; font-size: 14px; line-height: 1.5; font-weight: 400; text-wrap: pretty; }
+.bfh-chips { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.bfh-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0.75rem 1rem;
+  font-size: 0.79rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+.bfh-chip--hot { border-color: var(--primary); font-weight: 800; }
+.bfh-icon { width: 1rem; height: 1rem; flex-shrink: 0; color: var(--primary); }
+.bfh-nowrap { white-space: nowrap; }
+.bfh-cta-wrap { margin-top: 2rem; }
+.bfh-cta {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--cta);
+  color: var(--cta-foreground);
+  box-shadow: var(--glow-cta);
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  transition: filter 0.15s;
+}
+.bfh-cta:hover { filter: brightness(1.1); }
+.bfh-media { position: relative; width: 100%; max-width: 24rem; margin: 0 auto; }
+.bfh-glow {
+  position: absolute;
+  inset: -1rem;
+  transform: skewY(-6deg);
+  border-radius: 1.5rem;
+  background: color-mix(in oklab, var(--primary) 80%, transparent);
+  box-shadow: var(--glow-red);
+}
+.bfh-photo { position: relative; width: 100%; aspect-ratio: 1000 / 1285; border-radius: 1rem; object-fit: cover; }
+.bfh-stroke {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(-6deg);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  font-style: italic;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1.5px var(--primary);
+  color: transparent;
+}
+
+@media (min-width: 640px) {
+  .bfh-logo { width: min(74vw, 248px); }
+  .theme-bf .bfh-title { font-size: 3rem; }
+  .bfh-lead { font-size: 1.125rem; line-height: 1.75rem; }
+  .bfh-sub { font-size: 1rem; }
+  .bfh-chips { flex-direction: row; flex-wrap: wrap; }
+  .bfh-cta { width: auto; padding: 1rem 2.5rem; font-size: 1rem; line-height: 1.5rem; }
+  .bfh-stroke { font-size: 3.75rem; }
+}
+@media (min-width: 768px) {
+  .bfh-grid { grid-template-columns: 1.15fr 1fr; align-items: center; padding-top: 5rem; }
+  .bfh-media { max-width: none; }
+  .bfh-cta { animation: pulse-cta 2.4s ease-in-out infinite; }
+}
+@media (min-width: 1024px) {
+  .theme-bf .bfh-title { font-size: 3.2rem; line-height: 1.18; }
+  .bfh-chips { flex-wrap: nowrap; gap: 0.5rem; }
+  .bfh-chip { gap: 0.375rem; padding: 0.625rem 0.75rem; }
+}
+@keyframes pulse-cta {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bfh-cta { animation: none; }
+}
