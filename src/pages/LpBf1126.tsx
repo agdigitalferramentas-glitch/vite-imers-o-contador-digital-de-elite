@@ -1,6 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import BfHero, { BF_CTA_LABEL } from "@/components/lp/BfHero";
-import { CtaButton } from "@/components/lp/primitives";
+import BfHero, { BfHeroCta } from "@/components/lp/BfHero";
 import "@/bf.css";
 
 // Seções abaixo da dobra (marquees, depoimentos, FAQ com Radix…) fora do bundle inicial
@@ -49,7 +48,7 @@ export default function LpBf1126() {
 
   return (
     <BfShellLayout
-      cta={<CtaButton unstyled className="bfh-cta">{BF_CTA_LABEL}</CtaButton>}
+      cta={<BfHeroCta />}
       below={
         // reserva altura enquanto o chunk chega: o rodapé não "sobe" para a primeira dobra
         <Suspense fallback={<div style={{ minHeight: "100vh" }} aria-hidden="true" />}>

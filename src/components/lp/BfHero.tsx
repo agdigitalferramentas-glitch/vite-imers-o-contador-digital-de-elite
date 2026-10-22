@@ -60,4 +60,29 @@ export default function BfHero({ cta }: { cta: ReactNode }) {
   );
 }
 
+/** CTA da primeira dobra: rola até o card de oferta (#ingresso). Sem dependências pesadas (fora do chunk do tailwind-merge). */
+export function BfHeroCta() {
+  return (
+    <a
+      href="#ingresso"
+      className="bfh-cta"
+      onClick={(e) => {
+        e.preventDefault();
+        const go = () => {
+          const el = document.getElementById("ingresso");
+          if (!el) return;
+          const top = el.getBoundingClientRect().top + window.scrollY - Math.max(16, (window.innerHeight - el.offsetHeight) / 2);
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        };
+        go();
+        setTimeout(go, 350);
+        setTimeout(go, 800);
+        history.replaceState(null, "", window.location.search + "#ingresso");
+      }}
+    >
+      {BF_CTA_LABEL}
+    </a>
+  );
+}
+
 export const BF_CTA_LABEL = "Garantir minha vaga por R$ 27";
