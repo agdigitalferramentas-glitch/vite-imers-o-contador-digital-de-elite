@@ -40,6 +40,13 @@
   text-wrap: balance;
 }
 
+/* A utilidade .font-display do Tailwind (@theme inline) compila a stack literal
+   e ignora o override de --font-display do escopo .theme-bf. Garante Anton na
+   marquee, no nome "Anderson Maisse" e no preço R$ 27 (elementos <span>/<p>). */
+.theme-bf .font-display {
+  font-family: var(--font-display);
+}
+
 .theme-bf p,
 .theme-bf li,
 .theme-bf dd {
