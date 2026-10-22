@@ -34,7 +34,8 @@ export default function BfHero({ cta }: { cta: ReactNode }) {
           </p>
           <div className="bfh-chips">
             <span className="bfh-chip">
-              <Calendar className="bfh-icon" aria-hidden="true" /> 11 de novembro, às 19h51 | Online e <span className="bfh-nowrap">ao vivo</span>
+              <Calendar className="bfh-icon" aria-hidden="true" />
+              <span>11 de novembro, às 19h51 | Online e <span className="bfh-nowrap">ao vivo</span></span>
             </span>
             <span className="bfh-chip bfh-chip--hot">
               <Ticket className="bfh-icon" aria-hidden="true" /> INGRESSO: APENAS R$ 27
