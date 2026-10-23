@@ -12,7 +12,7 @@ export function BfShellLayout({ cta, below }: { cta: React.ReactNode; below: Rea
   return (
     <div className="theme-bf">
       <main className="overflow-x-hidden">
-        <BfHero cta={cta} />
+        <BfHero cta={cta} highlightSub />
         {below}
       </main>
     </div>

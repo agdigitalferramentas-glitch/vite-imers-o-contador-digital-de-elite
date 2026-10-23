@@ -6,8 +6,9 @@ import ResponsiveImg from "@/components/ResponsiveImg";
  * Primeira dobra da LP /bf1126 — HTML + CSS puros (estilos em src/bf-critical.css, sem Tailwind).
  * Renderizada no build para dentro de bf1126/index.html (vite.config.ts) e depois substituída
  * pelo React com a mesma marcação: nada aqui pode depender de estado, efeitos ou animações JS.
+ * `highlightSub`: destaca a frase de apoio em vermelho (usado só pela /bf1126; a /bf1126-b não).
  */
-export default function BfHero({ cta }: { cta: ReactNode }) {
+export default function BfHero({ cta, highlightSub = false }: { cta: ReactNode; highlightSub?: boolean }) {
   return (
     <section className="bfh">
       <div className="bfh-grid">
@@ -30,7 +31,11 @@ export default function BfHero({ cta }: { cta: ReactNode }) {
           </h1>
           <p className="bfh-lead">Descubra como um seleto número de contadores faturam 10x mais com menos clientes e menos horas de trabalho.</p>
           <p className="bfh-sub">
-            Uma noite para ver como faturar mais sem precisar trabalhar mais.
+            {highlightSub ? (
+              <span className="bfh-sub-hl">Uma noite para ver como faturar mais sem precisar trabalhar mais.</span>
+            ) : (
+              "Uma noite para ver como faturar mais sem precisar trabalhar mais."
+            )}
           </p>
           <div className="bfh-chips">
             <span className="bfh-chip">
