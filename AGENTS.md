@@ -1,5 +1,5 @@
 # Project rules
-- ResponsiveImg resolves both bundled WebP variants and CDN asset pointers through the shared responsive registry so uploaded portraits retain responsive delivery in the static shell and SPA.
+- ResponsiveImg resolves bundled WebP variants and CDN asset pointers through the shared registry; resolve CDN URLs against the project's Lovable asset host so images also work on independent Docker/Nginx deployments.
 - Build checkout URLs through `src/lib/checkout.ts` on every sales page so campaign attribution follows one shared, tested policy.
 - Keep the application a classic Vite React SPA with static Docker/Nginx deployment so it runs independently on the user's server.
 - Scope homepage theme tokens and visual overrides under `.theme-light` in the shared stylesheet; only the homepage and `/obrigado` mount this wrapper so other sales variants retain their independent appearance.
