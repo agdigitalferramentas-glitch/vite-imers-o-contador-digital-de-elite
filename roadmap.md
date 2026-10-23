@@ -1,4 +1,5 @@
 # Tasks
+- [x] Replace /bf1126 hero and biography photos with optimized responsive WebP CDN assets, retaining priority and lazy loading.
 - [x] Update event date and time across all pages and metadata.
 - [x] Update checkout and forward all UTM, SRC and SCK parameters.
 - [x] Test tracking parameters and verify all sales-page flows.

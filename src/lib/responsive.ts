@@ -7,12 +7,22 @@ const URLS = import.meta.glob<string>("../assets/responsive/*.webp", {
   query: "?url",
   import: "default",
 });
+const CDN_ASSETS = import.meta.glob<{ url: string }>("../assets/responsive/*.webp.asset.json", {
+  eager: true,
+  import: "default",
+});
 
 type Variant = { width: number; url: string };
 
 const BY_NAME: Record<string, Variant[]> = {};
-for (const [path, url] of Object.entries(URLS)) {
-  const m = path.match(/\/([^/]+)-(\d+)\.webp$/);
+for (const [path, url] of [
+  ...Object.entries(URLS),
+  ...Object.entries(CDN_ASSETS).map(([path, asset]) => [
+    path,
+    new URL(asset.url, "https://id-preview--a77db69e-9a05-4c27-9b1c-589f40f307b6.lovable.app").href,
+  ]),
+]) {
+  const m = path.match(/\/([^/]+)-(\d+)\.webp(?:\.asset\.json)?$/);
   if (!m) continue;
   (BY_NAME[m[1]] ??= []).push({ width: Number(m[2]), url });
 }

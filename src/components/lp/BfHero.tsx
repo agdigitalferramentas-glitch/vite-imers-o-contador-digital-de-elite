@@ -46,10 +46,10 @@ export default function BfHero({ cta }: { cta: ReactNode }) {
         <div className="bfh-media">
           <div className="bfh-glow" aria-hidden="true" />
           <ResponsiveImg
-            name="bf-hero"
+            name="bf-maisse-hero"
             alt="Anderson Maisse"
-            width={1000}
-            height={1285}
+            width={1279}
+            height={1920}
             sizes="(min-width: 1152px) 488px, (min-width: 768px) 42vw, (min-width: 424px) 384px, calc(100vw - 40px)"
             className="bfh-photo"
             priority
