@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Check, Play, ShieldCheck } from "lucide-react";
+import { getVideoSource } from "@/lib/video";
 import ResponsiveImg from "@/components/ResponsiveImg";
 import { CtaButton, Eyebrow, Reveal } from "./primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -70,13 +72,28 @@ const testimonials = [
 ];
 
 function VideoCard({ name, img, url, featured = false }: { name: string; img: string; url: string; featured?: boolean }) {
+  const [playing, setPlaying] = useState(false);
+  const source = getVideoSource(url);
+  if (playing && source) {
+    return (
+      <div className="relative block aspect-video overflow-hidden rounded-2xl border bg-black shadow-glow">
+        <iframe
+          className="absolute inset-0 h-full w-full"
+          src={source.url}
+          title={`Depoimento de ${name}`}
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+    );
+  }
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      type="button"
+      onClick={() => setPlaying(true)}
       aria-label={`Assistir depoimento de ${name}`}
-      className="group relative block aspect-video overflow-hidden rounded-2xl border bg-card text-left shadow-glow"
+      className="group relative block aspect-video w-full overflow-hidden rounded-2xl border bg-card text-left shadow-glow"
     >
       <ResponsiveImg
         name={img}
@@ -107,7 +124,7 @@ function VideoCard({ name, img, url, featured = false }: { name: string; img: st
       <span className="absolute inset-x-0 bottom-0 block p-4 md:p-5">
         <span className={`block font-extrabold leading-tight drop-shadow-lg ${featured ? "text-xl md:text-2xl" : "text-lg"}`}>{name}</span>
       </span>
-    </a>
+    </button>
   );
 }
 
