@@ -16,7 +16,7 @@ export function Learn() {
     <section className="border-t px-5 py-20">
       <div className="mx-auto max-w-6xl">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl uppercase leading-tight sm:text-5xl">Uma noite para descobrir como faturar mais sem precisar trabalhar mais.</h2>
+          <h2 className="font-display text-3xl uppercase leading-tight sm:text-5xl">O melhor conteúdo contábil, ao seu alcance, por apenas R$27</h2>
           <p className="mt-5 text-muted-foreground">Na Imersão Contador Digital de Elite, você vai conhecer 5 passos que podem mudar a maneira como seu escritório gera receita e funciona no dia a dia.</p>
         </Reveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
