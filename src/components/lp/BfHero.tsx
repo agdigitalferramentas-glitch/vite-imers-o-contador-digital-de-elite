@@ -30,7 +30,7 @@ export default function BfHero({ cta }: { cta: ReactNode }) {
           </h1>
           <p className="bfh-lead">Descubra como um seleto número de contadores faturam 10x mais com menos clientes e menos horas de trabalho.</p>
           <p className="bfh-sub">
-            Garanta agora seu acesso à oferta exclusiva de Black Friday, que será revelada apenas durante o evento Imersão Contador Digital de Elite.
+            Uma noite para ver como faturar mais sem precisar trabalhar mais.
           </p>
           <div className="bfh-chips">
             <span className="bfh-chip">
