@@ -148,7 +148,7 @@ export function Authority() {
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center">
         <Reveal className="relative order-2 mx-auto w-full max-w-sm md:order-1 md:max-w-none">
           <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl border-2 border-primary" />
-          <ResponsiveImg name="bf-maisse-bio" alt="Anderson Maisse" width={1299} height={1920} sizes="(min-width: 1152px) 552px, (min-width: 768px) 45vw, (min-width: 424px) 384px, calc(100vw - 40px)" className="relative w-full rounded-2xl object-cover" />
+          <ResponsiveImg name="bf-maisse-bio" alt="Anderson Maisse" width={1299} height={1920} sizes="(min-width: 1152px) 552px, (min-width: 768px) 45vw, (min-width: 424px) 384px, calc(100vw - 40px)" className="relative w-full aspect-[1000/1286] rounded-2xl object-cover" />
         </Reveal>
         <Reveal className="order-1 md:order-2">
           <h2 className="font-display text-3xl uppercase sm:text-5xl">Quem vai conduzir essa imersão?</h2>

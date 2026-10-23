@@ -161,7 +161,7 @@
   background: color-mix(in oklab, var(--primary) 80%, transparent);
   box-shadow: var(--glow-red);
 }
-.bfh-photo { position: relative; width: 100%; aspect-ratio: 1279 / 1920; border-radius: 1rem; object-fit: cover; }
+.bfh-photo { position: relative; width: 100%; aspect-ratio: 1000 / 1285; border-radius: 1rem; object-fit: cover; }
 .bfh-stroke {
   position: absolute;
   bottom: -1.5rem;
