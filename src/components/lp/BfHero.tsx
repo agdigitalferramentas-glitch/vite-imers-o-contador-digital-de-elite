@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Calendar, Ticket } from "lucide-react";
+import { Calendar } from "lucide-react";
 import ResponsiveImg from "@/components/ResponsiveImg";
 
 /**
@@ -36,9 +36,6 @@ export default function BfHero({ cta }: { cta: ReactNode }) {
             <span className="bfh-chip">
               <Calendar className="bfh-icon" aria-hidden="true" />
               <span>11 de novembro, às 19h51 | Online e <span className="bfh-nowrap">ao vivo</span></span>
-            </span>
-            <span className="bfh-chip bfh-chip--hot">
-              <Ticket className="bfh-icon" aria-hidden="true" /> INGRESSO: APENAS R$ 27
             </span>
           </div>
           <div className="bfh-cta-wrap">{cta}</div>
@@ -86,4 +83,4 @@ export function BfHeroCta() {
   );
 }
 
-export const BF_CTA_LABEL = "Garantir minha vaga por R$ 27";
+export const BF_CTA_LABEL = "Garantir minha vaga hoje";
