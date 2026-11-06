@@ -1,3 +1,11 @@
+function Media({ id, nome }: { id: string; nome: string }) {
+  return (
+    <div className="cb-exclusivo-media" role="img" aria-label={`Placeholder: imagem de ${nome}`}>
+      <span className="cb-placeholder-label">[{id} | Imagem: {nome} | 1:1 | 1200x1200 · mobile corta em 16:9]</span>
+    </div>
+  );
+}
+
 /* SEÇÃO 04: Os 3 diferenciais exclusivos da Black Friday (início) */
 export default function ComboDiferenciais() {
   return (
@@ -6,7 +14,10 @@ export default function ComboDiferenciais() {
         <h2 id="diferenciais-titulo">O que só quem compra o combo recebe.</h2>
 
         <article className="cb-exclusivo" aria-labelledby="exclusivo-1">
-          <h3 id="exclusivo-1">Exclusivo 1: CCD HUB — Módulo RT (liberado por 6 meses)</h3>
+          <Media id="IMG-08" nome="CCD HUB — Módulo RT" />
+          <div className="cb-exclusivo-body">
+          <p className="cb-badge">Exclusivo 1</p>
+          <h3 id="exclusivo-1">CCD HUB — Módulo RT (liberado por 6 meses)</h3>
           <div className="cb-exclusivo-cols">
             <p>
               Não é uma calculadora. O CCD HUB — Módulo RT transforma os dados de cada cliente em uma análise clara do impacto da Reforma Tributária. Você preenche as informações da empresa e a ferramenta faz as simulações, mostrando:
@@ -26,10 +37,14 @@ export default function ComboDiferenciais() {
           <p className="cb-callout">
             Separado, o CCD HUB custa R$&nbsp;3.997. No combo da Black Friday, você usa o Módulo RT por 6 meses a partir da compra, sem pagar nada a mais.
           </p>
+          </div>
         </article>
 
         <article className="cb-exclusivo" aria-labelledby="exclusivo-2">
-          <h3 id="exclusivo-2">Exclusivo 2: o CCD é seu para sempre</h3>
+          <Media id="IMG-09" nome="CCD vitalício" />
+          <div className="cb-exclusivo-body">
+          <p className="cb-badge">Exclusivo 2</p>
+          <h3 id="exclusivo-2">o CCD é seu para sempre</h3>
           <div className="cb-exclusivo-cols">
             <p>
               O CCD é vendido como assinatura: R$&nbsp;2.497 por ano. Em 5 anos, são R$&nbsp;12.485 só para continuar dentro. No combo, você nunca mais paga por ele.
@@ -51,13 +66,18 @@ export default function ComboDiferenciais() {
           <p>
             O mesmo vale para os outros cursos. O Contador Digital de Elite, o CD360 e o Guia de Processos dão 12 meses de acesso quando comprados separados. No combo, ficam na sua conta sem prazo.
           </p>
+          </div>
         </article>
 
         <article className="cb-exclusivo" aria-labelledby="exclusivo-3">
-          <h3 id="exclusivo-3">Exclusivo 3: Todas as atualizações da Reforma Tributária</h3>
+          <Media id="IMG-10" nome="Atualizações da Reforma Tributária" />
+          <div className="cb-exclusivo-body">
+          <p className="cb-badge">Exclusivo 3</p>
+          <h3 id="exclusivo-3">Todas as atualizações da Reforma Tributária</h3>
           <p>
             A transição vai até 2033 e as regras ainda vão mudar. Toda aula nova, ajuste de alíquota ou regulamentação que entrar na Mentoria Reforma Tributária Lucrativa entra na sua conta, sem custo extra.
           </p>
+          </div>
         </article>
       </div>
     </section>

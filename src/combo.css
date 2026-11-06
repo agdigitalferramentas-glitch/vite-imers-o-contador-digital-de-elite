@@ -98,7 +98,8 @@
 
 /* ---------- Placeholder de imagem ---------- */
 .theme-combo .cb-hero-media,
-.theme-combo .cb-produto-media {
+.theme-combo .cb-produto-media,
+.theme-combo .cb-exclusivo-media {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -391,15 +392,28 @@
 .theme-combo .cb-exclusivo {
   display: flex;
   flex-direction: column;
-  gap: var(--cb-space-2);
   margin-bottom: var(--cb-space-3);
-  padding: var(--cb-space-3);
   border: 1px solid var(--cb-border);
   border-radius: var(--cb-radius);
   background: var(--cb-surface);
   font-size: var(--cb-fs-body);
+  overflow: hidden;
 }
 .theme-combo .cb-exclusivo:last-child { margin-bottom: 0; }
+/* imagem: topo no mobile; no desktop, coluna ao lado do texto, alternando esquerda/direita */
+.theme-combo .cb-exclusivo-media {
+  aspect-ratio: 16 / 9;
+  width: auto;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+.theme-combo .cb-exclusivo-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-3);
+}
 .theme-combo .cb-exclusivo h3 {
   margin: 0;
   font-size: var(--cb-fs-h3);
@@ -415,10 +429,19 @@
   padding-left: 1.25rem;
   list-style: disc;
 }
-.theme-combo .cb-exclusivo-cols { display: grid; grid-template-columns: 1fr; gap: var(--cb-space-2); }
+.theme-combo .cb-exclusivo-cols { display: flex; flex-direction: column; gap: var(--cb-space-2); align-self: stretch; }
 .theme-combo .cb-exclusivo-cols > div { display: flex; flex-direction: column; gap: var(--cb-space-2); }
+.theme-combo .cb-exclusivo .cb-callout { align-self: stretch; }
 .theme-combo .cb-exclusivo .cb-callout { background: var(--cb-bg); }
 @media (min-width: 768px) {
-  .theme-combo .cb-exclusivo { padding: var(--cb-space-4); }
-  .theme-combo .cb-exclusivo-cols { grid-template-columns: 1fr 1fr; gap: var(--cb-space-4); align-items: start; }
+  .theme-combo .cb-exclusivo { flex-direction: row; align-items: stretch; }
+  .theme-combo .cb-exclusivo:nth-of-type(even) { flex-direction: row-reverse; }
+  .theme-combo .cb-exclusivo-media {
+    flex: 0 0 38%;
+    aspect-ratio: auto;
+    min-height: 16rem;
+    border-width: 0 1px 0 0;
+  }
+  .theme-combo .cb-exclusivo:nth-of-type(even) .cb-exclusivo-media { border-width: 0 0 0 1px; }
+  .theme-combo .cb-exclusivo-body { flex: 1; padding: var(--cb-space-4); justify-content: center; }
 }
