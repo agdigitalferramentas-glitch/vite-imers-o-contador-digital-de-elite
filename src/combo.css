@@ -561,6 +561,9 @@
   margin: var(--cb-space-4) auto 0;
 }
 .theme-combo .cb-comparacoes p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   margin: 0;
   padding: var(--cb-space-3);
   border: 1px solid var(--cb-border);
@@ -587,4 +590,10 @@
   align-items: center;
   gap: var(--cb-space-1);
   font-weight: 800;
+}
+
+.theme-combo .cb-comparacoes em {
+  margin-top: var(--cb-space-1);
+  font-size: var(--cb-fs-small);
+  color: var(--cb-text-muted);
 }
