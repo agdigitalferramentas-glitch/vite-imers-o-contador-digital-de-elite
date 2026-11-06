@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 export default function ComboHero({ cta }: { cta: ReactNode }) {
   return (
     <section id="secao-01-hero" aria-labelledby="hero-titulo" className="cb-section cb-hero">
-      <div className="cb-container">
+      <div className="cb-container cb-hero-grid">
+        <div className="cb-hero-content">
         <p className="cb-badge">BLACK FRIDAY ANDERSON MAISSE · O COMBO COMPLETO</p>
         <h1 id="hero-titulo">Todos os meus produtos para contadores em um só acesso. Vitalício. Pelo menor preço que já existiu.</h1>
         <p className="cb-lead">
@@ -15,6 +16,10 @@ export default function ComboHero({ cta }: { cta: ReactNode }) {
         </p>
         {cta}
         <p className="cb-micro">Garantia de 7 dias · Pagamento seguro · Parcelamento em até 12x</p>
+        </div>
+        <div className="cb-hero-media" role="img" aria-label="Placeholder: expert em destaque">
+          <span className="cb-placeholder-label">[IMG-01 | Background do hero, expert em destaque à direita | desktop 1920x900 · mobile 4:5 1080x1350]</span>
+        </div>
       </div>
     </section>
   );
