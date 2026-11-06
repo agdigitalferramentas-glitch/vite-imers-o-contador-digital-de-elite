@@ -261,3 +261,40 @@
   .theme-combo .cb-table th[scope="row"] { display: table-cell; padding: var(--cb-space-2); border: 1px solid var(--cb-border); background: var(--cb-surface); }
   .theme-combo .cb-table td::before { display: none; }
 }
+
+/* Cards de necessidades (Seção 2): mobile empilhado, desktop 3 colunas */
+.theme-combo .cb-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-2);
+  margin: 0 0 var(--cb-space-3);
+  padding: 0;
+  list-style: none;
+}
+.theme-combo .cb-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-card p { margin: 0; font-size: var(--cb-fs-body); font-weight: 600; }
+.theme-combo .cb-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface-strong);
+  color: var(--cb-text);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-cards { grid-template-columns: repeat(3, 1fr); gap: var(--cb-space-3); }
+  .theme-combo .cb-card { flex-direction: column; align-items: flex-start; }
+}
