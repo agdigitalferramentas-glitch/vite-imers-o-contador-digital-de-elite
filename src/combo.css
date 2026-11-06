@@ -498,3 +498,85 @@
   .theme-combo .cb-ancoragem h2 { text-align: center; }
   .theme-combo .cb-ancoragem-destaque { padding: var(--cb-space-4); }
 }
+
+/* ---------- Seção 6: Oferta ---------- */
+.theme-combo .cb-oferta { border-top: 1px solid var(--cb-border); scroll-margin-top: var(--cb-space-2); }
+.theme-combo .cb-oferta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cb-space-3);
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--cb-space-3);
+  border: 2px solid var(--cb-text);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-oferta-card { padding: var(--cb-space-4); }
+}
+.theme-combo .cb-oferta-card h2 {
+  margin: 0;
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: 800;
+}
+.theme-combo .cb-oferta-preco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-self: stretch;
+  margin: 0;
+  padding: var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-bg);
+  font-size: var(--cb-fs-price);
+}
+.theme-combo .cb-oferta-preco s { color: var(--cb-text-muted); }
+.theme-combo .cb-oferta-preco strong { font-size: var(--cb-fs-h2); font-weight: 800; line-height: 1.2; }
+.theme-combo .cb-oferta-texto { margin: 0; font-size: var(--cb-fs-body); }
+.theme-combo .cb-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-1);
+  align-self: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: var(--cb-fs-body);
+}
+.theme-combo .cb-checklist li { display: flex; align-items: flex-start; gap: 0.625rem; }
+.theme-combo .cb-checklist svg { flex: none; margin-top: 0.15rem; }
+.theme-combo .cb-oferta .cb-cta-wrap { gap: var(--cb-space-1); }
+
+.theme-combo .cb-comparacoes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-2);
+  max-width: 62rem;
+  margin: var(--cb-space-4) auto 0;
+}
+.theme-combo .cb-comparacoes p {
+  margin: 0;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-body);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-comparacoes { grid-template-columns: 1fr 1fr; gap: var(--cb-space-3); }
+}
+
+/* Marcador de lacuna e agrupamento do CTA */
+.theme-combo .cb-cta-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.theme-combo .cb-lacuna {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border: 1px dashed var(--cb-text);
+  font-size: var(--cb-fs-small);
+}
