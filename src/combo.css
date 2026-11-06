@@ -1,0 +1,149 @@
+/* ============================================================
+   Wireframe /combo — escopado sob .theme-combo (escala de cinza).
+   Fase 2 (identidade visual): trocar apenas os tokens abaixo.
+   ============================================================ */
+
+.theme-combo {
+  /* cores */
+  --cb-bg: #f5f5f5;
+  --cb-surface: #e5e5e5;
+  --cb-surface-strong: #bdbdbd;
+  --cb-border: #8a8a8a;
+  --cb-text: #1f1f1f;
+  --cb-text-muted: #4d4d4d;
+  --cb-cta-bg: #5c5c5c;
+  --cb-cta-text: #ffffff;
+  /* tipografia */
+  --cb-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --cb-fs-badge: 0.75rem;
+  --cb-fs-h1: clamp(1.75rem, 5.5vw, 3rem);
+  --cb-fs-lead: clamp(1rem, 2.4vw, 1.25rem);
+  --cb-fs-price: clamp(1.125rem, 3vw, 1.5rem);
+  --cb-fs-small: 0.875rem;
+  /* espaçamento e forma */
+  --cb-space-1: 0.5rem;
+  --cb-space-2: 1rem;
+  --cb-space-3: 1.5rem;
+  --cb-space-4: 2.5rem;
+  --cb-space-5: 4rem;
+  --cb-container: 62rem;
+  --cb-radius: 0.25rem;
+
+  min-height: 100vh;
+  background: var(--cb-bg);
+  color: var(--cb-text);
+  font-family: var(--cb-font);
+  line-height: 1.5;
+}
+
+/* a regra global de headings (styles.css) usa a fonte da home: aqui vale a pilha do sistema */
+.theme-combo h1,
+.theme-combo h2,
+.theme-combo h3,
+.theme-combo h4 {
+  font-family: var(--cb-font);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.theme-combo *,
+.theme-combo *::before,
+.theme-combo *::after { box-sizing: border-box; }
+
+.theme-combo .cb-container {
+  width: 100%;
+  max-width: var(--cb-container);
+  margin-inline: auto;
+  padding-inline: var(--cb-space-2);
+}
+
+.theme-combo .cb-section { padding-block: var(--cb-space-4); }
+@media (min-width: 768px) {
+  .theme-combo .cb-section { padding-block: var(--cb-space-5); }
+}
+
+.theme-combo a:focus-visible,
+.theme-combo button:focus-visible {
+  outline: 3px solid var(--cb-text);
+  outline-offset: 3px;
+}
+
+/* ---------- Botão ---------- */
+.theme-combo .cb-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  width: 100%;
+  padding: var(--cb-space-1) var(--cb-space-3);
+  border: 2px solid var(--cb-text);
+  border-radius: var(--cb-radius);
+  background: var(--cb-cta-bg);
+  color: var(--cb-cta-text);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+@media (min-width: 640px) {
+  .theme-combo .cb-cta { width: auto; min-width: 22rem; }
+}
+
+/* ---------- Seção 1: Hero ---------- */
+.theme-combo .cb-hero { text-align: center; }
+.theme-combo .cb-hero .cb-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cb-space-3);
+}
+.theme-combo .cb-badge {
+  margin: 0;
+  padding: 0.375rem var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-badge);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.theme-combo .cb-hero h1 {
+  margin: 0;
+  max-width: 22ch;
+  font-size: var(--cb-fs-h1);
+  line-height: 1.15;
+  font-weight: 800;
+  text-wrap: balance;
+}
+.theme-combo .cb-lead {
+  margin: 0;
+  max-width: 46rem;
+  font-size: var(--cb-fs-lead);
+  color: var(--cb-text-muted);
+  text-wrap: pretty;
+}
+.theme-combo .cb-price {
+  margin: 0;
+  padding: var(--cb-space-2) var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-price);
+  text-wrap: balance;
+}
+.theme-combo .cb-price s { color: var(--cb-text-muted); }
+.theme-combo .cb-price s,
+.theme-combo .cb-price strong { white-space: nowrap; }
+.theme-combo .cb-cta-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.theme-combo .cb-micro {
+  margin: 0;
+  font-size: var(--cb-fs-small);
+  color: var(--cb-text-muted);
+}
+.theme-combo .cb-lacuna {
+  display: inline-block;
+  margin-top: var(--cb-space-1);
+  padding: 0.125rem 0.5rem;
+  border: 1px dashed var(--cb-text);
+  font-size: var(--cb-fs-small);
+}
