@@ -301,7 +301,7 @@
 
 /* Seção 2, desktop: título centralizado; textos abaixo dos cards em 2 colunas (mobile segue empilhado, à esquerda) */
 @media (min-width: 768px) {
-  .theme-combo .cb-problema h2 { margin-inline: auto; text-align: center; }
+  .theme-combo .cb-problema h2 { max-width: 52rem; margin-inline: auto; text-align: center; }
   .theme-combo .cb-problema .cb-prose {
     display: grid;
     grid-template-columns: 1fr 1fr;
