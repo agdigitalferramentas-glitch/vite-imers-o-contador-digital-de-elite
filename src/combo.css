@@ -444,6 +444,7 @@
 .theme-combo .cb-ancoragem { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-ancoragem h2 {
   margin: 0 0 var(--cb-space-3);
+  text-align: center;
   font-size: var(--cb-fs-h2);
   line-height: 1.2;
   font-weight: 800;
