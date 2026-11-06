@@ -10,7 +10,7 @@ const PRODUTOS = [
       "Aulas prontas para liberar aos seus clientes sobre a Reforma",
       "Com Anderson Maisse (estratégia comercial) e Alesandro Damaceno (aplicação técnica)",
     ],
-    valor: "R$ 2.997",
+    valor: "R$\u00a02.997",
   },
   {
     nome: "2. CCD — Comunidade Contadores Digitais",
@@ -21,9 +21,9 @@ const PRODUTOS = [
       "Ferramentas prontas: scripts de vendas, modelos de contrato, guias de precificação, templates e automações",
       "Comunidade com mais de 2.000 contadores e 2 encontros ao vivo por mês, para sempre",
       "Estações de nicho bônus: Contabilidade Médica, Advogados, Psicólogos, Infoprodutores, Representante Comercial, Revenda de Veículos, Holding Patrimonial, Recuperação Tributária, Marcas e Patentes, Regularização de Obras, Tráfego Pago e Vendas pelo YouTube",
-      "Mais de R$ 15 milhões em resultados gerados pelos membros em 2025",
+      "Mais de R$\u00a015 milhões em resultados gerados pelos membros em 2025",
     ],
-    valor: "R$ 2.497 por ano",
+    valor: "R$\u00a02.497 por ano",
   },
   {
     nome: "3. Contador Digital de Elite",
@@ -34,7 +34,7 @@ const PRODUTOS = [
       "Módulo 3 — A Proposta que Fecha sem Desconto: estrutura, sequência e apresentação de escopo prontas para usar",
       "Módulo 4 — Processos, Contratos e IA na Operação: entrada do cliente, contrato e IA integrada ao onboarding",
     ],
-    valor: "R$ 247",
+    valor: "R$\u00a0247",
   },
   {
     nome: "4. Contabilidade Digital 360: o Guia Definitivo de Precificação e Processos",
@@ -45,7 +45,7 @@ const PRODUTOS = [
       "Módulo Processos: fiscal, DP, contábil, legalização, vendas, IRPF e onboarding",
       'Bônus: planilha de precificação, modelo de contrato da contabilidade digital, script de quebra de objeções para cobrar o adicional anual, mentoria gravada de quase 3h e aula "Monte sua contabilidade digital lucrativa em 4 semanas"',
     ],
-    valor: "R$ 147",
+    valor: "R$\u00a0147",
   },
   {
     nome: "5. Guia de Processos da Contabilidade Digital",
@@ -57,7 +57,7 @@ const PRODUTOS = [
       "Processo de vendas, IRPF, gerenciamento de processos e entrada do cliente até o onboarding",
       "Bônus: mapas mentais, mini guias, fluxogramas e mentoria de quase 3h sobre processos, equipes e scripts de venda",
     ],
-    valor: "R$ 47",
+    valor: "R$\u00a047",
   },
   {
     nome: "6. Pack Contador Estratégico IA",
@@ -69,7 +69,7 @@ const PRODUTOS = [
       "Analista de DRE: analisa a DRE do cliente e gera insights para sua consultoria",
       "Bônus: aula com Anderson Maisse sobre Serviços de Alto Valor",
     ],
-    valor: "R$ 297",
+    valor: "R$\u00a0297",
   },
 ];
 

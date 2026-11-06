@@ -12,7 +12,7 @@ export default function ComboHero({ cta }: { cta: ReactNode }) {
           Mentoria Reforma Tributária Lucrativa, CCD, Contador Digital de Elite, Contabilidade Digital 360, Guia de Processos e Pack Contador Estratégico IA. Mais o CCD HUB — Módulo RT, a ferramenta que simula o impacto da Reforma em cada cliente. Uma única compra, acesso vitalício e todas as atualizações da Reforma incluídas.
         </p>
         <p className="cb-price">
-          De <s>R$ 10.229</s> por <strong>12x de R$ 268,59</strong> ou R$ 2.597 à vista
+          De <s>R$&nbsp;10.229</s> por <strong>12x de R$&nbsp;268,59</strong> ou R$&nbsp;2.597 à vista
         </p>
         {cta}
         <p className="cb-micro">Garantia de 7 dias · Pagamento seguro · Parcelamento em até 12x</p>

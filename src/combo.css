@@ -376,3 +376,49 @@
   border-radius: var(--cb-radius);
   background: var(--cb-bg);
 }
+
+/* ---------- Seção 4: Os 3 diferenciais exclusivos ---------- */
+.theme-combo .cb-diferenciais { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-diferenciais h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: 800;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-diferenciais h2 { max-width: 52rem; margin-inline: auto; text-align: center; }
+}
+.theme-combo .cb-exclusivo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  margin-bottom: var(--cb-space-3);
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-body);
+}
+.theme-combo .cb-exclusivo:last-child { margin-bottom: 0; }
+.theme-combo .cb-exclusivo h3 {
+  margin: 0;
+  font-size: var(--cb-fs-h3);
+  line-height: 1.25;
+  font-weight: 800;
+}
+.theme-combo .cb-exclusivo p { margin: 0; }
+.theme-combo .cb-exclusivo ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-1);
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.theme-combo .cb-exclusivo-cols { display: grid; grid-template-columns: 1fr; gap: var(--cb-space-2); }
+.theme-combo .cb-exclusivo-cols > div { display: flex; flex-direction: column; gap: var(--cb-space-2); }
+.theme-combo .cb-exclusivo .cb-callout { background: var(--cb-bg); }
+@media (min-width: 768px) {
+  .theme-combo .cb-exclusivo { padding: var(--cb-space-4); }
+  .theme-combo .cb-exclusivo-cols { grid-template-columns: 1fr 1fr; gap: var(--cb-space-4); align-items: start; }
+}
