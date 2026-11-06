@@ -133,12 +133,13 @@
 }
 .theme-combo .cb-hero-media { aspect-ratio: 4 / 5; max-width: 28rem; margin-inline: auto; }
 @media (min-width: 900px) {
-  .theme-combo .cb-hero .cb-container { max-width: 76rem; }
+  /* hero em largura total: o bloco de textos ocupa no máximo 50% dela */
+  .theme-combo .cb-hero .cb-container { max-width: none; padding-inline: var(--cb-space-4); }
   .theme-combo .cb-hero { padding-block: var(--cb-space-4); }
-  .theme-combo .cb-hero-grid { grid-template-columns: 1.4fr 0.6fr; gap: var(--cb-space-4); }
+  .theme-combo .cb-hero-grid { grid-template-columns: 1fr 1fr; gap: var(--cb-space-4); }
   .theme-combo .cb-hero-content { gap: var(--cb-space-2); }
   .theme-combo .cb-hero h1 { font-size: 2rem; }
-  .theme-combo .cb-hero-media { aspect-ratio: 4 / 5; max-width: none; margin-inline: 0; }
+  .theme-combo .cb-hero-media { aspect-ratio: 4 / 5; max-width: 28rem; margin-inline: auto 0; }
   .theme-combo .cb-hero h1 { max-width: none; }
 }
 .theme-combo .cb-badge {
