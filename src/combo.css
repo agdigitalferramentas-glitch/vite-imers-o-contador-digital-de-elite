@@ -310,3 +310,60 @@
     max-width: none;
   }
 }
+
+/* ---------- Seção 3: Tudo o que você leva no combo ---------- */
+.theme-combo .cb-produtos { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-produtos h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: 800;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-produtos h2 { max-width: 52rem; margin-inline: auto; text-align: center; }
+}
+.theme-combo .cb-produtos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 900px) {
+  .theme-combo .cb-produtos-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+}
+.theme-combo .cb-produtos-grid > li { display: flex; }
+.theme-combo .cb-produto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  width: 100%;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-produto h3 {
+  margin: 0;
+  font-size: var(--cb-fs-h3);
+  line-height: 1.25;
+  font-weight: 800;
+}
+.theme-combo .cb-produto-resumo { margin: 0; color: var(--cb-text-muted); }
+.theme-combo .cb-produto-itens {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-1);
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  font-size: var(--cb-fs-small);
+}
+.theme-combo .cb-produto-valor {
+  margin: auto 0 0;
+  padding: var(--cb-space-1) var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-bg);
+}
