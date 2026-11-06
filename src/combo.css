@@ -97,7 +97,8 @@
 }
 
 /* ---------- Placeholder de imagem ---------- */
-.theme-combo .cb-hero-media {
+.theme-combo .cb-hero-media,
+.theme-combo .cb-produto-media {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -343,6 +344,14 @@
   border: 1px solid var(--cb-border);
   border-radius: var(--cb-radius);
   background: var(--cb-surface);
+}
+/* imagem do produto: sangra até as bordas do card, no topo */
+.theme-combo .cb-produto-media {
+  aspect-ratio: 16 / 9;
+  margin: calc(-1 * var(--cb-space-3)) calc(-1 * var(--cb-space-3)) 0;
+  width: auto;
+  border-width: 0 0 1px;
+  border-radius: var(--cb-radius) var(--cb-radius) 0 0;
 }
 .theme-combo .cb-produto h3 {
   margin: 0;

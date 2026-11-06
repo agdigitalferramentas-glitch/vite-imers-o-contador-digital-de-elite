@@ -80,9 +80,14 @@ export default function ComboProdutos() {
       <div className="cb-container">
         <h2 id="produtos-titulo">6 produtos, o CCD HUB e acesso vitalício. Veja o que entra na sua conta.</h2>
         <ul className="cb-produtos-grid">
-          {PRODUTOS.map((p) => (
+          {PRODUTOS.map((p, idx) => (
             <li key={p.nome}>
               <article className="cb-produto">
+                <div className="cb-produto-media" role="img" aria-label={`Placeholder: imagem do produto ${p.nome.replace(/^\d+\.\s/, "")}`}>
+                  <span className="cb-placeholder-label">
+                    [IMG-{String(idx + 2).padStart(2, "0")} | Imagem do produto: {p.nome.replace(/^\d+\.\s/, "")} | 16:9 | 1280x720]
+                  </span>
+                </div>
                 <h3>{p.nome}</h3>
                 <p className="cb-produto-resumo">
                   <em>{p.resumo}</em>
