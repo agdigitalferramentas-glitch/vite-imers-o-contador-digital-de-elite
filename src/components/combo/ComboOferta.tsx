@@ -44,7 +44,7 @@ export default function ComboOferta({ cta }: { cta: ReactNode }) {
             <ShieldCheck aria-hidden="true" size={36} strokeWidth={1.75} />
             <span>7 dias de garantia</span>
           </div>
-          <p className="cb-micro">7 dias de garantia · Pagamento seguro · Acesso liberado logo após a confirmação do pagamento</p>
+          <p className="cb-micro">Pagamento seguro · Acesso liberado logo após a confirmação do pagamento</p>
         </div>
 
         <div className="cb-comparacoes">
