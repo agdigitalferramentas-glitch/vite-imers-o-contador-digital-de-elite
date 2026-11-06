@@ -299,9 +299,14 @@
   .theme-combo .cb-card { flex-direction: column; align-items: flex-start; }
 }
 
-/* Seção 2, desktop: título e textos abaixo dos cards centralizados (mobile segue à esquerda) */
+/* Seção 2, desktop: título centralizado; textos abaixo dos cards em 2 colunas (mobile segue empilhado, à esquerda) */
 @media (min-width: 768px) {
   .theme-combo .cb-problema h2 { margin-inline: auto; text-align: center; }
-  .theme-combo .cb-problema .cb-prose { margin-inline: auto; text-align: center; }
-  .theme-combo .cb-problema .cb-callout { border-left: 0; border-top: 4px solid var(--cb-text); }
+  .theme-combo .cb-problema .cb-prose {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--cb-space-3);
+    align-items: center;
+    max-width: none;
+  }
 }
