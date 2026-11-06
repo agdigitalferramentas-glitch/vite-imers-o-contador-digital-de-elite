@@ -298,3 +298,10 @@
   .theme-combo .cb-cards { grid-template-columns: repeat(3, 1fr); gap: var(--cb-space-3); }
   .theme-combo .cb-card { flex-direction: column; align-items: flex-start; }
 }
+
+/* Seção 2, desktop: título e textos abaixo dos cards centralizados (mobile segue à esquerda) */
+@media (min-width: 768px) {
+  .theme-combo .cb-problema h2 { margin-inline: auto; text-align: center; }
+  .theme-combo .cb-problema .cb-prose { margin-inline: auto; text-align: center; }
+  .theme-combo .cb-problema .cb-callout { border-left: 0; border-top: 4px solid var(--cb-text); }
+}
