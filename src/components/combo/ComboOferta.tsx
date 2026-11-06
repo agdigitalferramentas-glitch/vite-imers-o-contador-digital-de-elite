@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 
 const CHECKLIST = [
@@ -40,6 +40,10 @@ export default function ComboOferta({ cta }: { cta: ReactNode }) {
             ))}
           </ul>
           {cta}
+          <div className="cb-selo" role="img" aria-label="7 dias de garantia">
+            <ShieldCheck aria-hidden="true" size={36} strokeWidth={1.75} />
+            <span>7 dias de garantia</span>
+          </div>
           <p className="cb-micro">7 dias de garantia · Pagamento seguro · Acesso liberado logo após a confirmação do pagamento</p>
         </div>
 

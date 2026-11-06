@@ -580,3 +580,16 @@
   border: 1px dashed var(--cb-text);
   font-size: var(--cb-fs-small);
 }
+
+/* Selo de garantia junto ao CTA (placeholder em ícone; pode virar imagem na Fase 3) */
+.theme-combo .cb-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cb-space-1);
+  margin-top: calc(-1 * var(--cb-space-1));
+  padding: 0.5rem var(--cb-space-2);
+  border: 2px solid var(--cb-text);
+  border-radius: 999px;
+  background: var(--cb-bg);
+  font-weight: 800;
+}
