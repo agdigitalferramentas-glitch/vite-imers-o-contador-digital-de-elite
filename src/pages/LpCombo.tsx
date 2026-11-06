@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import ComboHero from "@/components/combo/ComboHero";
+import ComboProblema from "@/components/combo/ComboProblema";
 import "@/combo.css";
 
 export default function LpCombo() {
@@ -13,6 +14,7 @@ export default function LpCombo() {
         <ComboHero
           cta={<a href="#oferta" className="cb-cta">QUERO O COMBO COMPLETO</a>}
         />
+        <ComboProblema />
       </main>
     </div>
   );
