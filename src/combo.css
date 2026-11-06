@@ -400,7 +400,7 @@
   overflow: hidden;
 }
 .theme-combo .cb-exclusivo:last-child { margin-bottom: 0; }
-/* imagem: topo no mobile; no desktop, coluna ao lado do texto, alternando esquerda/direita */
+/* imagem sempre no topo do card (16:9 no mobile, 21:9 no desktop) */
 .theme-combo .cb-exclusivo-media {
   aspect-ratio: 16 / 9;
   width: auto;
@@ -434,14 +434,6 @@
 .theme-combo .cb-exclusivo .cb-callout { align-self: stretch; }
 .theme-combo .cb-exclusivo .cb-callout { background: var(--cb-bg); }
 @media (min-width: 768px) {
-  .theme-combo .cb-exclusivo { flex-direction: row; align-items: stretch; }
-  .theme-combo .cb-exclusivo:nth-of-type(even) { flex-direction: row-reverse; }
-  .theme-combo .cb-exclusivo-media {
-    flex: 0 0 38%;
-    aspect-ratio: auto;
-    min-height: 16rem;
-    border-width: 0 1px 0 0;
-  }
-  .theme-combo .cb-exclusivo:nth-of-type(even) .cb-exclusivo-media { border-width: 0 0 0 1px; }
-  .theme-combo .cb-exclusivo-body { flex: 1; padding: var(--cb-space-4); justify-content: center; }
+  .theme-combo .cb-exclusivo-media { aspect-ratio: 21 / 9; }
+  .theme-combo .cb-exclusivo-body { padding: var(--cb-space-4); }
 }

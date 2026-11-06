@@ -1,7 +1,7 @@
 function Media({ id, nome }: { id: string; nome: string }) {
   return (
     <div className="cb-exclusivo-media" role="img" aria-label={`Placeholder: imagem de ${nome}`}>
-      <span className="cb-placeholder-label">[{id} | Imagem: {nome} | 1:1 | 1200x1200 · mobile corta em 16:9]</span>
+      <span className="cb-placeholder-label">[{id} | Imagem: {nome} | desktop 21:9 1680x720 · mobile 16:9 1200x675]</span>
     </div>
   );
 }
