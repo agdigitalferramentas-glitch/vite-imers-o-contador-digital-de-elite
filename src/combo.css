@@ -400,9 +400,9 @@
   overflow: hidden;
 }
 .theme-combo .cb-exclusivo:last-child { margin-bottom: 0; }
-/* imagem sempre no topo do card (16:9 no mobile, 21:9 no desktop) */
+/* imagem sempre no topo do card (altura 25% menor que 16:9 / 21:9: 64:27 no mobile, 28:9 no desktop) */
 .theme-combo .cb-exclusivo-media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 64 / 27;
   width: auto;
   border-width: 0 0 1px;
   border-radius: 0;
@@ -434,6 +434,6 @@
 .theme-combo .cb-exclusivo .cb-callout { align-self: stretch; }
 .theme-combo .cb-exclusivo .cb-callout { background: var(--cb-bg); }
 @media (min-width: 768px) {
-  .theme-combo .cb-exclusivo-media { aspect-ratio: 21 / 9; }
+  .theme-combo .cb-exclusivo-media { aspect-ratio: 28 / 9; }
   .theme-combo .cb-exclusivo-body { padding: var(--cb-space-4); }
 }
