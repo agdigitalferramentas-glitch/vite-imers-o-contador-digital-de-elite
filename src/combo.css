@@ -13,6 +13,8 @@
   --cb-text-muted: #4d4d4d;
   --cb-cta-bg: #5c5c5c;
   --cb-cta-text: #ffffff;
+  --cb-emphasis-bg: #2b2b2b;
+  --cb-emphasis-text: #ffffff;
   /* tipografia */
   --cb-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --cb-fs-badge: 0.75rem;
@@ -447,7 +449,7 @@
   font-weight: 800;
 }
 .theme-combo .cb-ancoragem-table,
-.theme-combo .cb-ancoragem .cb-callout { max-width: 46rem; margin-inline: auto; }
+.theme-combo .cb-ancoragem-destaque { max-width: 46rem; margin-inline: auto; }
 .theme-combo .cb-ancoragem-table {
   width: 100%;
   margin-bottom: var(--cb-space-3);
@@ -473,7 +475,25 @@
   font-size: var(--cb-fs-price);
   font-weight: 800;
 }
+/* destaque da ancoragem: bloco escuro, texto maior e centralizado */
+.theme-combo .cb-ancoragem-destaque {
+  margin-block: 0;
+  padding: var(--cb-space-3);
+  border-radius: var(--cb-radius);
+  background: var(--cb-emphasis-bg);
+  color: var(--cb-emphasis-text);
+  font-size: var(--cb-fs-h3);
+  line-height: 1.4;
+  font-weight: 600;
+  text-align: center;
+}
+.theme-combo .cb-ancoragem-destaque strong {
+  font-size: 1.15em;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
 @media (min-width: 768px) {
   .theme-combo .cb-ancoragem h2 { text-align: center; }
-  .theme-combo .cb-ancoragem .cb-callout { text-align: center; border-left: 0; border-top: 4px solid var(--cb-text); }
+  .theme-combo .cb-ancoragem-destaque { padding: var(--cb-space-4); }
 }

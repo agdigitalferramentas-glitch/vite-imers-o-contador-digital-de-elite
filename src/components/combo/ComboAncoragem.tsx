@@ -38,8 +38,8 @@ export default function ComboAncoragem() {
             </tr>
           </tfoot>
         </table>
-        <p className="cb-callout">
-          Você não vai pagar R$&nbsp;10.229. Na Black Friday, você leva tudo por R$&nbsp;2.597, com acesso vitalício. Ou seja: são mais de R$&nbsp;7.000 de desconto no valor total.
+        <p className="cb-ancoragem-destaque">
+          Você não vai pagar R$&nbsp;10.229. Na Black Friday, você leva tudo por <strong>R$&nbsp;2.597</strong>, com acesso vitalício. Ou seja: são <strong>mais de R$&nbsp;7.000 de desconto</strong> no valor total.
         </p>
       </div>
     </section>
