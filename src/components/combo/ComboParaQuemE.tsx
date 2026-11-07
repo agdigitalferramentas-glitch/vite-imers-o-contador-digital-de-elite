@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import ComboCheckoutCta from "./ComboCheckoutCta";
 
 const PERFIS = [
   "Você já tem escritório e quer mais eficiência, menos custo operacional e mais lucro",
@@ -24,6 +25,9 @@ export default function ComboParaQuemE() {
             </li>
           ))}
         </ul>
+        <div className="cb-section-cta">
+          <ComboCheckoutCta />
+        </div>
       </div>
     </section>
   );

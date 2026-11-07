@@ -629,3 +629,6 @@
 }
 .theme-combo .cb-perfis .cb-card-icon { width: 3rem; height: 3rem; flex: none; }
 .theme-combo .cb-perfis p { margin: 0; font-size: var(--cb-fs-body); font-weight: 600; }
+
+/* CTA ao final de uma seção */
+.theme-combo .cb-section-cta { display: flex; justify-content: center; margin-top: var(--cb-space-4); }
