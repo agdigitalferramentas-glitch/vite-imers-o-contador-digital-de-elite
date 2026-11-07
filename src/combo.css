@@ -599,3 +599,33 @@
 }
 
 .theme-combo .cb-comparacoes b { font-weight: 600; }
+
+/* ---------- Seção 7: Para quem é ---------- */
+.theme-combo .cb-paraquem { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-paraquem h2 {
+  margin: 0 0 var(--cb-space-3);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: 800;
+  text-align: center;
+}
+.theme-combo .cb-perfis {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.theme-combo .cb-perfis li {
+  display: flex;
+  align-items: center;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-perfis .cb-card-icon { width: 3rem; height: 3rem; flex: none; }
+.theme-combo .cb-perfis p { margin: 0; font-size: var(--cb-fs-body); font-weight: 600; }
