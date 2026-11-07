@@ -12,7 +12,7 @@ const FAQ = [
       "Você paga uma vez e nunca mais renova. Vale para todos os cursos e para o CCD inteiro: estações, novas estações, comunidade, encontros ao vivo e bônus de assinante. A única exceção é o CCD HUB, liberado por 6 meses.",
   },
   {
-    pergunta: "Por quanto tempo uso o CCD HUB — Módulo RT?",
+    pergunta: "Por quanto tempo uso o CCD HUB: Módulo RT?",
     resposta: "Por 6 meses a partir da compra.",
   },
   {

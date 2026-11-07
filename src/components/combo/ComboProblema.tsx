@@ -3,7 +3,7 @@ import { Building2, Globe2, Scale } from "lucide-react";
 const PILARES = [
   { pilar: "Estrutura", resolve: "Processos padronizados, equipe produtiva, menos retrabalho", produtos: "Guia de Processos, Contabilidade Digital 360" },
   { pilar: "Crescimento", resolve: "Modelo digital, precificação, vendas e escala", produtos: "CCD, Contador Digital de Elite, Pack Contador Estratégico IA" },
-  { pilar: "Reforma Tributária", resolve: "Consultoria de alto valor em IBS, CBS e IS, nicho por nicho", produtos: "Mentoria Reforma Tributária Lucrativa + CCD HUB — Módulo RT" },
+  { pilar: "Reforma Tributária", resolve: "Consultoria de alto valor em IBS, CBS e IS, nicho por nicho", produtos: "Mentoria Reforma Tributária Lucrativa + CCD HUB: Módulo RT" },
 ];
 
 const NECESSIDADES = [

@@ -13,7 +13,7 @@ const PRODUTOS = [
     valor: "R$\u00a02.997",
   },
   {
-    nome: "2. CCD — Comunidade Contadores Digitais",
+    nome: "2. CCD: Comunidade Contadores Digitais",
     resumo: "A metodologia para faturar mais, sair do operacional e construir um escritório lucrativo, previsível e escalável.",
     itens: [
       "17 Estações de Aceleração (Gestão de Equipes, Financeiro, Processos e mais)",
@@ -29,10 +29,10 @@ const PRODUTOS = [
     nome: "3. Contador Digital de Elite",
     resumo: "O mesmo sistema que levou um escritório de 80 para 1.200 clientes, aula por aula, no seu ritmo.",
     itens: [
-      "Módulo 1 — Aumento Imediato de Faturamento: os 8 a 10 serviços que sua carteira atual já precisa e ninguém ofereceu, sem captar um cliente novo",
-      "Módulo 2 — Marketing com o Dinheiro que Você Já Tem: o motor de demanda pago com a receita gerada no Módulo 1",
-      "Módulo 3 — A Proposta que Fecha sem Desconto: estrutura, sequência e apresentação de escopo prontas para usar",
-      "Módulo 4 — Processos, Contratos e IA na Operação: entrada do cliente, contrato e IA integrada ao onboarding",
+      "Módulo 1, Aumento Imediato de Faturamento: os 8 a 10 serviços que sua carteira atual já precisa e ninguém ofereceu, sem captar um cliente novo",
+      "Módulo 2, Marketing com o Dinheiro que Você Já Tem: o motor de demanda pago com a receita gerada no Módulo 1",
+      "Módulo 3, A Proposta que Fecha sem Desconto: estrutura, sequência e apresentação de escopo prontas para usar",
+      "Módulo 4, Processos, Contratos e IA na Operação: entrada do cliente, contrato e IA integrada ao onboarding",
     ],
     valor: "R$\u00a0247",
   },

@@ -33,7 +33,7 @@ export default function ComboMentores() {
                 <div className="cb-mentor-body">
                   <h3>
                     <span className="cb-mentor-nome">{m.nome}</span>
-                    <span className="cb-sr"> — </span>
+                    <span className="cb-sr">, </span>
                     <span className="cb-mentor-funcao">{m.funcao}</span>
                   </h3>
                   <p>{m.texto}</p>

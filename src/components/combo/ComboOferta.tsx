@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 
 const CHECKLIST = [
   "Mentoria Reforma Tributária Lucrativa",
-  "CCD — Comunidade Contadores Digitais",
+  "CCD: Comunidade Contadores Digitais",
   "Contador Digital de Elite",
   "Contabilidade Digital 360",
   "Guia de Processos da Contabilidade Digital",
   "Pack Contador Estratégico IA",
-  "CCD HUB — Módulo RT liberado por 6 meses",
+  "CCD HUB: Módulo RT liberado por 6 meses",
   "Todas as atualizações da Reforma Tributária",
   "Acesso vitalício a todos os cursos",
 ];
