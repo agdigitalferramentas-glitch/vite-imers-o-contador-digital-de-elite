@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
 import { getVideoSource } from "@/lib/video";
-import ComboCheckoutCta from "./ComboCheckoutCta";
 
 const VIDEOS = [
   { id: "IMG-13", n: 1, link: "https://youtu.be/biOmM6Xckwk" },
@@ -52,9 +51,6 @@ export default function ComboDepoimentos() {
             </li>
           ))}
         </ul>
-        <div className="cb-section-cta">
-          <ComboCheckoutCta />
-        </div>
       </div>
     </section>
   );

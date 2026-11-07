@@ -1,3 +1,5 @@
+import ComboCheckoutCta from "./ComboCheckoutCta";
+
 /* SEÇÃO 10: Garantia (início) */
 export default function ComboGarantia() {
   return (
@@ -13,6 +15,9 @@ export default function ComboGarantia() {
               Você tem 7 dias para entrar, abrir os cursos, testar o CCD HUB e ver se o combo faz sentido para o seu escritório. Se por qualquer motivo não for para você, peça o reembolso. Você recebe cada centavo de volta, sem burocracia e sem perguntas.
             </p>
           </div>
+        </div>
+        <div className="cb-section-cta">
+          <ComboCheckoutCta />
         </div>
       </div>
     </section>
