@@ -101,7 +101,8 @@
 /* ---------- Placeholder de imagem ---------- */
 .theme-combo .cb-hero-media,
 .theme-combo .cb-produto-media,
-.theme-combo .cb-exclusivo-media {
+.theme-combo .cb-exclusivo-media,
+.theme-combo .cb-mentor-media {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -632,3 +633,46 @@
 
 /* CTA ao final de uma seção */
 .theme-combo .cb-section-cta { display: flex; justify-content: center; margin-top: var(--cb-space-4); }
+
+/* ---------- Seção 8: Quem vai te guiar ---------- */
+.theme-combo .cb-mentores { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-mentores-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-mentores-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+}
+.theme-combo .cb-mentores-grid > li { display: flex; }
+.theme-combo .cb-mentor {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  overflow: hidden;
+}
+.theme-combo .cb-mentor-media {
+  aspect-ratio: 1 / 1;
+  width: auto;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+.theme-combo .cb-mentor-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-3);
+}
+.theme-combo .cb-mentor h2 {
+  margin: 0;
+  font-size: var(--cb-fs-h3);
+  line-height: 1.25;
+  font-weight: 800;
+}
+.theme-combo .cb-mentor p { margin: 0; font-size: var(--cb-fs-body); }
