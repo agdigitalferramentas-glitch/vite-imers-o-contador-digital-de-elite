@@ -49,14 +49,14 @@ export default function ComboOferta({ cta }: { cta: ReactNode }) {
 
         <div className="cb-comparacoes">
           <p>
-            <span>Mentoria sozinha: R$&nbsp;2.997.</span>
-            <span>Combo completo: R$&nbsp;2.597.</span>
-            <em>Você paga R$&nbsp;400 a menos e leva todos os outros produtos junto.</em>
+            <span>Mentoria sozinha: <b>R$&nbsp;2.997</b>.</span>
+            <span>Combo completo: <b>R$&nbsp;2.597</b>.</span>
+            <em>Você paga <b>R$&nbsp;400</b> a menos e leva todos os outros produtos junto.</em>
           </p>
           <p>
-            <span>Todos os produtos separados: R$&nbsp;10.229.</span>
-            <span>Combo completo: R$&nbsp;2.597.</span>
-            <em>São mais de R$&nbsp;7.000 de desconto, e você ainda leva tudo com acesso vitalício.</em>
+            <span>Todos os produtos separados: <b>R$&nbsp;10.229</b>.</span>
+            <span>Combo completo: <b>R$&nbsp;2.597</b>.</span>
+            <em>São mais de <b>R$&nbsp;7.000</b> de desconto, e você ainda leva tudo com acesso vitalício.</em>
           </p>
         </div>
       </div>

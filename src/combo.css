@@ -597,3 +597,5 @@
   font-size: var(--cb-fs-small);
   color: var(--cb-text-muted);
 }
+
+.theme-combo .cb-comparacoes b { font-weight: 600; }
