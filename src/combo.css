@@ -689,3 +689,62 @@
   white-space: nowrap;
 }
 .theme-combo .cb-mentor p { margin: 0; font-size: var(--cb-fs-body); }
+
+/* ---------- Seção 9: Depoimentos ---------- */
+.theme-combo .cb-depoimentos { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-depoimentos h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: 800;
+  text-align: center;
+}
+.theme-combo .cb-videos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-videos { grid-template-columns: repeat(3, 1fr); }
+}
+.theme-combo .cb-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface-strong);
+}
+.theme-combo .cb-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.theme-combo .cb-video-thumb {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--cb-border) 50%, transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), var(--cb-border) 50%, transparent calc(50% + 1px)),
+    var(--cb-surface-strong);
+}
+.theme-combo .cb-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--cb-text);
+  border-radius: 999px;
+  background: var(--cb-cta-bg);
+  color: var(--cb-cta-text);
+}
+.theme-combo .cb-video-play svg { margin-left: 0.15rem; }

@@ -8,6 +8,7 @@ import ComboOferta from "@/components/combo/ComboOferta";
 import ComboCheckoutCta from "@/components/combo/ComboCheckoutCta";
 import ComboParaQuemE from "@/components/combo/ComboParaQuemE";
 import ComboMentores from "@/components/combo/ComboMentores";
+import ComboDepoimentos from "@/components/combo/ComboDepoimentos";
 import "@/combo.css";
 
 export default function LpCombo() {
@@ -28,6 +29,7 @@ export default function LpCombo() {
         <ComboOferta cta={<ComboCheckoutCta />} />
         <ComboParaQuemE />
         <ComboMentores />
+        <ComboDepoimentos />
       </main>
     </div>
   );
