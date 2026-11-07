@@ -789,6 +789,13 @@
 
 /* ---------- Seção 11: Perguntas frequentes ---------- */
 .theme-combo .cb-faq { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-faq h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: 800;
+  text-align: center;
+}
 .theme-combo .cb-faq-lista { display: flex; flex-direction: column; gap: var(--cb-space-1); max-width: 46rem; margin-inline: auto; }
 .theme-combo .cb-faq-item {
   border: 1px solid var(--cb-border);
@@ -805,7 +812,7 @@
   cursor: pointer;
 }
 .theme-combo .cb-faq-item summary::-webkit-details-marker { display: none; }
-.theme-combo .cb-faq-item summary h2 {
+.theme-combo .cb-faq-item summary h3 {
   margin: 0;
   font-size: var(--cb-fs-body);
   line-height: 1.3;

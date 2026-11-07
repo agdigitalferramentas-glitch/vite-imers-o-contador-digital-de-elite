@@ -48,13 +48,14 @@ const FAQ = [
 /* SEÇÃO 11: Perguntas frequentes (início) */
 export default function ComboFaq() {
   return (
-    <section id="secao-11-faq" aria-label="Perguntas frequentes" className="cb-section cb-faq">
+    <section id="secao-11-faq" aria-labelledby="faq-titulo" className="cb-section cb-faq">
       <div className="cb-container">
+        <h2 id="faq-titulo">Perguntas Frequentes</h2>
         <div className="cb-faq-lista">
-          {FAQ.map((item) => (
-            <details key={item.pergunta} className="cb-faq-item">
+          {FAQ.map((item, i) => (
+            <details key={item.pergunta} className="cb-faq-item" open={i === 0}>
               <summary>
-                <h2>{item.pergunta}</h2>
+                <h3>{item.pergunta}</h3>
                 <ChevronDown aria-hidden="true" size={24} strokeWidth={2.25} />
               </summary>
               <p>{item.resposta}</p>
