@@ -11,6 +11,7 @@ import ComboMentores from "@/components/combo/ComboMentores";
 import ComboDepoimentos from "@/components/combo/ComboDepoimentos";
 import ComboGarantia from "@/components/combo/ComboGarantia";
 import ComboFaq from "@/components/combo/ComboFaq";
+import ComboCtaFinal from "@/components/combo/ComboCtaFinal";
 import "@/combo.css";
 
 export default function LpCombo() {
@@ -34,6 +35,7 @@ export default function LpCombo() {
         <ComboDepoimentos />
         <ComboGarantia />
         <ComboFaq />
+        <ComboCtaFinal />
       </main>
     </div>
   );
