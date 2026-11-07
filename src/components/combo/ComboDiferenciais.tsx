@@ -44,7 +44,7 @@ export default function ComboDiferenciais() {
           <Media id="IMG-09" nome="CCD vitalício" />
           <div className="cb-exclusivo-body">
           <p className="cb-badge">Exclusivo 2</p>
-          <h3 id="exclusivo-2">o CCD é seu para sempre</h3>
+          <h3 id="exclusivo-2">O CCD é seu para sempre</h3>
           <div className="cb-exclusivo-cols">
             <p>
               O CCD é vendido como assinatura: R$&nbsp;2.497 por ano. Em 5 anos, são R$&nbsp;12.485 só para continuar dentro. No combo, você nunca mais paga por ele.
