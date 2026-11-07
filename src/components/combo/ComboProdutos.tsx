@@ -1,6 +1,6 @@
 const PRODUTOS = [
   {
-    nome: "1. Mentoria Reforma Tributária Lucrativa",
+    nome: "Mentoria Reforma Tributária Lucrativa",
     resumo: "Transforme o que você sabe sobre IBS, CBS e IS em consultoria de alto valor, nicho por nicho.",
     itens: [
       "27 aulas práticas em 3 fases: Fundamentos Consultivos, Imersões por Nicho e Central do Cliente",
@@ -13,7 +13,7 @@ const PRODUTOS = [
     valor: "R$\u00a02.997",
   },
   {
-    nome: "2. CCD: Comunidade Contadores Digitais",
+    nome: "CCD: Comunidade Contadores Digitais",
     resumo: "A metodologia para faturar mais, sair do operacional e construir um escritório lucrativo, previsível e escalável.",
     itens: [
       "17 Estações de Aceleração (Gestão de Equipes, Financeiro, Processos e mais)",
@@ -26,7 +26,7 @@ const PRODUTOS = [
     valor: "R$\u00a02.497 por ano",
   },
   {
-    nome: "3. Contador Digital de Elite",
+    nome: "Contador Digital de Elite",
     resumo: "O mesmo sistema que levou um escritório de 80 para 1.200 clientes, aula por aula, no seu ritmo.",
     itens: [
       "Módulo 1, Aumento Imediato de Faturamento: os 8 a 10 serviços que sua carteira atual já precisa e ninguém ofereceu, sem captar um cliente novo",
@@ -37,7 +37,7 @@ const PRODUTOS = [
     valor: "R$\u00a0247",
   },
   {
-    nome: "4. Contabilidade Digital 360: o Guia Definitivo de Precificação e Processos",
+    nome: "Contabilidade Digital 360: o Guia Definitivo de Precificação e Processos",
     resumo: "O guia completo para escalar o escritório com lucro e previsibilidade.",
     itens: [
       "Módulo Contabilidade Digital: estrutura, prospecção, vendas, onboarding, atendimento, sucesso do cliente, equipe e ferramentas",
@@ -48,7 +48,7 @@ const PRODUTOS = [
     valor: "R$\u00a0147",
   },
   {
-    nome: "5. Guia de Processos da Contabilidade Digital",
+    nome: "Guia de Processos da Contabilidade Digital",
     resumo: "Um escritório até 3x mais eficiente com processos padronizados.",
     itens: [
       "9 aulas, cerca de 8h de conteúdo",
@@ -60,7 +60,7 @@ const PRODUTOS = [
     valor: "R$\u00a047",
   },
   {
-    nome: "6. Pack Contador Estratégico IA",
+    nome: "Pack Contador Estratégico IA",
     resumo: "4 agentes de IA para sair de contador a consultor estratégico.",
     itens: [
       "Social Cont: cria posts, legendas e roteiros para redes sociais e atrai clientes qualificados",
