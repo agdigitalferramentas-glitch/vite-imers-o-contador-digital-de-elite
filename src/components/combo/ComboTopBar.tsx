@@ -7,7 +7,7 @@ export default function ComboTopBar() {
   return (
     <div className="cb-topbar" role="region" aria-label="Oferta">
       <div className="cb-topbar-inner">
-        <p>Aproveite +R$&nbsp;7.000 de DESCONTO e acesso vitalício!</p>
+        <p>Aproveite +R$&nbsp;7.000 de DESCONTO e acesso VITALÍCIO!</p>
         <ComboButton href={href} className="cb-topbar-cta">
           GARANTIR O COMBO
         </ComboButton>

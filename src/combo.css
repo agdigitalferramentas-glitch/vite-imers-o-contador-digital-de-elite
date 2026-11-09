@@ -22,6 +22,8 @@
   /* paleta do KV: ciano e azul elétrico amostrados da própria arte (#1ae9e7 e #08c8e8) */
   --cb-cyan: #1ae9e7;
   --cb-blue: #08c8e8;
+  /* azul elétrico da faixa do topo, escurecido para contrastar com o botão verde neon (5,1:1) e com o texto branco (7,0:1) */
+  --cb-blue-strip: #0050c8;
   --cb-blue-deep: #004481;
   --cb-navy: #001b48;
   /* cores de uso */
@@ -931,8 +933,8 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--cb-blue);
-  color: var(--cb-navy);
+  background: var(--cb-blue-strip);
+  color: var(--cb-text);
   box-shadow: 0 6px 24px rgb(0 0 0 / 0.35);
 }
 .theme-combo .cb-topbar-inner {
@@ -970,7 +972,7 @@
 }
 .theme-combo .cb-topbar-cta .cb-cta-arrow { width: 1.875rem; height: 1.875rem; }
 .theme-combo .cb-topbar-cta:hover { filter: brightness(1.06); }
-.theme-combo .cb-topbar a:focus-visible { outline-color: var(--cb-navy); }
+.theme-combo .cb-topbar a:focus-visible { outline-color: var(--cb-text); }
 @media (min-width: 768px) {
   .theme-combo .cb-topbar p { font-size: var(--cb-fs-body); }
   .theme-combo .cb-topbar-inner { gap: var(--cb-space-3); padding-block: 0.75rem; }
