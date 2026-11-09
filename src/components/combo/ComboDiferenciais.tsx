@@ -1,7 +1,17 @@
-function Media({ id, nome }: { id: string; nome: string }) {
+import ResponsiveImg from "@/components/ResponsiveImg";
+
+/** `imagem`: nome-base das variantes em src/assets/responsive; sem ele, mostra o placeholder. */
+function Media({ id, nome, imagem, alt }: { id: string; nome: string; imagem?: string; alt?: string }) {
+  if (imagem) {
+    return (
+      <div className="cb-exclusivo-media cb-exclusivo-media-img">
+        <ResponsiveImg name={imagem} alt={alt ?? nome} width={1280} height={548} sizes="(min-width: 1024px) 992px, calc(100vw - 32px)" />
+      </div>
+    );
+  }
   return (
     <div className="cb-exclusivo-media" role="img" aria-label={`Placeholder: imagem de ${nome}`}>
-      <span className="cb-placeholder-label">[{id} | Imagem: {nome} | desktop 28:9 1680x540 · mobile 64:27 1200x506]</span>
+      <span className="cb-placeholder-label">[{id} | Imagem: {nome} | 7:3 · 1680x720]</span>
     </div>
   );
 }
@@ -14,7 +24,7 @@ export default function ComboDiferenciais() {
         <h2 id="diferenciais-titulo">O que só quem compra o combo recebe.</h2>
 
         <article className="cb-exclusivo" aria-labelledby="exclusivo-1">
-          <Media id="IMG-08" nome="CCD HUB: Módulo RT" />
+          <Media id="IMG-08" nome="CCD HUB: Módulo RT" imagem="combo-exclusivo-hub" alt="Mockup do CCD HUB: Módulo RT em notebook e tablet" />
           <div className="cb-exclusivo-body">
           <p className="cb-badge">Exclusivo 1</p>
           <h3 id="exclusivo-1">CCD HUB: Módulo RT (liberado até Dezembro/2027)</h3>
@@ -41,7 +51,7 @@ export default function ComboDiferenciais() {
         </article>
 
         <article className="cb-exclusivo" aria-labelledby="exclusivo-2">
-          <Media id="IMG-09" nome="CCD vitalício" />
+          <Media id="IMG-09" nome="CCD vitalício" imagem="combo-exclusivo-ccd" alt="Área de estações do CCD: Comunidade Contadores Digitais" />
           <div className="cb-exclusivo-body">
           <p className="cb-badge">Exclusivo 2</p>
           <h3 id="exclusivo-2">O CCD é seu para sempre</h3>
@@ -70,7 +80,7 @@ export default function ComboDiferenciais() {
         </article>
 
         <article className="cb-exclusivo" aria-labelledby="exclusivo-3">
-          <Media id="IMG-10" nome="Atualizações da Reforma Tributária" />
+          <Media id="IMG-10" nome="Atualizações da Reforma Tributária" imagem="combo-exclusivo-atualizacoes" alt="Ilustração de atualização contínua, com setas, gráficos e vídeo-aulas" />
           <div className="cb-exclusivo-body">
           <p className="cb-badge">Exclusivo 3</p>
           <h3 id="exclusivo-3">Todas as atualizações da Reforma Tributária</h3>

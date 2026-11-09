@@ -40,6 +40,8 @@ for slug in ("reforma", "ccd", "contador-elite", "cd360", "guia-processos", "pac
     JOBS[f"combo-produto-{slug}"] = (f"combo/produto-{slug}.jpg", [480, 768, 1000, 1280], 74)
 for slug in ("anderson", "alesandro"):
     JOBS[f"combo-mentor-{slug}"] = (f"combo/mentor-{slug}.jpg", [420, 640, 842], 76)
+for slug, src in (("hub", "exclusivo-hub.jpg"), ("ccd", "exclusivo-ccd.jpg"), ("atualizacoes", "exclusivo-atualizacoes.webp")):
+    JOBS[f"combo-exclusivo-{slug}"] = (f"combo/{src}", [480, 768, 1000, 1280, 1600], 74)
 
 
 def main() -> None:
