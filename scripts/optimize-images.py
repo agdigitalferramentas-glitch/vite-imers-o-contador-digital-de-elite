@@ -45,6 +45,9 @@ for slug, src in (("hub", "exclusivo-hub.jpg"), ("ccd", "exclusivo-ccd.jpg"), ("
 for n in (1, 2, 3):
     JOBS[f"combo-depoimento-{n}"] = (f"combo/depoimento-{n}.jpg", [480, 768, 1000, 1280], 76)
 
+# LP /combo: selo de garantia (azul elétrico, com transparência)
+JOBS["combo-selo-garantia"] = ("combo/selo-garantia.webp", [224, 336, 448], "lossless")
+
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)

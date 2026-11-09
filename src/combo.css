@@ -1027,3 +1027,7 @@
 /* miniatura real do depoimento: preenche o quadro, com o botão de play por cima */
 .theme-combo .cb-video-thumb:has(img) { background: var(--cb-bg); }
 .theme-combo .cb-video-thumb img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* selo real: círculo azul elétrico com transparência, sem moldura de placeholder */
+.theme-combo .cb-garantia-media-img { overflow: visible; border: 0; background: none; }
+.theme-combo .cb-garantia-media-img img { display: block; width: 100%; height: 100%; object-fit: contain; }

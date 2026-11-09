@@ -1,3 +1,4 @@
+import ResponsiveImg from "@/components/ResponsiveImg";
 import ComboCheckoutCta from "./ComboCheckoutCta";
 
 /* SEÇÃO 10: Garantia (início) */
@@ -6,8 +7,8 @@ export default function ComboGarantia() {
     <section id="secao-10-garantia" aria-labelledby="garantia-titulo" className="cb-section cb-garantia">
       <div className="cb-container">
         <div className="cb-garantia-card">
-          <div className="cb-garantia-media" role="img" aria-label="Placeholder: selo de garantia">
-            <span className="cb-placeholder-label">[IMG-16 | Selo de garantia de 7 dias | 1:1 | 600x600]</span>
+          <div className="cb-garantia-media cb-garantia-media-img">
+            <ResponsiveImg name="combo-selo-garantia" alt="Selo de garantia de 7 dias" width={448} height={448} sizes="192px" />
           </div>
           <div className="cb-garantia-texto">
             <h2 id="garantia-titulo">7 dias de garantia. Risco zero.</h2>
