@@ -241,7 +241,6 @@
 }
 
 /* ---------- Seção 2: Problema ---------- */
-.theme-combo .cb-problema { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-problema h2 {
   margin: 0 0 var(--cb-space-3);
   max-width: 40rem;
@@ -366,7 +365,6 @@
 }
 
 /* ---------- Seção 3: Tudo o que você leva no combo ---------- */
-.theme-combo .cb-produtos { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-produtos h2 {
   margin: 0 0 var(--cb-space-4);
   font-size: var(--cb-fs-h2);
@@ -431,7 +429,6 @@
 }
 
 /* ---------- Seção 4: Os 3 diferenciais exclusivos ---------- */
-.theme-combo .cb-diferenciais { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-diferenciais h2 {
   margin: 0 0 var(--cb-space-4);
   font-size: var(--cb-fs-h2);
@@ -491,7 +488,6 @@
 }
 
 /* ---------- Seção 5: Ancoragem ---------- */
-.theme-combo .cb-ancoragem { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-ancoragem h2 {
   margin: 0 0 var(--cb-space-3);
   text-align: center;
@@ -551,7 +547,7 @@
 }
 
 /* ---------- Seção 6: Oferta ---------- */
-.theme-combo .cb-oferta { border-top: 1px solid var(--cb-border); scroll-margin-top: 5rem; }
+.theme-combo .cb-oferta { scroll-margin-top: 5rem; }
 .theme-combo .cb-oferta-card {
   display: flex;
   flex-direction: column;
@@ -654,7 +650,6 @@
 .theme-combo .cb-comparacoes b { font-weight: 600; }
 
 /* ---------- Seção 7: Para quem é ---------- */
-.theme-combo .cb-paraquem { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-paraquem h2 {
   margin: 0 0 var(--cb-space-3);
   font-size: var(--cb-fs-h2);
@@ -687,7 +682,6 @@
 .theme-combo .cb-section-cta { display: flex; justify-content: center; margin-top: var(--cb-space-4); }
 
 /* ---------- Seção 8: Quem vai te guiar ---------- */
-.theme-combo .cb-mentores { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-mentores-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -743,7 +737,6 @@
 .theme-combo .cb-mentor p { margin: 0; font-size: var(--cb-fs-body); }
 
 /* ---------- Seção 9: Depoimentos ---------- */
-.theme-combo .cb-depoimentos { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-depoimentos h2 {
   margin: 0 0 var(--cb-space-4);
   font-size: var(--cb-fs-h2);
@@ -807,7 +800,6 @@
 .theme-combo .cb-video-thumb:hover .cb-video-play { background: linear-gradient(100deg, rgb(8 200 232 / 0.85), rgb(40 241 236 / 0.85)); }
 
 /* ---------- Seção 10: Garantia ---------- */
-.theme-combo .cb-garantia { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-garantia-card {
   display: flex;
   flex-direction: column;
@@ -844,7 +836,6 @@
 }
 
 /* ---------- Seção 11: Perguntas frequentes ---------- */
-.theme-combo .cb-faq { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-faq h2 {
   margin: 0 0 var(--cb-space-4);
   font-size: var(--cb-fs-h2);
@@ -886,7 +877,6 @@
 }
 
 /* ---------- Seção 12: CTA final ---------- */
-.theme-combo .cb-ctafinal { border-top: 1px solid var(--cb-border); }
 .theme-combo .cb-ctafinal-card {
   display: flex;
   flex-direction: column;
