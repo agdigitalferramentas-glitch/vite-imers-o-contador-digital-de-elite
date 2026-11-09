@@ -1,5 +1,5 @@
 const ITENS = [
-  { item: "CCD HUB (acesso até DEZ/27)", preco: "R$ 3.997" },
+  { item: "CCD HUB (acesso até DEZ/2027)", preco: "R$ 3.997" },
   { item: "Reforma Tributária Lucrativa", preco: "R$ 2.997" },
   { item: "CCD: Comunidade Contadores Digitais (1 ano)", preco: "R$ 2.497" },
   { item: "Pack Contador Estratégico IA", preco: "R$ 297" },

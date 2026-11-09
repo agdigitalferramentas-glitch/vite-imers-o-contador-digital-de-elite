@@ -14,7 +14,7 @@ import path from "path";
 function homeShell(): Plugin {
   let root = process.cwd();
 
-  async function renderShell(server?: ViteDevServer, page: "home" | "bf" = "home"): Promise<string> {
+  async function renderShell(server?: ViteDevServer, page: "home" | "bf" | "combo" = "home"): Promise<string> {
     let temp: ViteDevServer | undefined;
     const srv =
       server ??
@@ -29,6 +29,10 @@ function homeShell(): Plugin {
         plugins: [react()],
       }));
     try {
+      if (page === "combo") {
+        const mod = await srv.ssrLoadModule("/src/shell/comboShell.tsx");
+        return mod.renderComboShell() as string;
+      }
       if (page === "bf") {
         const mod = await srv.ssrLoadModule("/src/shell/bfShell.tsx");
         return mod.renderBfShell() as string;
@@ -65,6 +69,28 @@ function homeShell(): Plugin {
       .replace("<!-- HOME_SHELL -->", () => shell);
   }
 
+  /**
+   * LP /combo: gera combo/index.html a partir do index.html da raiz (mesmos scripts de rastreamento),
+   * com metadados, fonte pré-carregada, CSS (src/combo.css, inline) e a primeira dobra estática.
+   * As imagens do hero entram como caminhos de origem (/src/assets/...): o build do Vite as troca pelas URLs com hash.
+   */
+  async function renderComboPage(server?: ViteDevServer): Promise<string> {
+    const base = await readFile(path.resolve(root, "index.html"), "utf8");
+    const css = await readFile(path.resolve(root, "src/combo.css"), "utf8");
+    const { code } = await transformWithEsbuild(css, "combo.css", { loader: "css", minify: true });
+    const shell = await renderShell(server, "combo");
+    const title = "Black Friday Anderson Maisse | O Combo Completo";
+    const desc = "Todos os produtos de Anderson Maisse para contadores em um só acesso vitalício, mais o CCD HUB: Módulo RT e as atualizações da Reforma Tributária.";
+    const fonts = `<link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin />`;
+    return base
+      .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
+      .replace(/(<meta (?:name|property)="(?:og:|twitter:)?title" content=")[^"]*"/g, `$1${title}"`)
+      .replace(/(<meta (?:name|property)="(?:og:|twitter:)?description" content=")[^"]*"/g, `$1${desc}"`)
+      .replace(/<link rel="preload" href="\/fonts\/raleway[^>]*>/, fonts)
+      .replace("<!-- CRITICAL_CSS -->", () => `<style>body{margin:0;background:#020b18}${code.trim()}</style>`)
+      .replace("<!-- HOME_SHELL -->", () => shell);
+  }
+
   return {
     name: "home-shell",
     configResolved(config) {
@@ -74,6 +100,7 @@ function homeShell(): Plugin {
       order: "pre",
       async handler(html, ctx) {
         if (/^\/?bf1126\//.test(ctx.path)) return renderBfPage(ctx.server);
+        if (/^\/?combo\//.test(ctx.path)) return renderComboPage(ctx.server);
         const css = await readFile(path.resolve(root, "src/critical.css"), "utf8");
         const { code } = await transformWithEsbuild(css, "critical.css", { loader: "css", minify: true });
         const shell = await renderShell(ctx.server);
@@ -126,10 +153,11 @@ export default defineConfig({
     // sem o polyfill de modulepreload (navegadores-alvo já suportam)
     modulePreload: { polyfill: false },
     rollupOptions: {
-      // multi-página: a /bf1126 ganha um HTML próprio com a primeira dobra estática (servido por try_files $uri/)
+      // multi-página: a /bf1126 e a /combo ganham um HTML próprio com a primeira dobra estática (servido por try_files $uri/)
       input: {
         main: path.resolve(__dirname, "index.html"),
         bf1126: path.resolve(__dirname, "bf1126/index.html"),
+        combo: path.resolve(__dirname, "combo/index.html"),
       },
       output: {
         // React em um chunk próprio, com cache longo: só muda quando a versão do React mudar

@@ -14,7 +14,8 @@ const LpIndexG = lazy(() => import("@/pages/LpIndexG"));
 const LpObrigado = lazy(() => import("@/pages/LpObrigado"));
 const loadBf = () => import("@/pages/LpBf1126");
 const LpBf1126B = lazy(() => import("@/pages/LpBf1126B"));
-const LpCombo = lazy(() => import("@/pages/LpCombo"));
+const loadCombo = () => import("@/pages/LpCombo");
+let LpCombo: React.ComponentType = lazy(loadCombo);
 let LpBf1126: React.ComponentType = lazy(loadBf);
 
 declare global {
@@ -41,6 +42,15 @@ async function start() {
   if (/^\/bf1126\/?$/.test(location.pathname)) {
     try {
       LpBf1126 = (await loadBf()).default;
+    } catch {
+      /* mantém o lazy como reserva */
+    }
+  }
+
+  // idem /combo: faixa do topo e hero estáticos no HTML
+  if (/^\/combo\/?$/.test(location.pathname)) {
+    try {
+      LpCombo = (await loadCombo()).default;
     } catch {
       /* mantém o lazy como reserva */
     }

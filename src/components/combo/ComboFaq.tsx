@@ -4,7 +4,7 @@ const FAQ = [
   {
     pergunta: "Já sou aluno de um dos produtos. Vale a pena?",
     resposta:
-      "Sim. Você recebe todos os outros produtos, o CCD vitalício, o CCD HUB até Dezembro/2027 e as atualizações da Reforma. E as aulas que você já tinha passam a ser suas para sempre.",
+      "Sim. Você recebe todos os outros produtos, o CCD vitalício, o CCD HUB até dezembro de 2027 e as atualizações da Reforma. E as aulas que você já tinha passam a ser suas para sempre.",
   },
   {
     pergunta: "O que significa acesso vitalício?",
