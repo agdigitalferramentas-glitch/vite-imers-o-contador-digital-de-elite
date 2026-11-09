@@ -9,16 +9,16 @@ const FAQ = [
   {
     pergunta: "O que significa acesso vitalício?",
     resposta:
-      "Você paga uma vez e nunca mais renova. Vale para todos os cursos e para o CCD inteiro: estações, novas estações, comunidade, encontros ao vivo e bônus de assinante. A única exceção é o CCD HUB, liberado por 6 meses.",
+      "Você paga uma vez e nunca mais renova. Vale para todos os cursos e para o CCD inteiro: estações, novas estações, comunidade, encontros ao vivo e bônus de assinante. A única exceção é o CCD HUB, liberado até DEZ/2027.",
   },
   {
     pergunta: "Por quanto tempo uso o CCD HUB: Módulo RT?",
-    resposta: "Por 6 meses a partir da compra.",
+    resposta: "Liberado até o final de 2027.",
   },
   {
     pergunta: "Os encontros ao vivo estão incluídos?",
     resposta:
-      "Sim. Na Mentoria, são 12 encontros, um por mês, com Hot Seat para tirar dúvidas, todos gravados. No CCD, são 2 encontros ao vivo por mês, para sempre.",
+      "Sim. Na Mentoria, são 12 encontros, um por mês, com Hot Seat para tirar dúvidas, todos gravados. No CCD, são 2 encontros ao vivo por mês.",
   },
   {
     pergunta: "Não tenho tempo para tantos cursos. Como começo?",

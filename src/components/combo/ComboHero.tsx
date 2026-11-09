@@ -9,7 +9,7 @@ export default function ComboHero({ cta }: { cta: ReactNode }) {
         <p className="cb-badge">BLACK FRIDAY ANDERSON MAISSE · O COMBO COMPLETO</p>
         <h1 id="hero-titulo">Todos os meus produtos para contadores em um só acesso. <span className="cb-destaque">Vitalício.</span> Pelo menor preço que já existiu.</h1>
         <p className="cb-lead">
-          Mentoria Reforma Tributária Lucrativa, CCD, Contador Digital de Elite, Contabilidade Digital 360, Guia de Processos e Pack Contador Estratégico IA. Mais o CCD HUB: Módulo RT, a ferramenta que simula o impacto da Reforma em cada cliente. Uma única compra, acesso vitalício e todas as atualizações da Reforma incluídas.
+          Reforma Tributária Lucrativa, CCD, Contador Digital de Elite, Contabilidade Digital 360, Guia de Processos e Pack Contador Estratégico IA. Mais o CCD HUB: Módulo RT, a ferramenta que simula o impacto da Reforma em cada cliente. Uma única compra, acesso vitalício e todas as atualizações da Reforma incluídas.
         </p>
         <p className="cb-price">
           De <s>R$&nbsp;10.229</s> por <strong>12x de R$&nbsp;268,59</strong> ou R$&nbsp;2.597 à vista

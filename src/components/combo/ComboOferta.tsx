@@ -2,7 +2,7 @@ import { Check, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 
 const CHECKLIST = [
-  "Mentoria Reforma Tributária Lucrativa",
+  "Reforma Tributária Lucrativa",
   "CCD: Comunidade Contadores Digitais",
   "Contador Digital de Elite",
   "Contabilidade Digital 360",

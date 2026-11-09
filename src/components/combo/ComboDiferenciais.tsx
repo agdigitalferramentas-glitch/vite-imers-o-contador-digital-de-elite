@@ -75,7 +75,7 @@ export default function ComboDiferenciais() {
           <p className="cb-badge">Exclusivo 3</p>
           <h3 id="exclusivo-3">Todas as atualizações da Reforma Tributária</h3>
           <p>
-            A transição vai até 2033 e as regras ainda vão mudar. Toda aula nova, ajuste de alíquota ou regulamentação que entrar na Mentoria Reforma Tributária Lucrativa entra na sua conta, sem custo extra.
+            A transição vai até 2033 e as regras ainda vão mudar. Toda aula nova, ajuste de alíquota ou regulamentação que entrar na Reforma Tributária Lucrativa entra na sua conta, sem custo extra.
           </p>
           </div>
         </article>

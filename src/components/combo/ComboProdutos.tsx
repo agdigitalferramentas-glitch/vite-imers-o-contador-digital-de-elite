@@ -1,11 +1,11 @@
 const PRODUTOS = [
   {
-    nome: "Mentoria Reforma Tributária Lucrativa",
+    nome: "Reforma Tributária Lucrativa",
     resumo: "Transforme o que você sabe sobre IBS, CBS e IS em consultoria de alto valor, nicho por nicho.",
     itens: [
       "27 aulas práticas em 3 fases: Fundamentos Consultivos, Imersões por Nicho e Central do Cliente",
       "6 nichos com script de vendas, checklist técnico e caso prático: Saúde, Mercado Digital, Advogados, Prestadores de Serviço, Revendedores de Veículos e Comércio Varejista",
-      "12 encontros ao vivo (um por mês) + Hot Seat mensal",
+      "10 encontros ao vivo (um por mês) + Hot Seat mensal (até DEZ/2027)",
       "Grupo de WhatsApp exclusivo, planilhas de cálculo e modelos de apresentação por nicho",
       "Aulas prontas para liberar aos seus clientes sobre a Reforma",
       "Com Anderson Maisse (estratégia comercial) e Alesandro Damaceno (aplicação técnica)",

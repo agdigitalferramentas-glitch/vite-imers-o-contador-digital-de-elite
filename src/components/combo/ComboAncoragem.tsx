@@ -1,6 +1,6 @@
 const ITENS = [
-  { item: "CCD HUB (acesso por 6 meses)", preco: "R$ 3.997" },
-  { item: "Mentoria Reforma Tributária Lucrativa", preco: "R$ 2.997" },
+  { item: "CCD HUB (acesso até DEZ/27)", preco: "R$ 3.997" },
+  { item: "Reforma Tributária Lucrativa", preco: "R$ 2.997" },
   { item: "CCD: Comunidade Contadores Digitais (1 ano)", preco: "R$ 2.497" },
   { item: "Pack Contador Estratégico IA", preco: "R$ 297" },
   { item: "Contador Digital de Elite", preco: "R$ 247" },
