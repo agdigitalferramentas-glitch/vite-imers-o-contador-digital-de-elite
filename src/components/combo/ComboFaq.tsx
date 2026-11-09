@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 
 const FAQ = [
   {
@@ -56,7 +56,10 @@ export default function ComboFaq() {
             <details key={item.pergunta} className="cb-faq-item" open={i === 0}>
               <summary>
                 <h3>{item.pergunta}</h3>
-                <ChevronDown aria-hidden="true" size={24} strokeWidth={2.25} />
+                <span className="cb-faq-toggle" aria-hidden="true">
+                  <Plus className="cb-faq-plus" size={18} strokeWidth={2.25} />
+                  <Minus className="cb-faq-minus" size={18} strokeWidth={2.25} />
+                </span>
               </summary>
               <p>{item.resposta}</p>
             </details>

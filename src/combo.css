@@ -29,9 +29,10 @@
   /* cores de uso */
   --cb-bg: #020b18;
   --cb-bg-alt: #061a30;
-  --cb-surface: linear-gradient(160deg, #001b48 0%, #004481 100%);
+  --cb-surface: linear-gradient(160deg, #04204a 0%, #052b5e 100%);
   --cb-surface-strong: #004481;
-  --cb-border: rgb(26 233 231 / 0.4);
+  --cb-border: rgb(26 233 231 / 0.16);
+  --cb-border-strong: rgb(26 233 231 / 0.28);
   --cb-accent: #1ae9e7;
   --cb-text: #ffffff;
   --cb-text-muted: #e8eef3;
@@ -44,8 +45,9 @@
   --cb-cta-glow: 0 0 28px rgb(140 245 66 / 0.35);
   --cb-emphasis-bg: var(--cb-gradient-accent);
   --cb-emphasis-text: #001b48;
-  --cb-shadow-card: 0 18px 42px rgb(0 0 0 / 0.38);
+  --cb-shadow-card: 0 24px 48px -28px rgb(0 0 0 / 0.6);
   --cb-glow: 0 0 28px rgb(26 233 231 / 0.35);
+  --cb-glow-soft: 0 0 40px -12px rgb(26 233 231 / 0.18);
   /* tipografia */
   --cb-font: "Manrope", "Manrope Fallback", system-ui, sans-serif;
   --cb-fw-heading: 600;
@@ -64,7 +66,8 @@
   --cb-space-4: 2.5rem;
   --cb-space-5: 4rem;
   --cb-container: 62rem;
-  --cb-radius: 0.75rem;
+  --cb-radius: 0.875rem;
+  --cb-radius-card: 1.5rem;
   --cb-radius-button: 0.625rem;
 
   min-height: 100vh;
@@ -843,18 +846,15 @@
   font-weight: var(--cb-fw-heading);
   text-align: center;
 }
-.theme-combo .cb-faq-lista { display: flex; flex-direction: column; gap: var(--cb-space-1); max-width: 46rem; margin-inline: auto; }
-.theme-combo .cb-faq-item {
-  border: 1px solid var(--cb-border);
-  border-radius: var(--cb-radius);
-  background: var(--cb-surface);
-}
+/* FAQ em lista: sem cards, só linhas divisórias e o botão de abrir/fechar em círculo */
+.theme-combo .cb-faq-lista { max-width: 46rem; margin-inline: auto; border-top: 1px solid rgb(255 255 255 / 0.1); }
+.theme-combo .cb-faq-item { border-bottom: 1px solid rgb(255 255 255 / 0.1); }
 .theme-combo .cb-faq-item summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--cb-space-2);
-  padding: var(--cb-space-2);
+  padding: 1.25rem 0;
   list-style: none;
   cursor: pointer;
 }
@@ -863,17 +863,33 @@
   margin: 0;
   font-size: var(--cb-fs-body);
   line-height: 1.3;
-  font-weight: var(--cb-fw-heading);
+  font-weight: 700;
 }
-.theme-combo .cb-faq-item summary svg { flex: none; color: var(--cb-accent); transition: transform 0.2s; }
-.theme-combo .cb-faq-item[open] summary svg { transform: rotate(180deg); }
+.theme-combo .cb-faq-toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgb(255 255 255 / 0.24);
+  border-radius: 999px;
+  color: var(--cb-text);
+  transition: border-color 0.2s, background 0.2s;
+}
+.theme-combo .cb-faq-item summary:hover .cb-faq-toggle { border-color: var(--cb-accent); }
+.theme-combo .cb-faq-item[open] .cb-faq-toggle { border-color: var(--cb-accent); color: var(--cb-accent); }
+.theme-combo .cb-faq-minus,
+.theme-combo .cb-faq-item[open] .cb-faq-plus { display: none; }
+.theme-combo .cb-faq-item[open] .cb-faq-minus { display: block; }
 .theme-combo .cb-faq-item p {
   margin: 0;
-  padding: 0 var(--cb-space-2) var(--cb-space-2);
+  padding: 0 3.25rem 1.25rem 0;
   font-size: var(--cb-fs-body);
+  color: var(--cb-text-muted);
 }
 @media (prefers-reduced-motion: reduce) {
-  .theme-combo .cb-faq-item summary svg { transition: none; }
+  .theme-combo .cb-faq-toggle { transition: none; }
 }
 
 /* ---------- Seção 12: CTA final ---------- */
@@ -935,7 +951,7 @@
 /* ritmo da página longa: seções alternam entre o fundo principal e o azul-noite */
 .theme-combo main > section:nth-of-type(even):not(.cb-hero) { background: var(--cb-bg-alt); }
 /* cartões com profundidade (sombra azulada escura) */
-.theme-combo :is(.cb-card, .cb-produto, .cb-exclusivo, .cb-mentor, .cb-garantia-card, .cb-faq-item, .cb-perfis li, .cb-comparacoes p) {
+.theme-combo :is(.cb-card, .cb-produto, .cb-exclusivo, .cb-mentor, .cb-garantia-card, .cb-perfis li, .cb-comparacoes p) {
   box-shadow: var(--cb-shadow-card);
 }
 /* palavras-chave em destaque (ciano, só em trechos curtos de título e valores) */
@@ -1043,3 +1059,14 @@
 /* selo real: círculo azul elétrico com transparência, sem moldura de placeholder */
 .theme-combo .cb-garantia-media-img { overflow: visible; border: 0; background: none; }
 .theme-combo .cb-garantia-media-img img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+/* ---------- Cards refinados: cantos 24px, preenchimento sutil, borda ciano discreta ---------- */
+.theme-combo :is(.cb-card, .cb-produto, .cb-exclusivo, .cb-mentor, .cb-garantia-card, .cb-perfis li, .cb-comparacoes p, .cb-oferta-card, .cb-ctafinal-card) {
+  border-radius: var(--cb-radius-card);
+}
+.theme-combo .cb-oferta-card,
+.theme-combo .cb-ctafinal-card {
+  border-color: var(--cb-border-strong);
+  box-shadow: var(--cb-glow-soft), var(--cb-shadow-card);
+}
+.theme-combo .cb-card-icon { border-color: rgb(26 233 231 / 0.22); background: rgb(26 233 231 / 0.08); }
