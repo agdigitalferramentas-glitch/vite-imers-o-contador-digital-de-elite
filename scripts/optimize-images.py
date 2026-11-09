@@ -36,7 +36,7 @@ for slug in ("jobson", "bruno", "gilberto", "alesandro", "andre"):
     JOBS[f"bf-depoimento-{slug}"] = (f"bf/bf-depoimento-{slug}.jpg", [400, 640, 960], 74)
 
 # LP /combo: mockups dos produtos (notebook + tablet) da seção de entregáveis
-for slug in ("reforma", "ccd", "contador-elite", "guia-processos"):
+for slug in ("reforma", "ccd", "contador-elite", "cd360", "guia-processos", "pack-ia"):
     JOBS[f"combo-produto-{slug}"] = (f"combo/produto-{slug}.jpg", [480, 768, 1000, 1280], 74)
 
 

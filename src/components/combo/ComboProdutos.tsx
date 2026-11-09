@@ -44,6 +44,7 @@ const PRODUTOS: { nome: string; imagem?: string; resumo: string; itens: string[]
   },
   {
     nome: "Contabilidade Digital 360: o Guia Definitivo de Precificação e Processos",
+    imagem: "combo-produto-cd360",
     resumo: "O guia completo para escalar o escritório com lucro e previsibilidade.",
     itens: [
       "Módulo Contabilidade Digital: estrutura, prospecção, vendas, onboarding, atendimento, sucesso do cliente, equipe e ferramentas",
@@ -68,6 +69,7 @@ const PRODUTOS: { nome: string; imagem?: string; resumo: string; itens: string[]
   },
   {
     nome: "Pack Contador Estratégico IA",
+    imagem: "combo-produto-pack-ia",
     resumo: "4 agentes de IA para sair de contador a consultor estratégico.",
     itens: [
       "Social Cont: cria posts, legendas e roteiros para redes sociais e atrai clientes qualificados",
