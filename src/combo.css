@@ -190,10 +190,10 @@
   text-align: left;
 }
 @media (min-width: 1024px) {
-  /* hero em largura total: o bloco de textos ocupa no máximo 50% dela */
-  .theme-combo .cb-hero .cb-container { max-width: none; padding-inline: var(--cb-space-4); }
-  .theme-combo .cb-hero { padding-block: var(--cb-space-4); }
-  .theme-combo .cb-hero-grid { grid-template-columns: 1fr 1fr; gap: var(--cb-space-4); }
+  /* conteúdo do hero: 1280px no máximo, centralizado e com respiro nas laterais; o bloco de textos ocupa 50% dele */
+  .theme-combo .cb-hero .cb-container { width: calc(100% - 5rem); max-width: 80rem; padding-inline: 0; }
+  .theme-combo .cb-hero-grid { grid-template-columns: 1fr 1fr; gap: 0; align-items: center; }
+  .theme-combo .cb-hero-content { padding-right: var(--cb-space-4); }
   .theme-combo .cb-hero-content { gap: var(--cb-space-2); }
   .theme-combo .cb-hero h1 { font-size: 2rem; }
   .theme-combo .cb-hero h1 { max-width: none; }
@@ -921,7 +921,9 @@
   mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 14%, #000 34%);
 }
 @media (min-width: 1024px) {
-  .theme-combo .cb-hero { position: relative; isolation: isolate; padding-bottom: var(--cb-space-4); }
+  /* conteúdo centralizado na vertical */
+  .theme-combo .cb-hero { position: relative; isolation: isolate; display: flex; align-items: center; padding-block: var(--cb-space-5); }
+  .theme-combo .cb-hero > .cb-container { margin-inline: auto; }
   /* a arte 21:9 vira o fundo; o lado esquerdo dela já é escuro, onde fica o texto */
   .theme-combo .cb-hero { min-height: min(calc(100vw / 2.334), 46rem); }
   .theme-combo .cb-hero-media { position: absolute; inset: 0; z-index: -1; margin: 0; }
