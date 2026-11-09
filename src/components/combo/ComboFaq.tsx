@@ -28,7 +28,7 @@ const FAQ = [
   {
     pergunta: "Serve para quem está começando?",
     resposta:
-      "Sim. O CD360 e o Guia de Processos foram feitos para quem está montando o escritório, e a Mentoria não exige conhecimento avançado da Reforma.",
+      "Sim. O CD360 e o Guia de Processos foram feitos para quem está montando o escritório, e a Reforma Lucrativa não exige conhecimento avançado da Reforma.",
   },
   {
     pergunta: "Preciso ter escritório físico?",
