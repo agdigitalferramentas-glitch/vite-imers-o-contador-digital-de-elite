@@ -1,0 +1,1043 @@
+/* ============================================================
+   Página /combo (Black Friday | Combo Completo) escopada sob .theme-combo.
+   Identidade visual (guia do KV): fundo azul-marinho, acentos ciano, Manrope.
+   Para trocar a identidade, altere apenas os tokens abaixo.
+   ============================================================ */
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/manrope-latin-var.woff2") format("woff2");
+}
+/* fallback com métricas próximas: reduz o salto quando a fonte final chega */
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans");
+  size-adjust: 103%;
+}
+
+.theme-combo {
+  /* paleta do KV: ciano e azul elétrico amostrados da própria arte (#1ae9e7 e #08c8e8) */
+  --cb-cyan: #1ae9e7;
+  --cb-blue: #08c8e8;
+  /* azul elétrico da faixa do topo, escurecido para contrastar com o botão verde neon (5,1:1) e com o texto branco (7,0:1) */
+  --cb-blue-strip: #0050c8;
+  --cb-blue-deep: #004481;
+  --cb-navy: #001b48;
+  /* cores de uso */
+  --cb-bg: #020b18;
+  --cb-bg-alt: #061a30;
+  --cb-surface: linear-gradient(160deg, #001b48 0%, #004481 100%);
+  --cb-surface-strong: #004481;
+  --cb-border: rgb(26 233 231 / 0.4);
+  --cb-accent: #1ae9e7;
+  --cb-text: #ffffff;
+  --cb-text-muted: #e8eef3;
+  --cb-gradient-page: linear-gradient(135deg, #020b18 0%, #001b48 55%, #004481 100%);
+  --cb-gradient-accent: linear-gradient(100deg, #08c8e8 0%, #28f1ec 100%);
+  /* botões de ação: verde neon da referência enviada, em formato pílula */
+  --cb-cta-bg: #8cf542;
+  --cb-cta-bg-deep: #7bd73b;
+  --cb-cta-text: #020b18;
+  --cb-cta-glow: 0 0 28px rgb(140 245 66 / 0.35);
+  --cb-emphasis-bg: var(--cb-gradient-accent);
+  --cb-emphasis-text: #001b48;
+  --cb-shadow-card: 0 18px 42px rgb(0 0 0 / 0.38);
+  --cb-glow: 0 0 28px rgb(26 233 231 / 0.35);
+  /* tipografia */
+  --cb-font: "Manrope", "Manrope Fallback", system-ui, sans-serif;
+  --cb-fw-heading: 600;
+  --cb-fs-badge: 0.75rem;
+  --cb-fs-h1: clamp(1.5rem, 5vw, 2.25rem);
+  --cb-fs-lead: clamp(0.9375rem, 2.2vw, 1.0625rem);
+  --cb-fs-price: clamp(1rem, 2.4vw, 1.25rem);
+  --cb-fs-small: 0.875rem;
+  --cb-fs-body: clamp(1rem, 2vw, 1.125rem);
+  --cb-fs-h2: clamp(1.375rem, 3.6vw, 2rem);
+  --cb-fs-h3: clamp(1.125rem, 2.6vw, 1.375rem);
+  /* espaçamento e forma */
+  --cb-space-1: 0.5rem;
+  --cb-space-2: 1rem;
+  --cb-space-3: 1.5rem;
+  --cb-space-4: 2.5rem;
+  --cb-space-5: 4rem;
+  --cb-container: 62rem;
+  --cb-radius: 0.75rem;
+  --cb-radius-button: 0.625rem;
+
+  min-height: 100vh;
+  background: var(--cb-bg);
+  color: var(--cb-text);
+  font-family: var(--cb-font);
+  line-height: 1.5;
+}
+
+/* a regra global de headings (styles.css) usa a fonte da home: aqui vale a Manrope da página */
+.theme-combo h1,
+.theme-combo h2,
+.theme-combo h3,
+.theme-combo h4 {
+  font-family: var(--cb-font);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* regra da página: sem palavras órfãs (títulos balanceados; textos corridos sem palavra sozinha na última linha) */
+.theme-combo :is(h1, h2, h3, h4, h5, h6) { text-wrap: balance; }
+.theme-combo :is(p, li, td, th, dd, summary, figcaption, blockquote, span, a, button) { text-wrap: pretty; }
+
+.theme-combo *,
+.theme-combo *::before,
+.theme-combo *::after { box-sizing: border-box; }
+
+.theme-combo .cb-container {
+  width: 100%;
+  max-width: var(--cb-container);
+  margin-inline: auto;
+  padding-inline: var(--cb-space-2);
+}
+
+.theme-combo .cb-section { padding-block: var(--cb-space-4); }
+@media (min-width: 768px) {
+  .theme-combo .cb-section { padding-block: var(--cb-space-5); }
+}
+
+.theme-combo a:focus-visible,
+.theme-combo button:focus-visible {
+  outline: 3px solid var(--cb-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Botão ---------- */
+.theme-combo .cb-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  min-height: 3.5rem;
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem var(--cb-space-3);
+  border: 0;
+  border-radius: 999px;
+  background: var(--cb-cta-bg);
+  box-shadow: var(--cb-cta-glow);
+  color: var(--cb-cta-text);
+  font: inherit;
+  /* texto escuro sobre o verde neon: contraste acima de 14:1 */
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+}
+.theme-combo .cb-cta:hover { filter: brightness(1.06); box-shadow: 0 0 40px rgb(140 245 66 / 0.55); }
+/* seta em círculo, mais escuro que o botão */
+.theme-combo .cb-cta-arrow {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--cb-cta-bg-deep);
+}
+@media (min-width: 640px) {
+  .theme-combo .cb-cta { width: auto; min-width: 22rem; }
+}
+
+/* ---------- Placeholder de imagem ---------- */
+.theme-combo .cb-produto-media,
+.theme-combo .cb-exclusivo-media,
+.theme-combo .cb-mentor-media,
+.theme-combo .cb-garantia-media {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--cb-border) 50%, transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), var(--cb-border) 50%, transparent calc(50% + 1px)),
+    var(--cb-surface-strong);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+}
+.theme-combo .cb-placeholder-label {
+  margin: var(--cb-space-1);
+  padding: 0.25rem 0.5rem;
+  background: var(--cb-bg);
+  border: 1px solid var(--cb-border);
+  font-size: var(--cb-fs-small);
+  text-align: center;
+}
+
+/* ---------- Seção 1: Hero ---------- */
+/* mobile: texto em cima, expert logo abaixo; desktop: texto à esquerda, expert à direita */
+.theme-combo .cb-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  align-items: center;
+}
+.theme-combo .cb-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--cb-space-3);
+  text-align: left;
+}
+@media (min-width: 1024px) {
+  /* hero em largura total: o bloco de textos ocupa no máximo 50% dela */
+  .theme-combo .cb-hero .cb-container { max-width: none; padding-inline: var(--cb-space-4); }
+  .theme-combo .cb-hero { padding-block: var(--cb-space-4); }
+  .theme-combo .cb-hero-grid { grid-template-columns: 1fr 1fr; gap: var(--cb-space-4); }
+  .theme-combo .cb-hero-content { gap: var(--cb-space-2); }
+  .theme-combo .cb-hero h1 { font-size: 2rem; }
+  .theme-combo .cb-hero h1 { max-width: none; }
+}
+.theme-combo .cb-badge {
+  margin: 0;
+  padding: 0.375rem var(--cb-space-2);
+  border: 1px solid var(--cb-accent);
+  border-radius: var(--cb-radius-button);
+  background: rgb(26 233 231 / 0.12);
+  color: var(--cb-accent);
+  font-size: var(--cb-fs-badge);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.theme-combo .cb-hero h1 {
+  margin: 0;
+  font-size: var(--cb-fs-h1);
+  line-height: 1.15;
+  font-weight: var(--cb-fw-heading);
+  text-wrap: balance;
+}
+.theme-combo .cb-lead {
+  margin: 0;
+  font-size: var(--cb-fs-lead);
+  color: var(--cb-text-muted);
+  text-wrap: pretty;
+}
+.theme-combo .cb-price {
+  margin: 0;
+  padding: var(--cb-space-2) var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-price);
+  text-wrap: balance;
+}
+.theme-combo .cb-price s { color: var(--cb-text-muted); }
+.theme-combo .cb-price s,
+.theme-combo .cb-price strong { white-space: nowrap; }
+.theme-combo .cb-micro {
+  margin: 0;
+  font-size: var(--cb-fs-small);
+  color: var(--cb-text-muted);
+}
+
+/* ---------- Seção 2: Problema ---------- */
+.theme-combo .cb-problema { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-problema h2 {
+  margin: 0 0 var(--cb-space-3);
+  max-width: 40rem;
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  max-width: 46rem;
+  font-size: var(--cb-fs-body);
+}
+.theme-combo .cb-prose p { margin: 0; }
+.theme-combo .cb-callout {
+  padding: var(--cb-space-2) var(--cb-space-3);
+  border-left: 4px solid var(--cb-accent);
+  background: var(--cb-surface);
+  font-weight: 700;
+}
+.theme-combo .cb-subtitle {
+  margin: var(--cb-space-4) 0 var(--cb-space-2);
+  font-size: var(--cb-fs-h3);
+  font-weight: var(--cb-fw-heading);
+}
+
+/* Tabela: mobile = cartões empilhados (rótulos vindos do cabeçalho); desktop = tabela */
+.theme-combo .cb-table { width: 100%; border-collapse: collapse; }
+.theme-combo .cb-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.theme-combo .cb-table tr {
+  display: block;
+  margin-bottom: var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-table th[scope="row"] {
+  display: block;
+  padding: var(--cb-space-1) var(--cb-space-2);
+  background: var(--cb-surface-strong);
+  text-align: left;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-table td { display: block; padding: var(--cb-space-1) var(--cb-space-2); }
+.theme-combo .cb-table td::before {
+  content: attr(data-label);
+  display: block;
+  font-size: var(--cb-fs-small);
+  font-weight: 700;
+  color: var(--cb-text-muted);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-table thead { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+  .theme-combo .cb-table tr { display: table-row; margin: 0; border: 0; background: none; }
+  .theme-combo .cb-table th,
+  .theme-combo .cb-table td {
+    display: table-cell;
+    padding: var(--cb-space-2);
+    border: 1px solid var(--cb-border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .theme-combo .cb-table thead th { background: var(--cb-surface-strong); font-weight: var(--cb-fw-heading); }
+  .theme-combo .cb-table th[scope="row"] { display: table-cell; padding: var(--cb-space-2); border: 1px solid var(--cb-border); background: var(--cb-surface); }
+  .theme-combo .cb-table td::before { display: none; }
+}
+
+/* Cards de necessidades (Seção 2): mobile empilhado, desktop 3 colunas */
+.theme-combo .cb-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-2);
+  margin: 0 0 var(--cb-space-3);
+  padding: 0;
+  list-style: none;
+}
+.theme-combo .cb-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-card p { margin: 0; font-size: var(--cb-fs-body); font-weight: 600; }
+.theme-combo .cb-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: rgb(26 233 231 / 0.12);
+  color: var(--cb-accent);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-cards { grid-template-columns: repeat(3, 1fr); gap: var(--cb-space-3); }
+  .theme-combo .cb-card { flex-direction: column; align-items: flex-start; }
+}
+
+/* Seção 2, desktop: título centralizado; textos abaixo dos cards em 2 colunas (mobile segue empilhado, à esquerda) */
+@media (min-width: 768px) {
+  .theme-combo .cb-problema h2 { max-width: 52rem; margin-inline: auto; text-align: center; }
+  .theme-combo .cb-problema .cb-prose {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--cb-space-3);
+    align-items: center;
+    max-width: none;
+  }
+}
+
+/* ---------- Seção 3: Tudo o que você leva no combo ---------- */
+.theme-combo .cb-produtos { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-produtos h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-produtos h2 { max-width: 52rem; margin-inline: auto; text-align: center; }
+}
+.theme-combo .cb-produtos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 900px) {
+  .theme-combo .cb-produtos-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+}
+.theme-combo .cb-produtos-grid > li { display: flex; }
+.theme-combo .cb-produto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  width: 100%;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+/* imagem do produto: sangra até as bordas do card, no topo */
+.theme-combo .cb-produto-media {
+  aspect-ratio: 16 / 9;
+  margin: calc(-1 * var(--cb-space-3)) calc(-1 * var(--cb-space-3)) 0;
+  width: auto;
+  border-width: 0 0 1px;
+  border-radius: var(--cb-radius) var(--cb-radius) 0 0;
+}
+.theme-combo .cb-produto h3 {
+  margin: 0;
+  font-size: var(--cb-fs-h3);
+  line-height: 1.25;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-produto-resumo { margin: 0; color: var(--cb-text-muted); }
+.theme-combo .cb-produto-itens {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-1);
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  font-size: var(--cb-fs-small);
+}
+.theme-combo .cb-produto-valor {
+  margin: auto 0 0;
+  padding: var(--cb-space-1) var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-bg);
+}
+
+/* ---------- Seção 4: Os 3 diferenciais exclusivos ---------- */
+.theme-combo .cb-diferenciais { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-diferenciais h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-diferenciais h2 { max-width: 52rem; margin-inline: auto; text-align: center; }
+}
+.theme-combo .cb-exclusivo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-body);
+  overflow: hidden;
+}
+.theme-combo .cb-exclusivo:last-child { margin-bottom: 0; }
+/* imagem sempre no topo do card (64:27 no mobile e 7:3 no desktop, a proporção das artes enviadas) */
+.theme-combo .cb-exclusivo-media {
+  aspect-ratio: 64 / 27;
+  width: auto;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+.theme-combo .cb-exclusivo-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-3);
+}
+.theme-combo .cb-exclusivo h3 {
+  margin: 0;
+  font-size: var(--cb-fs-h3);
+  line-height: 1.25;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-exclusivo p { margin: 0; }
+.theme-combo .cb-exclusivo ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-1);
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.theme-combo .cb-exclusivo-cols { display: flex; flex-direction: column; gap: var(--cb-space-2); align-self: stretch; }
+.theme-combo .cb-exclusivo-cols > div { display: flex; flex-direction: column; gap: var(--cb-space-2); }
+.theme-combo .cb-exclusivo .cb-callout { align-self: stretch; }
+.theme-combo .cb-exclusivo .cb-callout { background: var(--cb-bg); }
+@media (min-width: 768px) {
+  .theme-combo .cb-exclusivo-media { aspect-ratio: 7 / 3; }
+  .theme-combo .cb-exclusivo-body { padding: var(--cb-space-4); }
+}
+
+/* ---------- Seção 5: Ancoragem ---------- */
+.theme-combo .cb-ancoragem { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-ancoragem h2 {
+  margin: 0 0 var(--cb-space-3);
+  text-align: center;
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-ancoragem-table,
+.theme-combo .cb-ancoragem-destaque { max-width: 46rem; margin-inline: auto; }
+.theme-combo .cb-ancoragem-table {
+  width: 100%;
+  margin-bottom: var(--cb-space-3);
+  border-collapse: collapse;
+  font-size: var(--cb-fs-body);
+}
+.theme-combo .cb-ancoragem-table th,
+.theme-combo .cb-ancoragem-table td {
+  padding: var(--cb-space-1) var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  text-align: left;
+  vertical-align: top;
+}
+.theme-combo .cb-ancoragem-table td { text-align: right; white-space: nowrap; }
+.theme-combo .cb-ancoragem-table thead th { background: var(--cb-surface-strong); font-weight: var(--cb-fw-heading); }
+.theme-combo .cb-ancoragem-table thead th:last-child { text-align: right; }
+.theme-combo .cb-ancoragem-table tbody th { background: var(--cb-surface); font-weight: 400; }
+.theme-combo .cb-ancoragem-table .cb-incluido th,
+.theme-combo .cb-ancoragem-table .cb-incluido td { background: var(--cb-bg); font-weight: 700; }
+.theme-combo .cb-ancoragem-table tfoot th,
+.theme-combo .cb-ancoragem-table tfoot td {
+  background: var(--cb-surface-strong);
+  font-size: var(--cb-fs-price);
+  font-weight: var(--cb-fw-heading);
+}
+/* destaque da ancoragem: bloco escuro, texto maior e centralizado */
+.theme-combo .cb-ancoragem-destaque {
+  margin-block: 0;
+  padding: var(--cb-space-3);
+  border-radius: var(--cb-radius);
+  background: var(--cb-emphasis-bg);
+  color: var(--cb-emphasis-text);
+  /* azul-marinho sobre o gradiente elétrico: contraste de 8,3:1 a 11,9:1 */
+  font-size: clamp(1.1875rem, 2.6vw, 1.375rem);
+  line-height: 1.4;
+  font-weight: 700;
+  text-align: center;
+}
+.theme-combo .cb-ancoragem-destaque strong {
+  font-size: 1.15em;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-ancoragem h2 { text-align: center; }
+  .theme-combo .cb-ancoragem-destaque { padding: var(--cb-space-4); }
+}
+
+/* ---------- Seção 6: Oferta ---------- */
+.theme-combo .cb-oferta { border-top: 1px solid var(--cb-border); scroll-margin-top: 5rem; }
+.theme-combo .cb-oferta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cb-space-3);
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-accent);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  box-shadow: var(--cb-glow), var(--cb-shadow-card);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-oferta-card { padding: var(--cb-space-4); }
+}
+.theme-combo .cb-oferta-card h2 {
+  margin: 0;
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-oferta-preco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-self: stretch;
+  margin: 0;
+  padding: var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-bg);
+  font-size: var(--cb-fs-price);
+}
+.theme-combo .cb-oferta-preco s { color: var(--cb-text-muted); }
+.theme-combo .cb-oferta-preco strong { font-size: var(--cb-fs-h2); font-weight: var(--cb-fw-heading); line-height: 1.2; }
+.theme-combo .cb-oferta-texto { margin: 0; font-size: var(--cb-fs-body); }
+.theme-combo .cb-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-1);
+  align-self: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: var(--cb-fs-body);
+}
+.theme-combo .cb-checklist li { display: flex; align-items: flex-start; gap: 0.625rem; }
+.theme-combo .cb-checklist svg { flex: none; margin-top: 0.15rem; color: var(--cb-accent); }
+.theme-combo .cb-oferta .cb-cta-wrap { gap: var(--cb-space-1); }
+
+.theme-combo .cb-comparacoes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-2);
+  max-width: 62rem;
+  margin: var(--cb-space-4) auto 0;
+}
+.theme-combo .cb-comparacoes p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  font-size: var(--cb-fs-body);
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-comparacoes { grid-template-columns: 1fr 1fr; gap: var(--cb-space-3); }
+}
+
+/* Marcador de lacuna e agrupamento do CTA */
+.theme-combo .cb-cta-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.theme-combo .cb-lacuna {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border: 1px dashed var(--cb-text);
+  font-size: var(--cb-fs-small);
+}
+
+/* Selo de garantia junto ao CTA (placeholder em ícone; pode virar imagem na Fase 3) */
+.theme-combo .cb-selo {
+  display: inline-flex;
+  color: var(--cb-text);
+  align-items: center;
+  gap: var(--cb-space-1);
+  font-weight: var(--cb-fw-heading);
+}
+
+.theme-combo .cb-comparacoes em {
+  margin-top: var(--cb-space-1);
+  font-size: var(--cb-fs-small);
+  color: var(--cb-text-muted);
+}
+
+.theme-combo .cb-comparacoes b { font-weight: 600; }
+
+/* ---------- Seção 7: Para quem é ---------- */
+.theme-combo .cb-paraquem { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-paraquem h2 {
+  margin: 0 0 var(--cb-space-3);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+  text-align: center;
+}
+.theme-combo .cb-perfis {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.theme-combo .cb-perfis li {
+  display: flex;
+  align-items: center;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-2);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-perfis .cb-card-icon { width: 3rem; height: 3rem; flex: none; }
+.theme-combo .cb-perfis p { margin: 0; font-size: var(--cb-fs-body); font-weight: 600; }
+
+/* CTA ao final de uma seção */
+.theme-combo .cb-section-cta { display: flex; justify-content: center; margin-top: var(--cb-space-4); }
+
+/* ---------- Seção 8: Quem vai te guiar ---------- */
+.theme-combo .cb-mentores { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-mentores-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-mentores-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+}
+.theme-combo .cb-mentores-grid > li { display: flex; }
+.theme-combo .cb-mentor {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  overflow: hidden;
+}
+.theme-combo .cb-mentor-media {
+  aspect-ratio: 1 / 1;
+  width: auto;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+.theme-combo .cb-mentor-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-3);
+}
+.theme-combo .cb-mentores h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+  text-align: center;
+}
+.theme-combo .cb-mentor h3 { display: flex; flex-direction: column; gap: 0.25rem; margin: 0; }
+.theme-combo .cb-mentor-nome { font-size: var(--cb-fs-h2); line-height: 1.2; font-weight: var(--cb-fw-heading); }
+.theme-combo .cb-mentor-funcao { font-size: var(--cb-fs-body); line-height: 1.3; font-weight: 600; color: var(--cb-text-muted); }
+/* texto só para leitores de tela (mantém o travessão do texto original) */
+.theme-combo .cb-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.theme-combo .cb-mentor p { margin: 0; font-size: var(--cb-fs-body); }
+
+/* ---------- Seção 9: Depoimentos ---------- */
+.theme-combo .cb-depoimentos { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-depoimentos h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+  text-align: center;
+}
+.theme-combo .cb-videos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cb-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-videos { grid-template-columns: repeat(3, 1fr); }
+}
+.theme-combo .cb-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface-strong);
+}
+.theme-combo .cb-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.theme-combo .cb-video-thumb {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--cb-border) 50%, transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), var(--cb-border) 50%, transparent calc(50% + 1px)),
+    var(--cb-surface-strong);
+}
+.theme-combo .cb-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: var(--cb-glow);
+  background: var(--cb-gradient-accent);
+  color: var(--cb-navy);
+}
+.theme-combo .cb-video-play svg { margin-left: 0.15rem; }
+
+/* ---------- Seção 10: Garantia ---------- */
+.theme-combo .cb-garantia { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-garantia-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cb-space-3);
+  max-width: 52rem;
+  margin-inline: auto;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  text-align: center;
+}
+.theme-combo .cb-garantia-media {
+  aspect-ratio: 1 / 1;
+  width: 10rem;
+  flex: none;
+  border-radius: 999px;
+  overflow: hidden;
+  align-items: center;
+}
+.theme-combo .cb-garantia-media .cb-placeholder-label { font-size: 0.75rem; }
+.theme-combo .cb-garantia-texto { display: flex; flex-direction: column; gap: var(--cb-space-2); }
+.theme-combo .cb-garantia h2 {
+  margin: 0;
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-garantia p { margin: 0; font-size: var(--cb-fs-body); }
+@media (min-width: 768px) {
+  .theme-combo .cb-garantia-card { flex-direction: row; padding: var(--cb-space-4); text-align: left; }
+  .theme-combo .cb-garantia-media { width: 12rem; }
+}
+
+/* ---------- Seção 11: Perguntas frequentes ---------- */
+.theme-combo .cb-faq { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-faq h2 {
+  margin: 0 0 var(--cb-space-4);
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+  text-align: center;
+}
+.theme-combo .cb-faq-lista { display: flex; flex-direction: column; gap: var(--cb-space-1); max-width: 46rem; margin-inline: auto; }
+.theme-combo .cb-faq-item {
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+}
+.theme-combo .cb-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cb-space-2);
+  padding: var(--cb-space-2);
+  list-style: none;
+  cursor: pointer;
+}
+.theme-combo .cb-faq-item summary::-webkit-details-marker { display: none; }
+.theme-combo .cb-faq-item summary h3 {
+  margin: 0;
+  font-size: var(--cb-fs-body);
+  line-height: 1.3;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-faq-item summary svg { flex: none; color: var(--cb-accent); transition: transform 0.2s; }
+.theme-combo .cb-faq-item[open] summary svg { transform: rotate(180deg); }
+.theme-combo .cb-faq-item p {
+  margin: 0;
+  padding: 0 var(--cb-space-2) var(--cb-space-2);
+  font-size: var(--cb-fs-body);
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-combo .cb-faq-item summary svg { transition: none; }
+}
+
+/* ---------- Seção 12: CTA final ---------- */
+.theme-combo .cb-ctafinal { border-top: 1px solid var(--cb-border); }
+.theme-combo .cb-ctafinal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cb-space-3);
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: var(--cb-space-3);
+  border: 1px solid var(--cb-accent);
+  border-radius: var(--cb-radius);
+  background: var(--cb-surface);
+  box-shadow: var(--cb-glow), var(--cb-shadow-card);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .theme-combo .cb-ctafinal-card { padding: var(--cb-space-5) var(--cb-space-4); }
+}
+.theme-combo .cb-ctafinal h2 {
+  margin: 0;
+  font-size: var(--cb-fs-h2);
+  line-height: 1.2;
+  font-weight: var(--cb-fw-heading);
+}
+.theme-combo .cb-ctafinal-texto { display: flex; flex-direction: column; gap: var(--cb-space-2); font-size: var(--cb-fs-body); }
+.theme-combo .cb-ctafinal-texto p { margin: 0; }
+
+/* ---------- Identidade visual: fundos, profundidade e destaques ---------- */
+/* hero: foto do especialista com o fundo da arte. Mobile: texto e, logo abaixo, a imagem 4:5 em largura total */
+.theme-combo .cb-hero { background: var(--cb-bg); }
+.theme-combo .cb-hero { padding-bottom: 0; }
+.theme-combo .cb-hero-media { display: block; margin: var(--cb-space-3) 0 0; }
+.theme-combo .cb-hero-media img { display: block; width: 100%; height: auto; }
+@media (min-width: 1024px) {
+  .theme-combo .cb-hero { position: relative; isolation: isolate; padding-bottom: var(--cb-space-4); }
+  /* a arte 21:9 vira o fundo; o lado esquerdo dela já é escuro, onde fica o texto */
+  .theme-combo .cb-hero { min-height: min(calc(100vw / 2.334), 46rem); }
+  .theme-combo .cb-hero-media { position: absolute; inset: 0; z-index: -1; margin: 0; }
+  /* ancorada no topo: se sobrar altura, corta os braços e nunca a cabeça */
+  .theme-combo .cb-hero-media img { height: 100%; object-fit: cover; object-position: right top; }
+  /* escurece o lado do texto para manter o contraste quando o corpo do especialista chega perto dele */
+  .theme-combo .cb-hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(2 11 24 / 0.82) 0%, rgb(2 11 24 / 0.55) 34%, transparent 58%);
+  }
+}
+/* ritmo da página longa: seções alternam entre o fundo principal e o azul-noite */
+.theme-combo main > section:nth-of-type(even):not(.cb-hero) { background: var(--cb-bg-alt); }
+/* cartões com profundidade (sombra azulada escura) */
+.theme-combo :is(.cb-card, .cb-produto, .cb-exclusivo, .cb-mentor, .cb-garantia-card, .cb-faq-item, .cb-perfis li, .cb-comparacoes p) {
+  box-shadow: var(--cb-shadow-card);
+}
+/* palavras-chave em destaque (ciano, só em trechos curtos de título e valores) */
+.theme-combo .cb-destaque { color: var(--cb-accent); }
+
+/* ---------- Faixa fixa no topo ---------- */
+.theme-combo .cb-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--cb-blue-strip);
+  color: var(--cb-text);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.35);
+}
+.theme-combo .cb-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cb-space-2);
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 0.625rem var(--cb-space-2);
+}
+.theme-combo .cb-topbar p {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.theme-combo .cb-topbar-cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.25rem 0.25rem 0.875rem;
+  border-radius: 999px;
+  background: var(--cb-cta-bg);
+  color: var(--cb-cta-text);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.theme-combo .cb-topbar-cta .cb-cta-arrow { width: 1.875rem; height: 1.875rem; }
+.theme-combo .cb-topbar-cta:hover { filter: brightness(1.06); }
+.theme-combo .cb-topbar a:focus-visible { outline-color: var(--cb-text); }
+@media (min-width: 768px) {
+  .theme-combo .cb-topbar p { font-size: var(--cb-fs-body); }
+  .theme-combo .cb-topbar-inner { gap: var(--cb-space-3); padding-block: 0.75rem; }
+  .theme-combo .cb-topbar-cta { padding-left: 1.25rem; font-size: var(--cb-fs-body); }
+}
+
+/* ---------- Faixa marquee (azul neon da identidade) ---------- */
+.theme-combo .cb-marquee {
+  position: relative;
+  overflow: hidden;
+  background: var(--cb-gradient-accent);
+  color: var(--cb-navy);
+}
+.theme-combo .cb-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: cbMarquee 40s linear infinite;
+}
+.theme-combo .cb-marquee-group { display: flex; flex: none; }
+.theme-combo .cb-marquee-item,
+.theme-combo .cb-marquee-parte { display: inline-flex; align-items: center; gap: 1rem; }
+.theme-combo .cb-marquee-item { padding-right: 1rem; }
+.theme-combo .cb-marquee-parte {
+  padding-block: 0.75rem;
+  font-size: var(--cb-fs-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.theme-combo .cb-marquee-star { flex: none; }
+@keyframes cbMarquee {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-combo .cb-marquee-track { animation: none; }
+}
+
+/* imagem real do produto (mockup): preenche o topo do card, sem o X do placeholder */
+.theme-combo .cb-produto-media-img { background: var(--cb-bg); }
+.theme-combo .cb-produto-media-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* foto real do mentor: quadrado com o rosto no terço superior (a foto original é vertical) */
+.theme-combo .cb-mentor-media-img { overflow: hidden; background: var(--cb-bg); }
+.theme-combo .cb-mentor-media-img img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; }
+
+/* imagem real do exclusivo: preenche o topo do card, centralizada */
+.theme-combo .cb-exclusivo-media-img { overflow: hidden; background: var(--cb-bg); }
+.theme-combo .cb-exclusivo-media-img img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+/* miniatura real do depoimento: preenche o quadro, com o botão de play por cima */
+.theme-combo .cb-video-thumb:has(img) { background: var(--cb-bg); }
+.theme-combo .cb-video-thumb img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* selo real: círculo azul elétrico com transparência, sem moldura de placeholder */
+.theme-combo .cb-garantia-media-img { overflow: visible; border: 0; background: none; }
+.theme-combo .cb-garantia-media-img img { display: block; width: 100%; height: 100%; object-fit: contain; }

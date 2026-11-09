@@ -14,6 +14,7 @@ const LpIndexG = lazy(() => import("@/pages/LpIndexG"));
 const LpObrigado = lazy(() => import("@/pages/LpObrigado"));
 const loadBf = () => import("@/pages/LpBf1126");
 const LpBf1126B = lazy(() => import("@/pages/LpBf1126B"));
+const LpCombo = lazy(() => import("@/pages/LpCombo"));
 let LpBf1126: React.ComponentType = lazy(loadBf);
 
 declare global {
@@ -60,6 +61,7 @@ async function start() {
             <Route path="/obrigado" element={<LpObrigado />} />
             <Route path="/bf1126" element={<LpBf1126 />} />
             <Route path="/bf1126-b" element={<LpBf1126B />} />
+            <Route path="/combo" element={<LpCombo />} />
             <Route path="*" element={<LpIndex />} />
           </Routes>
         </Suspense>

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Recolore o selo de garantia mantendo o canal alfa (bordas suavizadas preservadas).
 
-Uso: python3 scripts/recolor-seal.py <selo-original.webp> [#hex]
-Gera src/assets/selo-garantia.webp (mestre 500x500); depois rode scripts/optimize-images.py.
+Uso: python3 scripts/recolor-seal.py <selo-original> [#hex] [destino.webp]
+Sem destino, gera src/assets/selo-garantia.webp (mestre 500x500); depois rode scripts/optimize-images.py.
 """
 import sys
 from pathlib import Path
@@ -17,6 +17,6 @@ im = Image.open(src).convert("RGBA")
 alpha = im.getchannel("A")
 out = Image.new("RGBA", im.size, rgb + (0,))
 out.putalpha(alpha)
-dest = ROOT / "src" / "assets" / "selo-garantia.webp"
+dest = Path(sys.argv[3]) if len(sys.argv) > 3 else ROOT / "src" / "assets" / "selo-garantia.webp"
 out.save(dest, "WEBP", lossless=True, method=6)
-print(f"{dest.relative_to(ROOT)}  {out.size}  cor #{hex_color}  {dest.stat().st_size / 1024:.1f} KB")
+print(f"{dest.resolve().relative_to(ROOT)}  {out.size}  cor #{hex_color}  {dest.stat().st_size / 1024:.1f} KB")

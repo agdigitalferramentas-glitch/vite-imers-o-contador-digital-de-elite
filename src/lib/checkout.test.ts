@@ -1,6 +1,6 @@
 import { describe, test } from "node:test";
 import { strict as assert } from "node:assert";
-import { getCheckoutUrl } from "./checkout";
+import { COMBO_CHECKOUT_URL, getCheckoutUrl } from "./checkout";
 
 describe("checkout attribution", () => {
   test("uses the requested checkout with no campaign parameters", () => {
@@ -26,6 +26,14 @@ describe("checkout attribution", () => {
   test("does not pass unrelated parameters", () => {
     assert.equal(getCheckoutUrl("?email=example&redirect=other&utm_source=meta"),
       "https://pay.kiwify.com.br/3IfZBFB?utm_source=meta",
+    );
+  });
+
+  test("combo checkout keeps the same attribution policy", () => {
+    assert.equal(getCheckoutUrl("", COMBO_CHECKOUT_URL), "https://pay.kiwify.com.br/E1cDEN7");
+    assert.equal(
+      getCheckoutUrl("?utm_source=meta&SCK=abc&email=x", COMBO_CHECKOUT_URL),
+      "https://pay.kiwify.com.br/E1cDEN7?utm_source=meta&SCK=abc",
     );
   });
 });
