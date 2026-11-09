@@ -797,10 +797,14 @@
   border: 0;
   border-radius: 999px;
   box-shadow: var(--cb-glow);
-  background: var(--cb-gradient-accent);
-  color: var(--cb-navy);
+  /* translúcido: deixa o rosto aparecer atrás do botão */
+  background: linear-gradient(100deg, rgb(8 200 232 / 0.62), rgb(40 241 236 / 0.62));
+  backdrop-filter: blur(2px);
+  color: #fff;
+  transition: background 0.2s;
 }
 .theme-combo .cb-video-play svg { margin-left: 0.15rem; }
+.theme-combo .cb-video-thumb:hover .cb-video-play { background: linear-gradient(100deg, rgb(8 200 232 / 0.85), rgb(40 241 236 / 0.85)); }
 
 /* ---------- Seção 10: Garantia ---------- */
 .theme-combo .cb-garantia { border-top: 1px solid var(--cb-border); }

@@ -8,7 +8,7 @@ const CHECKLIST = [
   "Contabilidade Digital 360",
   "Guia de Processos da Contabilidade Digital",
   "Pack Contador Estratégico IA",
-  "CCD HUB: Módulo RT liberado até Dez/2027",
+  "CCD HUB: Módulo RT liberado até DEZ/2027",
   "Todas as atualizações da Reforma Tributária",
   "Acesso vitalício a todos os cursos",
 ];

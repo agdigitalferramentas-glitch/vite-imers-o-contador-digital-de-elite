@@ -1,13 +1,11 @@
 import { useEffect } from "react";
-import ComboTopBar from "@/components/combo/ComboTopBar";
-import ComboHero from "@/components/combo/ComboHero";
+import ComboLayout from "@/components/combo/ComboLayout";
 import ComboProblema from "@/components/combo/ComboProblema";
 import ComboProdutos from "@/components/combo/ComboProdutos";
 import ComboDiferenciais from "@/components/combo/ComboDiferenciais";
 import ComboAncoragem from "@/components/combo/ComboAncoragem";
 import ComboOferta from "@/components/combo/ComboOferta";
 import ComboCheckoutCta from "@/components/combo/ComboCheckoutCta";
-import ComboButton from "@/components/combo/ComboButton";
 import ComboMarquee from "@/components/combo/ComboMarquee";
 import ComboParaQuemE from "@/components/combo/ComboParaQuemE";
 import ComboMentores from "@/components/combo/ComboMentores";
@@ -23,26 +21,20 @@ export default function LpCombo() {
   }, []);
 
   return (
-    <div className="theme-combo">
-      <ComboTopBar />
-      <main>
-        <ComboHero
-          cta={<ComboButton href="#oferta">QUERO O COMBO COMPLETO</ComboButton>}
-        />
-        <ComboMarquee />
-        <ComboProblema />
-        <ComboProdutos />
-        <ComboDiferenciais />
-        <ComboAncoragem />
-        <ComboMarquee />
-        <ComboOferta cta={<ComboCheckoutCta />} />
-        <ComboParaQuemE />
-        <ComboMentores />
-        <ComboDepoimentos />
-        <ComboGarantia />
-        <ComboFaq />
-        <ComboCtaFinal />
-      </main>
-    </div>
+    <ComboLayout>
+      <ComboMarquee />
+      <ComboProblema />
+      <ComboProdutos />
+      <ComboDiferenciais />
+      <ComboAncoragem />
+      <ComboMarquee />
+      <ComboOferta cta={<ComboCheckoutCta />} />
+      <ComboParaQuemE />
+      <ComboMentores />
+      <ComboDepoimentos />
+      <ComboGarantia />
+      <ComboFaq />
+      <ComboCtaFinal />
+    </ComboLayout>
   );
 }
