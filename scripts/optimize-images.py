@@ -48,6 +48,10 @@ for n in (1, 2, 3):
 # LP /combo: selo de garantia (azul elétrico, com transparência)
 JOBS["combo-selo-garantia"] = ("combo/selo-garantia.webp", [224, 336, 448], "lossless")
 
+# LP /combo: hero com o especialista (desktop 21:9 e mobile 4:5)
+JOBS["combo-hero-desktop"] = ("combo/hero-desktop.webp", [960, 1280, 1600, 1916], 76)
+JOBS["combo-hero-mobile"] = ("combo/hero-mobile.webp", [480, 720, 960, 1122], 76)
+
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)

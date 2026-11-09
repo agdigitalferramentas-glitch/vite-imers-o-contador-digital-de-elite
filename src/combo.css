@@ -149,7 +149,6 @@
 }
 
 /* ---------- Placeholder de imagem ---------- */
-.theme-combo .cb-hero-media,
 .theme-combo .cb-produto-media,
 .theme-combo .cb-exclusivo-media,
 .theme-combo .cb-mentor-media,
@@ -190,15 +189,13 @@
   gap: var(--cb-space-3);
   text-align: left;
 }
-.theme-combo .cb-hero-media { aspect-ratio: 4 / 5; max-width: 28rem; margin-inline: auto; }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   /* hero em largura total: o bloco de textos ocupa no máximo 50% dela */
   .theme-combo .cb-hero .cb-container { max-width: none; padding-inline: var(--cb-space-4); }
   .theme-combo .cb-hero { padding-block: var(--cb-space-4); }
   .theme-combo .cb-hero-grid { grid-template-columns: 1fr 1fr; gap: var(--cb-space-4); }
   .theme-combo .cb-hero-content { gap: var(--cb-space-2); }
   .theme-combo .cb-hero h1 { font-size: 2rem; }
-  .theme-combo .cb-hero-media { aspect-ratio: 4 / 5; max-width: 28rem; margin-inline: auto 0; }
   .theme-combo .cb-hero h1 { max-width: none; }
 }
 .theme-combo .cb-badge {
@@ -913,12 +910,25 @@
 .theme-combo .cb-ctafinal-texto p { margin: 0; }
 
 /* ---------- Identidade visual: fundos, profundidade e destaques ---------- */
-/* hero: fundo gerado (gradiente do KV, brilho ciano e gráfico ascendente); o especialista entra por cima, à direita */
-.theme-combo .cb-hero {
-  background: var(--cb-bg) url("./assets/combo/hero-bg-mobile.webp") center bottom / 100% auto no-repeat;
-}
-@media (min-width: 900px) {
-  .theme-combo .cb-hero { background: var(--cb-bg) url("./assets/combo/hero-bg-desktop.webp") right center / cover no-repeat; }
+/* hero: foto do especialista com o fundo da arte. Mobile: texto e, logo abaixo, a imagem 4:5 em largura total */
+.theme-combo .cb-hero { background: var(--cb-bg); }
+.theme-combo .cb-hero { padding-bottom: 0; }
+.theme-combo .cb-hero-media { display: block; margin: var(--cb-space-3) 0 0; }
+.theme-combo .cb-hero-media img { display: block; width: 100%; height: auto; }
+@media (min-width: 1024px) {
+  .theme-combo .cb-hero { position: relative; isolation: isolate; padding-bottom: var(--cb-space-4); }
+  /* a arte 21:9 vira o fundo; o lado esquerdo dela já é escuro, onde fica o texto */
+  .theme-combo .cb-hero { min-height: min(calc(100vw / 2.334), 46rem); }
+  .theme-combo .cb-hero-media { position: absolute; inset: 0; z-index: -1; margin: 0; }
+  /* ancorada no topo: se sobrar altura, corta os braços e nunca a cabeça */
+  .theme-combo .cb-hero-media img { height: 100%; object-fit: cover; object-position: right top; }
+  /* escurece o lado do texto para manter o contraste quando o corpo do especialista chega perto dele */
+  .theme-combo .cb-hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(2 11 24 / 0.82) 0%, rgb(2 11 24 / 0.55) 34%, transparent 58%);
+  }
 }
 /* ritmo da página longa: seções alternam entre o fundo principal e o azul-noite */
 .theme-combo main > section:nth-of-type(even):not(.cb-hero) { background: var(--cb-bg-alt); }

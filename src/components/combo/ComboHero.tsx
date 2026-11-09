@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { fallbackSrc, srcSet } from "@/lib/responsive";
 
 /* SEÇÃO 01: Hero (início) — HTML puro, sem estado nem efeitos (primeira dobra estática). */
 export default function ComboHero({ cta }: { cta: ReactNode }) {
@@ -17,10 +18,21 @@ export default function ComboHero({ cta }: { cta: ReactNode }) {
         {cta}
         <p className="cb-micro">Garantia de 7 dias · Pagamento seguro · Parcelamento em até 12x</p>
         </div>
-        <div className="cb-hero-media" role="img" aria-label="Placeholder: expert em destaque">
-          <span className="cb-placeholder-label">[IMG-01 | Background do hero, expert em destaque à direita | desktop 1920x900 · mobile 4:5 1080x1350]</span>
-        </div>
       </div>
+      {/* uma só imagem carrega por tela: desktop (21:9, fundo do hero) ou mobile (4:5, abaixo do texto) */}
+      <picture className="cb-hero-media">
+        <source media="(min-width: 1024px)" srcSet={srcSet("combo-hero-desktop")} sizes="100vw" width={1916} height={821} />
+        <img
+          src={fallbackSrc("combo-hero-mobile")}
+          srcSet={srcSet("combo-hero-mobile")}
+          sizes="100vw"
+          width={1122}
+          height={1402}
+          alt="Anderson Maisse, de braços cruzados, em frente a um gráfico ascendente"
+          decoding="async"
+          {...({ fetchpriority: "high" } as Record<string, string>)}
+        />
+      </picture>
     </section>
   );
 }
