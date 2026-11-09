@@ -1,3 +1,4 @@
+import ComboButton from "./ComboButton";
 import useComboCheckoutHref from "./useComboCheckoutHref";
 
 /* Faixa fixa no topo: promessa de desconto e botão para o checkout do combo. */
@@ -6,10 +7,10 @@ export default function ComboTopBar() {
   return (
     <div className="cb-topbar" role="region" aria-label="Oferta">
       <div className="cb-topbar-inner">
-        <p>Aproveite +R$7000 de DESCONTO e acesso vitalício!</p>
-        <a href={href} className="cb-topbar-cta">
+        <p>Aproveite +R$&nbsp;7.000 de DESCONTO e acesso vitalício!</p>
+        <ComboButton href={href} className="cb-topbar-cta">
           GARANTIR O COMBO
-        </a>
+        </ComboButton>
       </div>
     </div>
   );
