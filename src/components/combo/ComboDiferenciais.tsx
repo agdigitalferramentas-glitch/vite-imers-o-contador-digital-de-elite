@@ -35,7 +35,7 @@ export default function ComboDiferenciais() {
             Na prática, você sai do campo da dúvida e chega na reunião com o empresário mostrando números, cenários e projeções reais. É isso que transforma o diagnóstico da Reforma em honorário de consultoria.
           </p>
           <p className="cb-callout">
-            Separado, o CCD HUB custa R$&nbsp;3.997. No combo da Black Friday, você usa o Módulo RT por 6 meses a partir da compra, sem pagar nada a mais.
+            Separado, o CCD HUB custa R$&nbsp;3.997. No combo da Black Friday, você usa o Módulo RT por até dezembro de 2027, sem pagar nada a mais.
           </p>
           </div>
         </article>
