@@ -913,11 +913,12 @@
 .theme-combo .cb-ctafinal-texto p { margin: 0; }
 
 /* ---------- Identidade visual: fundos, profundidade e destaques ---------- */
-/* hero: gradiente do KV com brilho ciano discreto atrás da área do especialista */
+/* hero: fundo gerado (gradiente do KV, brilho ciano e gráfico ascendente); o especialista entra por cima, à direita */
 .theme-combo .cb-hero {
-  background:
-    radial-gradient(circle at 78% 45%, rgb(8 200 232 / 0.32), transparent 55%),
-    var(--cb-gradient-page);
+  background: var(--cb-bg) url("./assets/combo/hero-bg-mobile.webp") center bottom / 100% auto no-repeat;
+}
+@media (min-width: 900px) {
+  .theme-combo .cb-hero { background: var(--cb-bg) url("./assets/combo/hero-bg-desktop.webp") right center / cover no-repeat; }
 }
 /* ritmo da página longa: seções alternam entre o fundo principal e o azul-noite */
 .theme-combo main > section:nth-of-type(even):not(.cb-hero) { background: var(--cb-bg-alt); }
