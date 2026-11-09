@@ -42,6 +42,8 @@ for slug in ("anderson", "alesandro"):
     JOBS[f"combo-mentor-{slug}"] = (f"combo/mentor-{slug}.jpg", [420, 640, 842], 76)
 for slug, src in (("hub", "exclusivo-hub.jpg"), ("ccd", "exclusivo-ccd.jpg"), ("atualizacoes", "exclusivo-atualizacoes.webp")):
     JOBS[f"combo-exclusivo-{slug}"] = (f"combo/{src}", [480, 768, 1000, 1280, 1600], 74)
+for n in (1, 2, 3):
+    JOBS[f"combo-depoimento-{n}"] = (f"combo/depoimento-{n}.jpg", [480, 768, 1000, 1280], 76)
 
 
 def main() -> None:

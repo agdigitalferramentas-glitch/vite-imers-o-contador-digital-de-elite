@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
+import ResponsiveImg from "@/components/ResponsiveImg";
 import { getVideoSource } from "@/lib/video";
 
 const VIDEOS = [
-  { id: "IMG-13", n: 1, link: "https://youtu.be/biOmM6Xckwk" },
-  { id: "IMG-14", n: 2, link: "https://youtu.be/wCztfgD3E_Q" },
-  { id: "IMG-15", n: 3, link: "https://youtu.be/bQ31i5TV3v0" },
+  { id: "IMG-13", n: 1, imagem: "combo-depoimento-1", link: "https://youtu.be/biOmM6Xckwk" },
+  { id: "IMG-14", n: 2, imagem: "combo-depoimento-2", link: "https://youtu.be/wCztfgD3E_Q" },
+  { id: "IMG-15", n: 3, imagem: "combo-depoimento-3", link: "https://youtu.be/bQ31i5TV3v0" },
 ];
 
-/** Miniatura (placeholder) que vira o player do YouTube dentro da própria página ao clicar. */
-function VideoCard({ id, n, link }: { id: string; n: number; link: string }) {
+/** Miniatura que vira o player do YouTube dentro da própria página ao clicar. */
+function VideoCard({ n, imagem, link }: { n: number; imagem: string; link: string }) {
   const [playing, setPlaying] = useState(false);
   const source = getVideoSource(link);
   if (!source) return null;
@@ -30,7 +31,13 @@ function VideoCard({ id, n, link }: { id: string; n: number; link: string }) {
 
   return (
     <button type="button" className="cb-video cb-video-thumb" onClick={() => setPlaying(true)} aria-label={`Assistir depoimento ${n}`}>
-      <span className="cb-placeholder-label">[{id} | Miniatura do vídeo {n} | 16:9 | 1280x720]</span>
+      <ResponsiveImg
+        name={imagem}
+        alt={`Miniatura do depoimento ${n}`}
+        width={1280}
+        height={720}
+        sizes="(min-width: 768px) 304px, calc(100vw - 32px)"
+      />
       <span className="cb-video-play" aria-hidden="true">
         <Play size={28} fill="currentColor" />
       </span>
@@ -45,8 +52,8 @@ export default function ComboDepoimentos() {
       <div className="cb-container">
         <h2 id="depoimentos-titulo">Quem aplicou o método, <span className="cb-destaque">cresceu.</span></h2>
         <ul className="cb-videos">
-          {VIDEOS.map((v) => (
-            <li key={v.id}>
+          {VIDEOS.map(({ id, ...v }) => (
+            <li key={id}>
               <VideoCard {...v} />
             </li>
           ))}
