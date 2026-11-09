@@ -1,6 +1,10 @@
-const PRODUTOS = [
+import ResponsiveImg from "@/components/ResponsiveImg";
+
+/** `imagem`: nome-base das variantes em src/assets/responsive; sem ele, o card mostra o placeholder. */
+const PRODUTOS: { nome: string; imagem?: string; resumo: string; itens: string[]; valor: string }[] = [
   {
     nome: "Reforma Tributária Lucrativa",
+    imagem: "combo-produto-reforma",
     resumo: "Transforme o que você sabe sobre IBS, CBS e IS em consultoria de alto valor, nicho por nicho.",
     itens: [
       "27 aulas práticas em 3 fases: Fundamentos Consultivos, Imersões por Nicho e Central do Cliente",
@@ -14,6 +18,7 @@ const PRODUTOS = [
   },
   {
     nome: "CCD: Comunidade Contadores Digitais",
+    imagem: "combo-produto-ccd",
     resumo: "A metodologia para faturar mais, sair do operacional e construir um escritório lucrativo, previsível e escalável.",
     itens: [
       "17 Estações de Aceleração (Gestão de Equipes, Financeiro, Processos e mais)",
@@ -27,6 +32,7 @@ const PRODUTOS = [
   },
   {
     nome: "Contador Digital de Elite",
+    imagem: "combo-produto-contador-elite",
     resumo: "O mesmo sistema que levou um escritório de 80 para 1.200 clientes, aula por aula, no seu ritmo.",
     itens: [
       "Módulo 1, Aumento Imediato de Faturamento: os 8 a 10 serviços que sua carteira atual já precisa e ninguém ofereceu, sem captar um cliente novo",
@@ -49,6 +55,7 @@ const PRODUTOS = [
   },
   {
     nome: "Guia de Processos da Contabilidade Digital",
+    imagem: "combo-produto-guia-processos",
     resumo: "Um escritório até 3x mais eficiente com processos padronizados.",
     itens: [
       "9 aulas, cerca de 8h de conteúdo",
@@ -83,11 +90,23 @@ export default function ComboProdutos() {
           {PRODUTOS.map((p, idx) => (
             <li key={p.nome}>
               <article className="cb-produto">
-                <div className="cb-produto-media" role="img" aria-label={`Placeholder: imagem do produto ${p.nome.replace(/^\d+\.\s/, "")}`}>
-                  <span className="cb-placeholder-label">
-                    [IMG-{String(idx + 2).padStart(2, "0")} | Imagem do produto: {p.nome.replace(/^\d+\.\s/, "")} | 16:9 | 1280x720]
-                  </span>
-                </div>
+                {p.imagem ? (
+                  <div className="cb-produto-media cb-produto-media-img">
+                    <ResponsiveImg
+                      name={p.imagem}
+                      alt={`Mockup do produto ${p.nome} em notebook e tablet`}
+                      width={1280}
+                      height={714}
+                      sizes="(min-width: 900px) 468px, calc(100vw - 32px)"
+                    />
+                  </div>
+                ) : (
+                  <div className="cb-produto-media" role="img" aria-label={`Placeholder: imagem do produto ${p.nome}`}>
+                    <span className="cb-placeholder-label">
+                      [IMG-{String(idx + 2).padStart(2, "0")} | Imagem do produto: {p.nome} | 16:9 | 1280x720]
+                    </span>
+                  </div>
+                )}
                 <h3>{p.nome}</h3>
                 <p className="cb-produto-resumo">
                   <em>{p.resumo}</em>
