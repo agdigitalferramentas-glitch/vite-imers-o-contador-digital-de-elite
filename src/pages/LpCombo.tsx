@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import ComboTopBar from "@/components/combo/ComboTopBar";
 import ComboHero from "@/components/combo/ComboHero";
 import ComboProblema from "@/components/combo/ComboProblema";
 import ComboProdutos from "@/components/combo/ComboProdutos";
@@ -21,6 +22,7 @@ export default function LpCombo() {
 
   return (
     <div className="theme-combo">
+      <ComboTopBar />
       <main>
         <ComboHero
           cta={<a href="#oferta" className="cb-cta">QUERO O COMBO COMPLETO</a>}

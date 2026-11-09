@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
-import { COMBO_CHECKOUT_URL, getCheckoutUrl } from "@/lib/checkout";
+import useComboCheckoutHref from "./useComboCheckoutHref";
 
-/** CTA da oferta: checkout do combo com a atribuição de campanha (UTM, src, sck) da URL atual. */
+/** CTA das seções: leva ao checkout do combo com a atribuição de campanha da URL atual. */
 export default function ComboCheckoutCta() {
-  const [href, setHref] = useState(COMBO_CHECKOUT_URL);
-  useEffect(() => {
-    setHref(getCheckoutUrl(window.location.search, COMBO_CHECKOUT_URL));
-  }, []);
+  const href = useComboCheckoutHref();
   return (
     <div className="cb-cta-wrap">
       <a href={href} className="cb-cta">
