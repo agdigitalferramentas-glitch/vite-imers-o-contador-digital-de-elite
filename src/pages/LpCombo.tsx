@@ -8,6 +8,7 @@ import ComboAncoragem from "@/components/combo/ComboAncoragem";
 import ComboOferta from "@/components/combo/ComboOferta";
 import ComboCheckoutCta from "@/components/combo/ComboCheckoutCta";
 import ComboButton from "@/components/combo/ComboButton";
+import ComboMarquee from "@/components/combo/ComboMarquee";
 import ComboParaQuemE from "@/components/combo/ComboParaQuemE";
 import ComboMentores from "@/components/combo/ComboMentores";
 import ComboDepoimentos from "@/components/combo/ComboDepoimentos";
@@ -28,10 +29,12 @@ export default function LpCombo() {
         <ComboHero
           cta={<ComboButton href="#oferta">QUERO O COMBO COMPLETO</ComboButton>}
         />
+        <ComboMarquee />
         <ComboProblema />
         <ComboProdutos />
         <ComboDiferenciais />
         <ComboAncoragem />
+        <ComboMarquee />
         <ComboOferta cta={<ComboCheckoutCta />} />
         <ComboParaQuemE />
         <ComboMentores />

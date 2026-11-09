@@ -978,3 +978,35 @@
   .theme-combo .cb-topbar-inner { gap: var(--cb-space-3); padding-block: 0.75rem; }
   .theme-combo .cb-topbar-cta { padding-left: 1.25rem; font-size: var(--cb-fs-body); }
 }
+
+/* ---------- Faixa marquee (azul neon da identidade) ---------- */
+.theme-combo .cb-marquee {
+  position: relative;
+  overflow: hidden;
+  background: var(--cb-gradient-accent);
+  color: var(--cb-navy);
+}
+.theme-combo .cb-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: cbMarquee 40s linear infinite;
+}
+.theme-combo .cb-marquee-group { display: flex; flex: none; }
+.theme-combo .cb-marquee-item,
+.theme-combo .cb-marquee-parte { display: inline-flex; align-items: center; gap: 1rem; }
+.theme-combo .cb-marquee-item { padding-right: 1rem; }
+.theme-combo .cb-marquee-parte {
+  padding-block: 0.75rem;
+  font-size: var(--cb-fs-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.theme-combo .cb-marquee-star { flex: none; }
+@keyframes cbMarquee {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-combo .cb-marquee-track { animation: none; }
+}
