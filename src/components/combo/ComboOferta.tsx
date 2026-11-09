@@ -8,7 +8,7 @@ const CHECKLIST = [
   "Contabilidade Digital 360",
   "Guia de Processos da Contabilidade Digital",
   "Pack Contador Estratégico IA",
-  "CCD HUB: Módulo RT liberado por 6 meses",
+  "CCD HUB: Módulo RT liberado até Dez/2027",
   "Todas as atualizações da Reforma Tributária",
   "Acesso vitalício a todos os cursos",
 ];
@@ -49,7 +49,7 @@ export default function ComboOferta({ cta }: { cta: ReactNode }) {
 
         <div className="cb-comparacoes">
           <p>
-            <span>Mentoria sozinha: <b>R$&nbsp;2.997</b>.</span>
+            <span>Reforma Lucrativa sozinha: <b>R$&nbsp;2.997</b>.</span>
             <span>Combo completo: <b>R$&nbsp;2.597</b>.</span>
             <em>Você paga <b>R$&nbsp;400</b> a menos e leva todos os outros produtos junto.</em>
           </p>

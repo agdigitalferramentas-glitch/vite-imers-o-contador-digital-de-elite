@@ -17,7 +17,7 @@ export default function ComboDiferenciais() {
           <Media id="IMG-08" nome="CCD HUB: Módulo RT" />
           <div className="cb-exclusivo-body">
           <p className="cb-badge">Exclusivo 1</p>
-          <h3 id="exclusivo-1">CCD HUB: Módulo RT (liberado por 6 meses)</h3>
+          <h3 id="exclusivo-1">CCD HUB: Módulo RT (liberado até Dezembro/2027)</h3>
           <div className="cb-exclusivo-cols">
             <p>
               Não é uma calculadora. O CCD HUB: Módulo RT transforma os dados de cada cliente em uma análise clara do impacto da Reforma Tributária. Você preenche as informações da empresa e a ferramenta faz as simulações, mostrando:

@@ -19,7 +19,7 @@ const PRODUTOS = [
       "17 Estações de Aceleração (Gestão de Equipes, Financeiro, Processos e mais)",
       "Os 5 pilares: Vendas High Ticket, Engenharia de Equipes, Fábrica de Processos, Escala Nacional e Inteligência Artificial",
       "Ferramentas prontas: scripts de vendas, modelos de contrato, guias de precificação, templates e automações",
-      "Comunidade com mais de 2.000 contadores e 2 encontros ao vivo por mês, para sempre",
+      "Comunidade com mais de 2.000 contadores e 2 encontros ao vivo por mês",
       "Estações de nicho bônus: Contabilidade Médica, Advogados, Psicólogos, Infoprodutores, Representante Comercial, Revenda de Veículos, Holding Patrimonial, Recuperação Tributária, Marcas e Patentes, Regularização de Obras, Tráfego Pago e Vendas pelo YouTube",
       "Mais de R$\u00a015 milhões em resultados gerados pelos membros em 2025",
     ],

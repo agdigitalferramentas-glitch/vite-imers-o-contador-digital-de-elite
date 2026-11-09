@@ -4,7 +4,7 @@ const FAQ = [
   {
     pergunta: "Já sou aluno de um dos produtos. Vale a pena?",
     resposta:
-      "Sim. Você recebe todos os outros produtos, o CCD vitalício, o CCD HUB por 6 meses e as atualizações da Reforma. E as aulas que você já tinha passam a ser suas para sempre.",
+      "Sim. Você recebe todos os outros produtos, o CCD vitalício, o CCD HUB até Dezembro/2027 e as atualizações da Reforma. E as aulas que você já tinha passam a ser suas para sempre.",
   },
   {
     pergunta: "O que significa acesso vitalício?",
@@ -18,7 +18,7 @@ const FAQ = [
   {
     pergunta: "Os encontros ao vivo estão incluídos?",
     resposta:
-      "Sim. Na Mentoria, são 12 encontros, um por mês, com Hot Seat para tirar dúvidas, todos gravados. No CCD, são 2 encontros ao vivo por mês.",
+      "Sim. Na Reforma Lucrativa, serão 10 encontros, com Hot Seat para tirar dúvidas, todos gravados. No CCD, são 2 encontros ao vivo por mês.",
   },
   {
     pergunta: "Não tenho tempo para tantos cursos. Como começo?",
