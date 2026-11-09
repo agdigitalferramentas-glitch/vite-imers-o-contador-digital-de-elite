@@ -43,7 +43,7 @@ export default function ComboDepoimentos() {
   return (
     <section id="secao-09-depoimentos" aria-labelledby="depoimentos-titulo" className="cb-section cb-depoimentos">
       <div className="cb-container">
-        <h2 id="depoimentos-titulo">Quem aplicou o método, cresceu.</h2>
+        <h2 id="depoimentos-titulo">Quem aplicou o método, <span className="cb-destaque">cresceu.</span></h2>
         <ul className="cb-videos">
           {VIDEOS.map((v) => (
             <li key={v.id}>

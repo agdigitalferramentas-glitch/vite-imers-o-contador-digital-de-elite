@@ -25,7 +25,7 @@ export default function ComboOferta({ cta }: { cta: ReactNode }) {
             <span>
               De <s>R$&nbsp;10.229</s> por
             </span>
-            <strong>12x de R$&nbsp;268,59</strong>
+            <strong className="cb-destaque">12x de R$&nbsp;268,59</strong>
             <span>ou R$&nbsp;2.597 à vista</span>
           </p>
           <p className="cb-oferta-texto">
