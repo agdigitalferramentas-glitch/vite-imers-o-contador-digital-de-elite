@@ -915,6 +915,11 @@
 .theme-combo .cb-hero { padding-bottom: 0; }
 .theme-combo .cb-hero-media { display: block; margin: var(--cb-space-3) 0 0; }
 .theme-combo .cb-hero-media img { display: block; width: 100%; height: auto; }
+/* mobile: o topo da foto se dissolve no fundo da página, sem linha de divisão */
+.theme-combo .cb-hero-media img {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 14%, #000 34%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 14%, #000 34%);
+}
 @media (min-width: 1024px) {
   .theme-combo .cb-hero { position: relative; isolation: isolate; padding-bottom: var(--cb-space-4); }
   /* a arte 21:9 vira o fundo; o lado esquerdo dela já é escuro, onde fica o texto */
@@ -922,6 +927,7 @@
   .theme-combo .cb-hero-media { position: absolute; inset: 0; z-index: -1; margin: 0; }
   /* ancorada no topo: se sobrar altura, corta os braços e nunca a cabeça */
   .theme-combo .cb-hero-media img { height: 100%; object-fit: cover; object-position: right top; }
+  .theme-combo .cb-hero-media img { -webkit-mask-image: none; mask-image: none; }
   /* escurece o lado do texto para manter o contraste quando o corpo do especialista chega perto dele */
   .theme-combo .cb-hero-media::after {
     content: "";
