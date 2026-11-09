@@ -38,6 +38,8 @@ for slug in ("jobson", "bruno", "gilberto", "alesandro", "andre"):
 # LP /combo: mockups dos produtos (notebook + tablet) da seção de entregáveis
 for slug in ("reforma", "ccd", "contador-elite", "cd360", "guia-processos", "pack-ia"):
     JOBS[f"combo-produto-{slug}"] = (f"combo/produto-{slug}.jpg", [480, 768, 1000, 1280], 74)
+for slug in ("anderson", "alesandro"):
+    JOBS[f"combo-mentor-{slug}"] = (f"combo/mentor-{slug}.jpg", [420, 640, 842], 76)
 
 
 def main() -> None:

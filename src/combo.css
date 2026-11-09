@@ -1014,3 +1014,7 @@
 /* imagem real do produto (mockup): preenche o topo do card, sem o X do placeholder */
 .theme-combo .cb-produto-media-img { background: var(--cb-bg); }
 .theme-combo .cb-produto-media-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* foto real do mentor: quadrado com o rosto no terço superior (a foto original é vertical) */
+.theme-combo .cb-mentor-media-img { overflow: hidden; background: var(--cb-bg); }
+.theme-combo .cb-mentor-media-img img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; }

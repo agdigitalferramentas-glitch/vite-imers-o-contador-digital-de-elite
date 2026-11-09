@@ -1,6 +1,9 @@
+import ResponsiveImg from "@/components/ResponsiveImg";
+
 const MENTORES = [
   {
     id: "IMG-11",
+    imagem: "combo-mentor-anderson",
     nome: "Anderson Maisse",
     funcao: "Estratégia e Contabilidade Digital",
     foto: "Anderson Maisse",
@@ -9,6 +12,7 @@ const MENTORES = [
   },
   {
     id: "IMG-12",
+    imagem: "combo-mentor-alesandro",
     nome: "Alesandro Damaceno",
     funcao: "Aplicação técnica da Reforma",
     foto: "Alesandro Damaceno",
@@ -27,8 +31,14 @@ export default function ComboMentores() {
           {MENTORES.map((m) => (
             <li key={m.id}>
               <article className="cb-mentor">
-                <div className="cb-mentor-media" role="img" aria-label={`Placeholder: foto de ${m.foto}`}>
-                  <span className="cb-placeholder-label">[{m.id} | Foto: {m.foto} | 1:1 | 1000x1000]</span>
+                <div className="cb-mentor-media cb-mentor-media-img">
+                  <ResponsiveImg
+                    name={m.imagem}
+                    alt={`Retrato de ${m.foto}`}
+                    width={842}
+                    height={1264}
+                    sizes="(min-width: 768px) 468px, calc(100vw - 32px)"
+                  />
                 </div>
                 <div className="cb-mentor-body">
                   <h3>
