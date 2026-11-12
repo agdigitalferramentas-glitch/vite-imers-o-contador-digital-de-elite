@@ -7,7 +7,7 @@ const root = path.resolve(process.argv[2] || "dist");
 const port = Number(process.argv[3] || process.env.PORT || 3000);
 const startedAt = new Date().toISOString();
 
-const mime = { ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".ico": "image/x-icon", ".woff": "font/woff", ".woff2": "font/woff2" };
+const mime = { ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".ico": "image/x-icon", ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml; charset=utf-8", ".webmanifest": "application/manifest+json" };
 
 function walk(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -42,36 +42,44 @@ function healthPayload() {
   };
 }
 
-const REDIRECT_TARGET = "https://black26.andersonmaisse.com/";
-const REDIRECT_HOST = new URL(REDIRECT_TARGET).hostname;
-
 function send(res, status, body, type) {
   res.writeHead(status, { "Content-Type": type, "Cache-Control": "no-store", "X-DeployHub-Root": root, "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS", "Access-Control-Allow-Headers": "content-type" });
   res.end(body);
 }
 
+function isDir(p) {
+  return fs.existsSync(p) && fs.statSync(p).isDirectory();
+}
+
+// URLs limpas: arquivo exato -> <path>.html -> <path>/index.html -> fallback SPA (/index.html).
+// Retorna { redirect } quando a pasta existe mas a URL veio sem a barra final,
+// para que caminhos relativos (./style.css) da página resolvam dentro da pasta.
 function resolveFile(urlPath) {
   const clean = decodeURIComponent((urlPath || "/").split("?")[0]);
   const rel = path.normalize(clean).replace(/^([.][.][\/])+/, "").replace(/^\/+/, "");
-  return path.join(root, rel || "index.html");
+  const file = path.join(root, rel || "index.html");
+  if (fs.existsSync(file) && !isDir(file)) return { file };
+  if (!path.extname(file) && fs.existsSync(file + ".html")) return { file: file + ".html" };
+  if (isDir(file) && fs.existsSync(path.join(file, "index.html"))) {
+    if (!clean.endsWith("/")) return { redirect: clean + "/" };
+    return { file: path.join(file, "index.html") };
+  }
+  return { file: path.join(root, "index.html") };
 }
 
 http.createServer((req, res) => {
   if (req.method === "OPTIONS") return send(res, 204, "", "text/plain; charset=utf-8");
-  const pathname = new URL(req.url || "/", "http://localhost").pathname;
+  const url = new URL(req.url || "/", "http://localhost");
+  const pathname = url.pathname;
   if (/(\.php(?:\/|$)|\/php\/|kcfinder|filemanager|responsive_filemanager|jquery-file-upload|ckeditor|tinymce)/i.test(pathname)) return send(res, 404, "not found\n", "text/plain; charset=utf-8");
   if (pathname === "/healthz/live") return send(res, 200, "ok\n", "text/plain; charset=utf-8");
   if (pathname === "/healthz" || pathname === "/healthz.json") return send(res, 200, JSON.stringify(healthPayload(), null, 2), "application/json; charset=utf-8");
-  // Todas as páginas redirecionam (301) para o site principal; ficam de fora /obrigado e os arquivos estáticos.
-  const host = String(req.headers.host || "").split(":")[0].toLowerCase();
-  const isTargetHost = host === REDIRECT_HOST || host === "www." + REDIRECT_HOST;
-  const isAsset = path.extname(pathname) !== "" && path.extname(pathname).toLowerCase() !== ".html" && fs.existsSync(resolveFile(pathname));
-  if (!isTargetHost && !isAsset && !/^\/obrigado\/?$/.test(pathname)) {
-    res.writeHead(301, { Location: REDIRECT_TARGET, "Cache-Control": "no-store" });
+  const resolved = resolveFile(pathname);
+  if (resolved.redirect) {
+    res.writeHead(301, { Location: resolved.redirect + url.search });
     return res.end();
   }
-  let file = resolveFile(pathname);
-  if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) file = path.join(root, "index.html");
+  const file = resolved.file;
   if (!fs.existsSync(file)) return send(res, 404, "index.html not found\n", "text/plain; charset=utf-8");
   send(res, 200, fs.readFileSync(file), mime[path.extname(file).toLowerCase()] || "application/octet-stream");
 }).listen(port, "0.0.0.0", () => console.log("[deployhub-health-server] serving " + root + " on 0.0.0.0:" + port));
