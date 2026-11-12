@@ -413,7 +413,18 @@ server {
     return 404;
   }
 
+  # Única página que continua no ar: /obrigado (SPA). O arquivo é servido direto, sem passar pelo redirect.
+  location ~ ^/obrigado/?\$ {
+    try_files /index.html =404;
+    add_header Cache-Control "no-cache";
+  }
+
+  # Todas as demais páginas (inclusive as inexistentes): 301 permanente para o site principal.
+  # A guarda de host evita laço caso este app seja servido no próprio domínio de destino.
   location / {
+    if (\$host !~* "^(www\\.)?black26\\.andersonmaisse\\.com\$") {
+      return 301 https://black26.andersonmaisse.com/;
+    }
     try_files \$uri \$uri/ /index.html;
 
     add_header Cache-Control "no-cache";

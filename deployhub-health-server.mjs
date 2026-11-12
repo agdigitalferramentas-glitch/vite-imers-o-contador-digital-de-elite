@@ -42,6 +42,9 @@ function healthPayload() {
   };
 }
 
+const REDIRECT_TARGET = "https://black26.andersonmaisse.com/";
+const REDIRECT_HOST = new URL(REDIRECT_TARGET).hostname;
+
 function send(res, status, body, type) {
   res.writeHead(status, { "Content-Type": type, "Cache-Control": "no-store", "X-DeployHub-Root": root, "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS", "Access-Control-Allow-Headers": "content-type" });
   res.end(body);
@@ -59,6 +62,14 @@ http.createServer((req, res) => {
   if (/(\.php(?:\/|$)|\/php\/|kcfinder|filemanager|responsive_filemanager|jquery-file-upload|ckeditor|tinymce)/i.test(pathname)) return send(res, 404, "not found\n", "text/plain; charset=utf-8");
   if (pathname === "/healthz/live") return send(res, 200, "ok\n", "text/plain; charset=utf-8");
   if (pathname === "/healthz" || pathname === "/healthz.json") return send(res, 200, JSON.stringify(healthPayload(), null, 2), "application/json; charset=utf-8");
+  // Todas as páginas redirecionam (301) para o site principal; ficam de fora /obrigado e os arquivos estáticos.
+  const host = String(req.headers.host || "").split(":")[0].toLowerCase();
+  const isTargetHost = host === REDIRECT_HOST || host === "www." + REDIRECT_HOST;
+  const isAsset = path.extname(pathname) !== "" && path.extname(pathname).toLowerCase() !== ".html" && fs.existsSync(resolveFile(pathname));
+  if (!isTargetHost && !isAsset && !/^\/obrigado\/?$/.test(pathname)) {
+    res.writeHead(301, { Location: REDIRECT_TARGET, "Cache-Control": "no-store" });
+    return res.end();
+  }
   let file = resolveFile(pathname);
   if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) file = path.join(root, "index.html");
   if (!fs.existsSync(file)) return send(res, 404, "index.html not found\n", "text/plain; charset=utf-8");
