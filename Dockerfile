@@ -1,5 +1,6 @@
-# DEPLOYHUB_NGINX_SPA_V33
+# DEPLOYHUB_NGINX_SPA_V35
 # Dockerfile robusto para Dokploy: Vite/React SPA via servidor Node estável + fallback SSR/Worker TanStack/Node, inclusive apps dentro de /client.
+# Suporta HTML puro: se não houver package.json, usa o script de build estático.
 FROM node:22-alpine AS build
 WORKDIR /app
 # Instala bash e utilitários essenciais para scripts de build (prebuild/postbuild)
@@ -37,7 +38,7 @@ ENV NODE_ENV=production
 RUN if [ -z "$VITE_SUPABASE_PUBLISHABLE_KEY" ]; then export VITE_SUPABASE_PUBLISHABLE_KEY="$VITE_SUPABASE_ANON_KEY"; fi && if [ -f package.json ]; then NODE_ENV=production npm run build; elif [ -f client/package.json ]; then cd client && NODE_ENV=production npm run build; fi
 # Fallback SPA build: se gerou dist/server mas faltou index.html no client, força um vite build SPA puro
 RUN set -eu;   ROOT=/app; [ -f /app/package.json ] || ROOT=/app/client;   cd "$ROOT";   if [ -d dist/server ] && [ ! -f dist/client/index.html ] && [ ! -f dist/index.html ]; then     echo "[deployhub:build] SSR build sem index.html — rodando vite build SPA de fallback em dist/client";     if [ -f node_modules/.bin/vite ]; then       ./node_modules/.bin/vite build --outDir dist/client --emptyOutDir=false ||       npx --yes vite build --outDir dist/client --emptyOutDir=false || true;     else       npx --yes vite build --outDir dist/client --emptyOutDir=false || true;     fi;   fi;   if [ ! -f dist/client/index.html ] && [ ! -f dist/index.html ]; then     if [ -f index.html ]; then       echo "[deployhub:build] último recurso: copiando index.html da raiz para dist/client";       mkdir -p dist/client; cp index.html dist/client/index.html;     elif [ -f client/index.html ]; then       echo "[deployhub:build] último recurso: copiando client/index.html para dist/client";       mkdir -p dist/client; cp client/index.html dist/client/index.html;     fi;   fi
-RUN mkdir -p /app/dist /app/client/dist /app/.output /app/build &&   mkdir -p /app/client/node_modules &&   if [ ! -f /app/client/package.json ]; then echo '{}' > /app/client/package.json; fi &&   echo "[deployhub:build] build output candidates:" &&   for path in /app/dist /app/dist/client /app/client/dist /app/client/dist/client /app/.output/public /app/build /app/build/client; do     if [ -d "$path" ]; then echo "--- $path"; ls -la "$path"; fi;   done
+RUN mkdir -p /app/dist /app/client/dist /app/.output /app/build &&   mkdir -p /app/node_modules /app/client/node_modules &&   if [ ! -f /app/client/package.json ]; then echo '{}' > /app/client/package.json; fi &&   echo "[deployhub:build] build output candidates:" &&   for path in /app/dist /app/dist/client /app/client/dist /app/client/dist/client /app/.output/public /app/build /app/build/client; do     if [ -d "$path" ]; then echo "--- $path"; ls -la "$path"; fi;   done
 
 FROM node:22-alpine AS runtime
 WORKDIR /app
@@ -63,7 +64,7 @@ import { pathToFileURL } from "node:url";
 const entry = process.argv[2];
 const port = Number(process.env.PORT || 3000);
 const staticRoots = ["/app/dist/client", "/app/dist", "/app/client/dist/client", "/app/client/dist", "/app/.output/public", "/app/build/client", "/app/build"];
-const mime = { ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".ico": "image/x-icon", ".woff": "font/woff", ".woff2": "font/woff2" };
+const mime = { ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".ico": "image/x-icon", ".woff": "font/woff", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".xml": "application/xml; charset=utf-8", ".webmanifest": "application/manifest+json" };
 
 if (!entry) {
   console.error("[deployhub-ssr-adapter] entrada SSR ausente");
@@ -413,19 +414,8 @@ server {
     return 404;
   }
 
-  # Única página que continua no ar: /obrigado (SPA). O arquivo é servido direto, sem passar pelo redirect.
-  location ~ ^/obrigado/?\$ {
-    try_files /index.html =404;
-    add_header Cache-Control "no-cache";
-  }
-
-  # Todas as demais páginas (inclusive as inexistentes): 301 permanente para o site principal.
-  # A guarda de host evita laço caso este app seja servido no próprio domínio de destino.
   location / {
-    if (\$host !~* "^(www\\.)?black26\\.andersonmaisse\\.com\$") {
-      return 301 https://black26.andersonmaisse.com/;
-    }
-    try_files \$uri \$uri/ /index.html;
+    try_files \$uri \$uri.html \$uri/ /index.html;
 
     add_header Cache-Control "no-cache";
   }
