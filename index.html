@@ -14,6 +14,19 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
     <script>
+      // Todas as páginas redirecionam para o site principal, exceto /obrigado. Vive no HTML do app porque os arquivos de
+      // deploy (Dockerfile, servidor) são regenerados pela plataforma. Não roda em localhost (desenvolvimento) nem no
+      // próprio domínio de destino (evita laço).
+      (function () {
+        var TARGET = "https://black26.andersonmaisse.com/";
+        var h = location.hostname;
+        if (h === "localhost" || h === "127.0.0.1" || /(^|\.)black26\.andersonmaisse\.com$/.test(h)) return;
+        if (/^\/obrigado$/.test(location.pathname.replace(/\/+$/, ""))) return;
+        location.replace(TARGET);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0;url=https://black26.andersonmaisse.com/" /></noscript>
+    <script>
       // Fora da home (/b … /g, /obrigado) o HTML estático da primeira dobra não se aplica.
       (function () {
         var p = location.pathname.replace(/\/+$/, "");
